@@ -3,7 +3,9 @@ import { Quicksand } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import { I18nProvider } from "@/contexts/I18nContext";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const quicksand = Quicksand({
@@ -27,13 +29,16 @@ export default function RootLayout({
         className={`${quicksand.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <AuthProvider>
-          <I18nProvider>
-            <Navbar />
-            <main className="flex-1 flex flex-col pt-8 pb-16">
-              {children}
-            </main>
-            <Footer />
-          </I18nProvider>
+          <FavoritesProvider>
+            <I18nProvider>
+              <Navbar />
+              <main className="flex-1 flex flex-col pt-8 pb-16">
+                {children}
+              </main>
+              <Footer />
+              <Toaster position="top-right" richColors />
+            </I18nProvider>
+          </FavoritesProvider>
         </AuthProvider>
       </body>
     </html>

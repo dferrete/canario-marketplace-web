@@ -50,20 +50,20 @@ export function Navbar() {
                 </Link>
 
                 {/* Navigation Links */}
-                <div className="hidden md:flex items-center space-x-8">
-                    <Link href="/" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors">
+                <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
+                    <Link href="/listings" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors px-3 py-2 rounded-full hover:bg-primary/5">
                         <Bird className="w-4 h-4" />
                         {t("nav.birds")}
                     </Link>
-                    <Link href="#" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors">
+                    <Link href="#" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors px-3 py-2 rounded-full hover:bg-primary/5">
                         <Ticket className="w-4 h-4" />
                         {t("nav.raffles")}
                     </Link>
-                    <Link href="#" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors">
+                    <Link href="#" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors px-3 py-2 rounded-full hover:bg-primary/5">
                         <Gavel className="w-4 h-4" />
                         {t("nav.auctions")}
                     </Link>
-                    <Link href="#" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors">
+                    <Link href="#" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors px-3 py-2 rounded-full hover:bg-primary/5">
                         <Package className="w-4 h-4" />
                         {t("nav.batches")}
                     </Link>
@@ -128,7 +128,7 @@ export function Navbar() {
                                             <User className="w-4 h-4 mr-2" />
                                             {t("nav.myProfile")}
                                         </Link>
-                                        <Link href="/favorites" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors">
+                                        <Link href="/listings/favorites" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors">
                                             <Heart className="w-4 h-4 mr-2" />
                                             {t("nav.favorites")}
                                         </Link>
@@ -185,7 +185,7 @@ export function Navbar() {
             {isMobileMenuOpen && (
                 <div className="md:hidden border-t border-border bg-surface/95 backdrop-blur-md animate-in slide-in-from-top-2">
                     <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-                        <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-xl font-medium transition-colors text-lg flex items-center gap-3">
+                        <Link href="/listings" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-xl font-medium transition-colors text-lg flex items-center gap-3">
                             <Bird className="w-5 h-5 text-primary/80" />
                             {t("nav.birds")}
                         </Link>
@@ -217,6 +217,10 @@ export function Navbar() {
                         {/* Mobile Authenticated Actions */}
                         {isAuthenticated && !isLoading && (
                             <div className="flex flex-col gap-3 pt-4 border-t border-border/50">
+                                <Link href="/listings/favorites" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-xl font-medium transition-colors text-lg flex items-center gap-3">
+                                    <Heart className="w-5 h-5 text-primary/80" />
+                                    {t("nav.favorites")}
+                                </Link>
                                 <button
                                     onClick={() => {
                                         logout();

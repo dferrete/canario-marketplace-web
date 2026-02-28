@@ -71,7 +71,21 @@
         "titlePart2": "Canary for You",
         "subtitle": "Browse active offers from the best breeders in the country. 100% secure platform with delivery guarantee.",
         "noListingsTitle": "No offers available",
-        "noListingsDesc": "Breeders haven't posted new birds today."
+        "noListingsDesc": "Breeders haven't posted new birds today.",
+        "availableBirds": "Featured Birds",
+        "availableBirdsSubtitle": "Explore our collection of the best birds from selected breeders. Find the perfect canary for you.",
+        "viewAll": "View All"
+    },
+    "birdsSearch": {
+        "title": "Bird Collection",
+        "subtitle": "Browse our entire catalog of authentic animals and find exactly what you are looking for.",
+        "filters": "Filters",
+        "clear": "Clear",
+        "searchLabel": "Search by name or mutation",
+        "result": "result found",
+        "results": "results found",
+        "emptyTitle": "No birds found",
+        "emptyDesc": "Try adjusting your filters or making a new search to find what you are looking for."
     },
     "footer": {
         "description": "The ultimate platform for bird breeders and lovers. Buy and sell safely with expert support.",
@@ -96,9 +110,11 @@
         "male": "Male ♂",
         "female": "Female ♀",
         "undefined": "Undefined",
-        "value": "Value",
+        "value": "Price",
         "viewDetails": "View Details",
-        "unavailable": "Unavailable"
+        "unavailable": "Unavailable",
+        "favorite": "Add to Favorites",
+        "removeFavorite": "Remove from Favorites"
     },
     "listingDetails": {
         "available": "Available",
@@ -116,8 +132,10 @@
         "birthDate": "Date of Birth",
         "localeDate": "en-US",
         "male": "Male ♂",
+        "year": "Year",
         "female": "Female ♀",
-        "undefined": "Undefined"
+        "undefined": "Undefined",
+        "favorite": "Favorite"
     },
     "checkout": {
         "loading": "Loading checkout details...",
@@ -144,6 +162,9 @@
         "finishPurchase": "Finish Purchase"
     },
     "dashboard": {
+        "favorites": {
+            "title": "My Favorites"
+        },
         "orders": {
             "title": "My Orders",
             "description": "Track your purchases and transaction history.",
@@ -163,7 +184,26 @@
             "colDate": "Creation Date",
             "colPrice": "Offered Price",
             "colStatus": "Status",
-            "colAction": "Action"
+            "colAction": "Action",
+            "actions": {
+                "activateTitle": "Activate Listing",
+                "activateDesc": "This listing will become public and visible to all buyers in the marketplace.",
+                "activateConfirm": "Yes, Activate",
+                "pauseTitle": "Pause Listing",
+                "pauseDesc": "The listing will no longer appear in the showcase. You can reactivate it later.",
+                "pauseConfirm": "Yes, Pause",
+                "cancelTitle": "Cancel Listing",
+                "cancelDesc": "Are you sure you want to cancel this listing? This action cannot be undone.",
+                "cancelConfirm": "Yes, Cancel",
+                "successActivate": "Listing successfully activated!",
+                "successPause": "Listing successfully paused!",
+                "successCancel": "Listing successfully cancelled!",
+                "error": "An error occurred while updating the listing."
+            }
+        },
+        "editListing": {
+            "title": "Edit Listing",
+            "description": "Update the selling price and other mutable characteristics of the listing."
         },
         "createListing": {
             "title": "Create New Listing",

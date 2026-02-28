@@ -3,10 +3,12 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { userService, UserListing } from "@/services/user.service";
-import { Tag, Loader2, AlertCircle, Edit, Play, Pause, Store } from "lucide-react";
+import { Tag, Loader2, AlertCircle, Edit, Play, Pause, Store, Trash2, Eye } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { toast } from "sonner";
 
 export default function MyListingsPage() {
     const { user, isAuthenticated, isLoading: authLoading } = useAuth();
@@ -14,6 +16,8 @@ export default function MyListingsPage() {
     const [listings, setListings] = useState<UserListing[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [actionLoading, setActionLoading] = useState<string | null>(null);
+    const [openDialog, setOpenDialog] = useState<{ id: string, action: 'activate' | 'pause' | 'cancel' } | null>(null);
 
     useEffect(() => {
         if (!authLoading && !isAuthenticated) {
@@ -33,7 +37,7 @@ export default function MyListingsPage() {
                 }
             } catch (err) {
                 if (isMounted) {
-                    setError("Failed to fetch listings");
+                    setError(t("dashboard.errorLoading"));
                     setLoading(false);
                 }
             }
@@ -42,7 +46,34 @@ export default function MyListingsPage() {
         if (user) {
             fetchListings();
         }
-    }, [user]);
+    }, [user, t]);
+
+    const handleAction = async (listingId: string, action: 'activate' | 'pause' | 'cancel') => {
+        setActionLoading(listingId);
+        try {
+            if (action === 'activate') await userService.activateListing(listingId);
+            if (action === 'pause') await userService.pauseListing(listingId);
+            if (action === 'cancel') await userService.cancelListing(listingId);
+
+            toast.success("Sucesso", {
+                description: t(`dashboard.listings.actions.success${action.charAt(0).toUpperCase() + action.slice(1)}`),
+            });
+
+            // Refresh table locally without full reload
+            if (action === 'cancel') {
+                setListings(prev => prev.filter(l => l.id !== listingId));
+            } else {
+                setListings(prev => prev.map(l => l.id === listingId ? { ...l, status: action === 'activate' ? 'ACTIVE' : 'PAUSED' } : l));
+            }
+        } catch (err) {
+            toast.error("Erro", {
+                description: t("dashboard.listings.actions.error"),
+            });
+        } finally {
+            setActionLoading(null);
+            setOpenDialog(null);
+        }
+    };
 
     if (authLoading || loading) {
         return (
@@ -140,17 +171,25 @@ export default function MyListingsPage() {
                                         </td>
                                         <td className="py-4 px-6 text-right">
                                             <div className="flex items-center justify-end gap-1">
-                                                <Link href={`/listings/${listing.id}`} className="p-2 text-muted-foreground hover:text-primary transition-colors hover:bg-primary/5 rounded-full" title="Visualizar">
-                                                    <Edit size={18} />
+                                                <Link href={`/listings/${listing.id}`} className="p-2 text-muted-foreground hover:text-primary transition-colors hover:bg-primary/5 rounded-full" title={t("dashboard.listings.actions.viewTitle") || "Visualizar"}>
+                                                    <Eye size={18} />
                                                 </Link>
                                                 {listing.status === 'ACTIVE' ? (
-                                                    <button className="p-2 text-muted-foreground hover:text-amber-500 transition-colors hover:bg-amber-500/10 rounded-full" title="Pausar">
+                                                    <button onClick={() => setOpenDialog({ id: listing.id, action: 'pause' })} className="p-2 text-muted-foreground hover:text-amber-500 transition-colors hover:bg-amber-500/10 rounded-full" title={t("dashboard.listings.actions.pauseTitle")}>
                                                         <Pause size={18} />
                                                     </button>
                                                 ) : listing.status === 'PAUSED' || listing.status === 'DRAFT' ? (
-                                                    <button className="p-2 text-muted-foreground hover:text-emerald-500 transition-colors hover:bg-emerald-500/10 rounded-full" title="Ativar">
-                                                        <Play size={18} />
-                                                    </button>
+                                                    <>
+                                                        <Link href={`/listings/edit/${listing.id}`} className="p-2 text-muted-foreground hover:text-blue-500 transition-colors hover:bg-blue-500/10 rounded-full" title={t("dashboard.listings.actions.editTitle") || "Editar Anúncio"}>
+                                                            <Edit size={18} />
+                                                        </Link>
+                                                        <button onClick={() => setOpenDialog({ id: listing.id, action: 'activate' })} className="p-2 text-muted-foreground hover:text-emerald-500 transition-colors hover:bg-emerald-500/10 rounded-full" title={t("dashboard.listings.actions.activateTitle")}>
+                                                            <Play size={18} />
+                                                        </button>
+                                                        <button onClick={() => setOpenDialog({ id: listing.id, action: 'cancel' })} className="p-2 text-muted-foreground hover:text-danger transition-colors hover:bg-danger/10 rounded-full" title={t("dashboard.listings.actions.cancelTitle")}>
+                                                            <Trash2 size={18} />
+                                                        </button>
+                                                    </>
                                                 ) : null}
                                             </div>
                                         </td>
@@ -161,6 +200,44 @@ export default function MyListingsPage() {
                     </div>
                 )}
             </div>
+
+            {/* Action Confirmation Dialog */}
+            <Dialog open={openDialog !== null} onOpenChange={(open: boolean) => !open && setOpenDialog(null)}>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>
+                            {openDialog?.action === 'activate' && t("dashboard.listings.actions.activateTitle")}
+                            {openDialog?.action === 'pause' && t("dashboard.listings.actions.pauseTitle")}
+                            {openDialog?.action === 'cancel' && t("dashboard.listings.actions.cancelTitle")}
+                        </DialogTitle>
+                        <DialogDescription className="pt-2">
+                            {openDialog?.action === 'activate' && t("dashboard.listings.actions.activateDesc")}
+                            {openDialog?.action === 'pause' && t("dashboard.listings.actions.pauseDesc")}
+                            {openDialog?.action === 'cancel' && t("dashboard.listings.actions.cancelDesc")}
+                        </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter className="mt-4 gap-2 sm:gap-0">
+                        <Button variant="outline" onClick={() => setOpenDialog(null)} disabled={actionLoading !== null}>
+                            {t("profile.cancelButton") || "Cancelar"}
+                        </Button>
+                        <Button
+                            variant={openDialog?.action === 'cancel' ? 'destructive' : 'default'}
+                            onClick={() => openDialog && handleAction(openDialog.id, openDialog.action)}
+                            disabled={actionLoading !== null}
+                        >
+                            {actionLoading === openDialog?.id ? (
+                                <Loader2 className="h-4 w-4 animate-spin" />
+                            ) : (
+                                <>
+                                    {openDialog?.action === 'activate' && t("dashboard.listings.actions.activateConfirm")}
+                                    {openDialog?.action === 'pause' && t("dashboard.listings.actions.pauseConfirm")}
+                                    {openDialog?.action === 'cancel' && t("dashboard.listings.actions.cancelConfirm")}
+                                </>
+                            )}
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

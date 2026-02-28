@@ -71,7 +71,21 @@
         "titlePart2": "Perfeito para Você",
         "subtitle": "Navegue pelas ofertas ativas dos melhores criadores do país. Plataforma 100% segura com garantia de entrega.",
         "noListingsTitle": "Nenhuma oferta disponível",
-        "noListingsDesc": "Os criadores ainda não publicaram novas aves hoje."
+        "noListingsDesc": "Os criadores ainda não publicaram novas aves hoje.",
+        "availableBirds": "Aves em Destaque",
+        "availableBirdsSubtitle": "Explore nossa coleção com as melhores aves dos criatórios selecionados. Encontre o canário perfeito para você.",
+        "viewAll": "Ver Todas"
+    },
+    "birdsSearch": {
+        "title": "Acervo de Aves",
+        "subtitle": "Navegue por todo o nosso catálogo de animais autênticos e encontre exatamente o que você procura.",
+        "filters": "Filtros",
+        "clear": "Limpar",
+        "searchLabel": "Buscar por nome ou mutação",
+        "result": "resultado encontrado",
+        "results": "resultados encontrados",
+        "emptyTitle": "Nenhuma ave encontrada",
+        "emptyDesc": "Tente ajustar seus filtros ou realizar uma nova busca para encontrar o que procura."
     },
     "footer": {
         "description": "A plataforma definitiva para criadores e amantes de aves. Compre e venda de forma segura, com suporte de especialistas.",
@@ -96,9 +110,11 @@
         "male": "Macho ♂",
         "female": "Fêmea ♀",
         "undefined": "Indefinido",
-        "value": "Valor",
+        "value": "Preço",
         "viewDetails": "Ver Detalhes",
-        "unavailable": "Indisponível"
+        "unavailable": "Indisponível",
+        "favorite": "Adicionar aos Favoritos",
+        "removeFavorite": "Remover dos Favoritos"
     },
     "listingDetails": {
         "available": "Disponível",
@@ -116,8 +132,9 @@
         "birthDate": "Data de Nascimento",
         "localeDate": "pt-BR",
         "male": "Macho ♂",
-        "female": "Fêmea ♀",
-        "undefined": "Indefinido"
+        "year": "Ano",
+        "undefined": "Indefinido",
+        "favorite": "Favoritar"
     },
     "checkout": {
         "loading": "Carregando detalhes prós-checkout...",
@@ -144,6 +161,9 @@
         "finishPurchase": "Finalizar Compra"
     },
     "dashboard": {
+        "favorites": {
+            "title": "Meus Favoritos"
+        },
         "orders": {
             "title": "Meus Pedidos",
             "description": "Acompanhe suas compras e histórico de transações.",
@@ -163,7 +183,26 @@
             "colDate": "Data de Criação",
             "colPrice": "Preço Ofertado",
             "colStatus": "Status",
-            "colAction": "Ação"
+            "colAction": "Ação",
+            "actions": {
+                "activateTitle": "Ativar Anúncio",
+                "activateDesc": "Este anúncio ficará público e visível para todos os compradores no marketplace.",
+                "activateConfirm": "Sim, Ativar",
+                "pauseTitle": "Pausar Anúncio",
+                "pauseDesc": "O anúncio não aparecerá mais na vitrine. Você poderá reativá-lo depois.",
+                "pauseConfirm": "Sim, Pausar",
+                "cancelTitle": "Cancelar Anúncio",
+                "cancelDesc": "Tem certeza que deseja cancelar este anúncio? Esta ação não pode ser desfeita.",
+                "cancelConfirm": "Sim, Cancelar",
+                "successActivate": "Anúncio ativado com sucesso!",
+                "successPause": "Anúncio pausado com sucesso!",
+                "successCancel": "Anúncio cancelado com sucesso!",
+                "error": "Ocorreu um erro ao atualizar o anúncio."
+            }
+        },
+        "editListing": {
+            "title": "Editar Anúncio",
+            "description": "Atualize o valor de venda e demais características alteráveis do anúncio."
         },
         "createListing": {
             "title": "Criar Novo Anúncio",

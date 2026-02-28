@@ -4,9 +4,12 @@ import { Listing } from '@/types/interfaces';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Calendar, Tag, Info, User, ShieldCheck } from 'lucide-react';
+import { Calendar, Tag, Info, User, ShieldCheck, BadgeCheck, CalendarDays, Hash, Heart, Share2 } from 'lucide-react';
 import { useI18n } from '@/contexts/I18nContext';
 import Link from 'next/link';
+import { useFavorites } from '@/contexts/FavoritesContext';
+import { useAuth } from '@/contexts/AuthContext';
+import { useRouter } from 'next/navigation';
 
 interface ListingDetailsClientProps {
     listing: Listing;
@@ -14,7 +17,20 @@ interface ListingDetailsClientProps {
 
 export function ListingDetailsClient({ listing }: ListingDetailsClientProps) {
     const { t } = useI18n();
+    const router = useRouter();
+    const { isAuthenticated } = useAuth();
+    const { favoriteIds, toggleFavorite } = useFavorites();
+
     const isAvailable = listing.status === "ACTIVE";
+    const isFavorited = favoriteIds.has(listing.id);
+
+    const handleFavoriteClick = () => {
+        if (!isAuthenticated) {
+            router.push('/login');
+            return;
+        }
+        toggleFavorite(listing.id);
+    };
 
     return (
         <div className="container mx-auto px-4 py-8 max-w-5xl">
@@ -22,6 +38,25 @@ export function ListingDetailsClient({ listing }: ListingDetailsClientProps) {
 
                 {/* Left Column: Image & Badges */}
                 <div className="flex flex-col gap-4">
+                    {/* Action Bar */}
+                    <div className="flex items-center justify-end gap-2 mb-1">
+                        <Button variant="outline" size="icon" className="rounded-full w-10 h-10 text-foreground/60 hover:text-primary transition-colors">
+                            <Share2 className="w-4 h-4" />
+                        </Button>
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={handleFavoriteClick}
+                            className={`rounded-full w-10 h-10 transition-colors ${isFavorited
+                                    ? 'bg-surface opacity-100 text-danger border-danger/30 hover:bg-surface hover:text-danger'
+                                    : 'text-foreground/60 hover:text-danger hover:bg-danger/5 hover:border-danger/30'
+                                }`}
+                            title={isFavorited ? t("listingCard.removeFavorite") : t("listingCard.favorite")}
+                        >
+                            <Heart className={`w-4 h-4 transition-colors ${isFavorited ? 'fill-current' : ''}`} />
+                        </Button>
+                    </div>
+
                     <div className="aspect-square bg-surface border border-border rounded-3xl flex items-center justify-center relative overflow-hidden shadow-sm">
                         <div className="w-56 h-56 rounded-full bg-secondary/20 border-8 border-surface shadow-lg flex items-center justify-center relative z-10">
                             <span className="text-8xl">🦜</span>
@@ -94,50 +129,58 @@ export function ListingDetailsClient({ listing }: ListingDetailsClientProps) {
                         {t("listingDetails.animalInfo")}
                     </h3>
 
-                    <dl className="grid grid-cols-2 gap-y-6 gap-x-4 text-sm">
-                        <div>
-                            <dt className="text-foreground/50 mb-1 flex items-center gap-1.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary/40 inline-block" /> {t("listingDetails.breed")}
-                            </dt>
-                            <dd className="font-medium text-foreground">{listing.breed}</dd>
-                        </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <Card className="bg-surface shadow-none border-border">
+                            <CardContent className="p-4 flex flex-col gap-1">
+                                <span className="text-foreground/50 text-xs font-semibold uppercase flex items-center gap-1.5">
+                                    <Tag className="w-3.5 h-3.5" /> {t("listingDetails.breed")}
+                                </span>
+                                <span className="font-bold text-foreground text-base mt-1">{listing.breed}</span>
+                            </CardContent>
+                        </Card>
 
-                        <div>
-                            <dt className="text-foreground/50 mb-1 flex items-center gap-1.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary/40 inline-block" /> {t("listingDetails.gender")}
-                            </dt>
-                            <dd className="font-medium text-foreground">
-                                {listing.gender === 'MALE' ? t("listingDetails.male") : listing.gender === 'FEMALE' ? t("listingDetails.female") : t("listingDetails.undefined")}
-                            </dd>
-                        </div>
+                        <Card className="bg-surface shadow-none border-border">
+                            <CardContent className="p-4 flex flex-col gap-1">
+                                <span className="text-foreground/50 text-xs font-semibold uppercase flex items-center gap-1.5">
+                                    <BadgeCheck className="w-3.5 h-3.5" /> {t("listingDetails.gender")}
+                                </span>
+                                <span className="font-bold text-foreground text-base mt-1 flex items-center gap-2">
+                                    {listing.gender === 'MALE' ? t("listingDetails.male") : listing.gender === 'FEMALE' ? t("listingDetails.female") : t("listingDetails.undefined")}
+                                    {listing.gender === 'MALE' ? <span className="w-2 h-2 rounded-full bg-blue-500"></span> : listing.gender === 'FEMALE' ? <span className="w-2 h-2 rounded-full bg-pink-500"></span> : null}
+                                </span>
+                            </CardContent>
+                        </Card>
 
-                        <div className="col-span-2">
-                            <dt className="text-foreground/50 mb-1 flex items-center gap-1.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary/40 inline-block" /> {t("listingDetails.mutations")}
-                            </dt>
-                            <dd className="font-medium text-foreground flex flex-wrap gap-2 mt-2">
-                                {listing.mutations.length > 0 ? (
-                                    listing.mutations.map((m, i) => (
-                                        <span key={i} className="inline-flex items-center gap-1 px-3 py-1 bg-secondary/10 text-secondary-hover rounded-full border border-secondary/20">
-                                            <Tag className="w-3 h-3" /> {m}
-                                        </span>
-                                    ))
-                                ) : (
-                                    <span className="text-foreground/60 italic">{t("listingDetails.noMutations")}</span>
-                                )}
-                            </dd>
-                        </div>
+                        <Card className="bg-surface shadow-none border-border sm:col-span-2">
+                            <CardContent className="p-4 flex flex-col gap-1">
+                                <span className="text-foreground/50 text-xs font-semibold uppercase flex items-center gap-1.5">
+                                    <Hash className="w-3.5 h-3.5" /> {t("listingDetails.mutations")}
+                                </span>
+                                <div className="font-medium text-foreground flex flex-wrap gap-2 mt-2">
+                                    {listing.mutations.length > 0 ? (
+                                        listing.mutations.map((m, i) => (
+                                            <span key={i} className="inline-flex items-center gap-1 px-3 py-1 bg-secondary/10 text-secondary-hover rounded-full border border-secondary/20 text-sm">
+                                                <Tag className="w-3 h-3" /> {m}
+                                            </span>
+                                        ))
+                                    ) : (
+                                        <span className="text-foreground/60 italic text-sm">{t("listingDetails.noMutations")}</span>
+                                    )}
+                                </div>
+                            </CardContent>
+                        </Card>
 
-                        <div>
-                            <dt className="text-foreground/50 mb-1 flex items-center gap-1.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary/40 inline-block" /> {t("listingDetails.birthDate")}
-                            </dt>
-                            <dd className="font-medium text-foreground flex items-center gap-1.5">
-                                <Calendar className="w-4 h-4 text-primary" />
-                                {new Date(listing.birthDate).toLocaleDateString(t("listingDetails.localeDate"))}
-                            </dd>
-                        </div>
-                    </dl>
+                        <Card className="bg-surface shadow-none border-border sm:col-span-2">
+                            <CardContent className="p-4 flex flex-col gap-1">
+                                <span className="text-foreground/50 text-xs font-semibold uppercase flex items-center gap-1.5">
+                                    <CalendarDays className="w-3.5 h-3.5" /> {t("listingDetails.birthDate")}
+                                </span>
+                                <span className="font-bold text-foreground text-base mt-1">
+                                    {new Date(listing.birthDate).toLocaleDateString(t("listingDetails.localeDate"))}
+                                </span>
+                            </CardContent>
+                        </Card>
+                    </div>
 
                 </div>
             </div>
