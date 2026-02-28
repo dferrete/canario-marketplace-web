@@ -143,6 +143,67 @@
         "confirming": "Confirmando...",
         "finishPurchase": "Finalizar Compra"
     },
+    "dashboard": {
+        "orders": {
+            "title": "Mis Pedidos",
+            "description": "Haz un seguimiento de tus compras y del historial de transacciones.",
+            "emptyTitle": "No se encontraron pedidos",
+            "emptyDesc": "Aún no has realizado ninguna compra en la plataforma.",
+            "colId": "ID del Pedido",
+            "colDate": "Fecha",
+            "colTotal": "Total",
+            "colStatus": "Estado"
+        },
+        "listings": {
+            "title": "Mis Anuncios",
+            "description": "Gestiona las aves que has puesto a la venta.",
+            "emptyTitle": "No se encontraron anuncios",
+            "emptyDesc": "Aún no has listado ninguna ave para la venta.",
+            "colBird": "Ave (ID)",
+            "colDate": "Fecha de Creación",
+            "colPrice": "Precio Ofrecido",
+            "colStatus": "Estado",
+            "colAction": "Acción"
+        },
+        "createListing": {
+            "title": "Crear Nuevo Anuncio",
+            "description": "Rellene los datos del ave y el precio para publicarla en el marketplace.",
+            "birdSection": "Detalles del Ave",
+            "listingSection": "Detalles de Venta",
+            "fields": {
+                "species": "Especie",
+                "speciesPlaceholder": "Ej: Canario, Jilguero...",
+                "gender": "Género",
+                "male": "Macho",
+                "female": "Hembra",
+                "unknown": "Desconocido",
+                "birthDate": "Fecha de Nacimiento",
+                "ringCode": "Código de Anilla",
+                "ringCodePlaceholder": "Ej: FOB-2024-1234",
+                "price": "Precio (R$)",
+                "pricePlaceholder": "0.00",
+                "mutations": "Mutaciones / Características (Opcional)",
+                "mutationsPlaceholder": "Ej: Blanco Dominante, Canto Clásico..."
+            },
+            "submitButton": "Crear Anuncio",
+            "creatingState": "Creando...",
+            "success": "¡Anuncio creado con éxito!",
+            "error": "Error al crear el anuncio. Compruebe los datos e inténtelo de nuevo."
+        },
+        "errorLoading": "Error al cargar los datos",
+        "status": {
+            "ACTIVE": "Activo",
+            "PAUSED": "Pausado",
+            "DRAFT": "Borrador",
+            "SOLD": "Vendido",
+            "COMPLETED": "Completado",
+            "PAID": "Pagado",
+            "CREATED": "Creado",
+            "PROCESSING": "Procesando",
+            "CANCELLED": "Cancelado",
+            "FAILED": "Fallido"
+        }
+    },
     "profile": {
         "title": "Mi Perfil",
         "description": "Consulta y actualiza la información de tu cuenta.",

@@ -143,6 +143,67 @@
         "confirming": "Confirmando...",
         "finishPurchase": "Finalizar Compra"
     },
+    "dashboard": {
+        "orders": {
+            "title": "Meus Pedidos",
+            "description": "Acompanhe suas compras e histórico de transações.",
+            "emptyTitle": "Nenhum pedido encontrado",
+            "emptyDesc": "Você ainda não realizou nenhuma compra na plataforma.",
+            "colId": "ID do Pedido",
+            "colDate": "Data",
+            "colTotal": "Total",
+            "colStatus": "Status"
+        },
+        "listings": {
+            "title": "Meus Anúncios",
+            "description": "Gerencie as aves que você colocou à venda.",
+            "emptyTitle": "Nenhum anúncio encontrado",
+            "emptyDesc": "Você ainda não listou nenhuma ave para venda.",
+            "colBird": "Ave (ID)",
+            "colDate": "Data de Criação",
+            "colPrice": "Preço Ofertado",
+            "colStatus": "Status",
+            "colAction": "Ação"
+        },
+        "createListing": {
+            "title": "Criar Novo Anúncio",
+            "description": "Preencha os dados da ave e o valor para publicá-la no marketplace.",
+            "birdSection": "Detalhes da Ave",
+            "listingSection": "Detalhes da Venda",
+            "fields": {
+                "species": "Espécie",
+                "speciesPlaceholder": "Ex: Canário Belga, Curió...",
+                "gender": "Gênero",
+                "male": "Macho",
+                "female": "Fêmea",
+                "unknown": "Desconhecido",
+                "birthDate": "Data de Nascimento",
+                "ringCode": "Código da Anilha",
+                "ringCodePlaceholder": "Ex: FOB-2024-1234",
+                "price": "Preço (R$)",
+                "pricePlaceholder": "0.00",
+                "mutations": "Mutações / Características (Opcional)",
+                "mutationsPlaceholder": "Ex: Branco Dominante, Canto Clássico..."
+            },
+            "submitButton": "Criar Anúncio",
+            "creatingState": "Criando...",
+            "success": "Anúncio criado com sucesso!",
+            "error": "Erro ao criar anúncio. Verifique os dados e tente novamente."
+        },
+        "errorLoading": "Falha ao carregar os dados",
+        "status": {
+            "ACTIVE": "Ativo",
+            "PAUSED": "Pausado",
+            "DRAFT": "Rascunho",
+            "SOLD": "Vendido",
+            "COMPLETED": "Concluído",
+            "PAID": "Pago",
+            "CREATED": "Criado",
+            "PROCESSING": "Processando",
+            "CANCELLED": "Cancelado",
+            "FAILED": "Falhou"
+        }
+    },
     "profile": {
         "title": "Meu Perfil",
         "description": "Visualize e atualize suas informações de conta.",

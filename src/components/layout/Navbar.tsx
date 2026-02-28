@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Bird, ShoppingCart, User, LogOut, Loader2, Globe, Menu, X, Heart, Ticket, Gavel, Package, ShoppingBag, Store } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -13,6 +13,25 @@ export function Navbar() {
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
+    const langMenuRef = useRef<HTMLDivElement>(null);
+    const userMenuRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
+                setIsLangMenuOpen(false);
+            }
+            if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+                setIsUserMenuOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     const toggleLanguage = (newLocale: "pt" | "en" | "es") => {
         setLocale(newLocale);
@@ -53,7 +72,7 @@ export function Navbar() {
                 {/* User Actions */}
                 <div className="flex items-center gap-2 sm:gap-4">
                     {/* Language Switcher */}
-                    <div className="relative">
+                    <div className="relative" ref={langMenuRef}>
                         <button
                             onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
                             className="p-2 flex items-center gap-1 text-foreground/60 hover:text-primary transition-colors rounded-full hover:bg-primary/5 text-sm font-medium"
@@ -81,7 +100,7 @@ export function Navbar() {
                                 <Loader2 className="w-5 h-5 animate-spin text-primary" />
                             </div>
                         ) : isAuthenticated ? (
-                            <div className="relative">
+                            <div className="relative" ref={userMenuRef}>
                                 <button
                                     onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                                     className="flex items-center gap-2 hover:bg-primary/5 p-1 pr-2 rounded-full transition-colors focus:outline-none"
@@ -104,38 +123,40 @@ export function Navbar() {
                                 </button>
 
                                 {isUserMenuOpen && (
-                                    <>
-                                        <div className="fixed inset-0 z-40" onClick={() => setIsUserMenuOpen(false)}></div>
-                                        <div className="absolute right-0 mt-2 w-48 bg-surface rounded-xl shadow-lg border border-border py-2 z-50 animate-in fade-in zoom-in-95 duration-200">
-                                            <Link href="/profile" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors">
-                                                <User className="w-4 h-4 mr-2" />
-                                                {t("nav.myProfile")}
-                                            </Link>
-                                            <Link href="/favorites" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors">
-                                                <Heart className="w-4 h-4 mr-2" />
-                                                {t("nav.favorites")}
-                                            </Link>
-                                            <Link href="/orders" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors">
-                                                <ShoppingBag className="w-4 h-4 mr-2" />
-                                                {t("nav.orders")}
-                                            </Link>
-                                            <Link href="/listings/me" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors">
-                                                <Store className="w-4 h-4 mr-2" />
-                                                {t("nav.myListings")}
-                                            </Link>
-                                            <div className="h-px bg-border my-1 mx-2" />
-                                            <button
-                                                onClick={() => {
-                                                    setIsUserMenuOpen(false);
-                                                    logout();
-                                                }}
-                                                className="w-full flex items-center px-4 py-2.5 text-sm text-danger hover:bg-danger/10 transition-colors"
-                                            >
-                                                <LogOut className="w-4 h-4 mr-2" />
-                                                {t("nav.logout")}
-                                            </button>
-                                        </div>
-                                    </>
+                                    <div className="absolute right-0 mt-2 w-48 bg-surface rounded-xl shadow-lg border border-border py-2 z-50 animate-in fade-in zoom-in-95 duration-200">
+                                        <Link href="/profile" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors">
+                                            <User className="w-4 h-4 mr-2" />
+                                            {t("nav.myProfile")}
+                                        </Link>
+                                        <Link href="/favorites" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors">
+                                            <Heart className="w-4 h-4 mr-2" />
+                                            {t("nav.favorites")}
+                                        </Link>
+                                        <Link href="/orders" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors">
+                                            <ShoppingBag className="w-4 h-4 mr-2" />
+                                            {t("nav.orders")}
+                                        </Link>
+                                        <div className="h-px bg-border my-1 mx-2" />
+                                        <Link href="/listings/create" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors">
+                                            <Store className="w-4 h-4 mr-2" />
+                                            {t("dashboard.createListing.submitButton") || "Criar Anúncio"}
+                                        </Link>
+                                        <Link href="/listings/me" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm text-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors">
+                                            <Store className="w-4 h-4 mr-2" />
+                                            {t("nav.myListings")}
+                                        </Link>
+                                        <div className="h-px bg-border my-1 mx-2" />
+                                        <button
+                                            onClick={() => {
+                                                setIsUserMenuOpen(false);
+                                                logout();
+                                            }}
+                                            className="w-full flex items-center px-4 py-2.5 text-sm text-danger hover:bg-danger/10 transition-colors"
+                                        >
+                                            <LogOut className="w-4 h-4 mr-2" />
+                                            {t("nav.logout")}
+                                        </button>
+                                    </div>
                                 )}
                             </div>
                         ) : (

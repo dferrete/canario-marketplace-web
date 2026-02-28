@@ -30,6 +30,7 @@ export interface AuthResponse {
         name: string;
         email: string;
         telefone: string;
+        phone?: string;
         cpf: string;
         avatarUrl?: string;
     };
@@ -42,7 +43,11 @@ export const authService = {
             password: data.senha || data.password,
         };
         const response = await api.post("/api/v1/auth/login", payload);
-        return response.data;
+        const authData = response.data;
+        if (authData.user && authData.user.phone) {
+            authData.user.telefone = authData.user.phone;
+        }
+        return authData;
     },
 
     // Registration now only returns User metadata without a token

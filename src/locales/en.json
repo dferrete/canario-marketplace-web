@@ -143,6 +143,67 @@
         "confirming": "Confirming...",
         "finishPurchase": "Finish Purchase"
     },
+    "dashboard": {
+        "orders": {
+            "title": "My Orders",
+            "description": "Track your purchases and transaction history.",
+            "emptyTitle": "No orders found",
+            "emptyDesc": "You haven't made any purchases on the platform yet.",
+            "colId": "Order ID",
+            "colDate": "Date",
+            "colTotal": "Total",
+            "colStatus": "Status"
+        },
+        "listings": {
+            "title": "My Listings",
+            "description": "Manage the birds you have listed for sale.",
+            "emptyTitle": "No listings found",
+            "emptyDesc": "You haven't listed any birds for sale yet.",
+            "colBird": "Bird (ID)",
+            "colDate": "Creation Date",
+            "colPrice": "Offered Price",
+            "colStatus": "Status",
+            "colAction": "Action"
+        },
+        "createListing": {
+            "title": "Create New Listing",
+            "description": "Fill in the bird's details and price to publish it on the marketplace.",
+            "birdSection": "Bird Details",
+            "listingSection": "Sale Details",
+            "fields": {
+                "species": "Species",
+                "speciesPlaceholder": "e.g., Canary, Finch...",
+                "gender": "Gender",
+                "male": "Male",
+                "female": "Female",
+                "unknown": "Unknown",
+                "birthDate": "Birth Date",
+                "ringCode": "Ring Code",
+                "ringCodePlaceholder": "e.g., FOB-2024-1234",
+                "price": "Price (R$)",
+                "pricePlaceholder": "0.00",
+                "mutations": "Mutations / Features (Optional)",
+                "mutationsPlaceholder": "e.g., White Dominant, Classic Song..."
+            },
+            "submitButton": "Create Listing",
+            "creatingState": "Creating...",
+            "success": "Listing created successfully!",
+            "error": "Error creating listing. Please check the data and try again."
+        },
+        "errorLoading": "Failed to load data",
+        "status": {
+            "ACTIVE": "Active",
+            "PAUSED": "Paused",
+            "DRAFT": "Draft",
+            "SOLD": "Sold",
+            "COMPLETED": "Completed",
+            "PAID": "Paid",
+            "CREATED": "Created",
+            "PROCESSING": "Processing",
+            "CANCELLED": "Cancelled",
+            "FAILED": "Failed"
+        }
+    },
     "profile": {
         "title": "My Profile",
         "description": "View and update your account information.",
