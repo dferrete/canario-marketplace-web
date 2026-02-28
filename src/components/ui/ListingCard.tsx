@@ -1,15 +1,19 @@
+"use client";
+
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Listing } from "@/types/interfaces";
 import Link from "next/link";
 import { Calendar, Tag } from "lucide-react";
+import { useI18n } from "@/contexts/I18nContext";
 
 interface ListingCardProps {
     listing: Listing;
 }
 
 export function ListingCard({ listing }: ListingCardProps) {
+    const { t } = useI18n();
     const isAvailable = listing.status === "ACTIVE";
 
     return (
@@ -28,7 +32,9 @@ export function ListingCard({ listing }: ListingCardProps) {
                                     "secondary"
                         }
                     >
-                        {listing.status === "ACTIVE" ? "Disponível" : listing.status}
+                        {listing.status === "ACTIVE" ? t("listingCard.available") :
+                            listing.status === "RESERVED" ? t("listingCard.reserved") :
+                                listing.status}
                     </Badge>
                 </div>
             </div>
@@ -51,7 +57,7 @@ export function ListingCard({ listing }: ListingCardProps) {
 
                 <div className="flex items-center justify-between text-sm font-medium mt-auto">
                     <span className="flex items-center gap-1.5 px-2.5 py-1 bg-surface border border-border rounded-full text-foreground/80">
-                        {listing.gender === 'MALE' ? 'Macho ♂' : listing.gender === 'FEMALE' ? 'Fêmea ♀' : 'Indefinido'}
+                        {listing.gender === 'MALE' ? t("listingCard.male") : listing.gender === 'FEMALE' ? t("listingCard.female") : t("listingCard.undefined")}
                     </span>
                     <span className="flex items-center gap-1.5 text-foreground/60">
                         <Calendar className="w-4 h-4" />
@@ -62,7 +68,7 @@ export function ListingCard({ listing }: ListingCardProps) {
 
             <CardFooter className="flex items-center justify-between pt-4 border-t border-border/50 bg-background/50">
                 <div className="flex flex-col">
-                    <span className="text-xs font-semibold text-foreground/50 uppercase tracking-wider">Valor</span>
+                    <span className="text-xs font-semibold text-foreground/50 uppercase tracking-wider">{t("listingCard.value")}</span>
                     <span className="font-bold text-xl text-primary">
                         R$ {parseFloat(listing.price).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                     </span>
@@ -70,7 +76,7 @@ export function ListingCard({ listing }: ListingCardProps) {
 
                 <Button asChild variant={isAvailable ? "default" : "secondary"} size="sm" className={!isAvailable ? 'pointer-events-none' : ''}>
                     <Link href={`/listings/${listing.id}`}>
-                        {isAvailable ? 'Ver Detalhes' : 'Indisponível'}
+                        {isAvailable ? t("listingCard.viewDetails") : t("listingCard.unavailable")}
                     </Link>
                 </Button>
             </CardFooter>
