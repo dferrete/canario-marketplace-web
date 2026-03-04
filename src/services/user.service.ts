@@ -1,6 +1,15 @@
 import api from "@/lib/api";
 import { Listing } from '@/types/interfaces';
 
+export interface PageResponse<T> {
+    content: T[];
+    page: number;
+    size: number;
+    totalElements: number;
+    totalPages: number;
+    last: boolean;
+}
+
 export interface OrderItem {
     listingId: string;
     priceAmount: number;
@@ -34,20 +43,28 @@ export interface UserListing {
 }
 
 export const userService = {
-    async getUserOrders(userId: number): Promise<UserOrder[]> {
-        const response = await api.get(`/api/v1/orders/user/${userId}`);
+    async getUserOrders(userId: number, page = 0, size = 5): Promise<PageResponse<UserOrder>> {
+        const response = await api.get(`/api/v1/orders/user/${userId}`, {
+            params: { page, size, sort: 'createdAt,desc' }
+        });
         return response.data;
     },
 
-    async getUserListings(userId: number): Promise<UserListing[]> {
-        const response = await api.get(`/api/v1/listings/user/${userId}`);
-        return response.data.map((item: any) => ({
-            ...item,
-            price: {
-                amount: item.priceAmount || 0,
-                currency: item.priceCurrency || 'BRL'
-            }
-        }));
+    async getUserListings(userId: number, page = 0, size = 5): Promise<PageResponse<UserListing>> {
+        const response = await api.get(`/api/v1/listings/user/${userId}`, {
+            params: { page, size, sort: 'createdAt,desc' }
+        });
+        const raw: PageResponse<any> = response.data;
+        return {
+            ...raw,
+            content: raw.content.map((item: any) => ({
+                ...item,
+                price: {
+                    amount: item.priceAmount || 0,
+                    currency: item.priceCurrency || 'BRL'
+                }
+            }))
+        };
     },
 
     async createBird(payload: { ownerId: number; species: string; gender: string; birthDate: string; ringCode: string }): Promise<any> {
@@ -76,26 +93,33 @@ export const userService = {
         const response = await api.put(`/api/v1/listings/${listingId}`, payload);
         return response.data;
     },
+
     async getFavoriteListingIds(userId: number): Promise<string[]> {
         const response = await api.get(`/api/v1/listings/favorites/ids/user/${userId}`);
         return response.data;
     },
 
-    async getUserFavoriteListings(userId: number): Promise<Listing[]> {
-        const response = await api.get(`/api/v1/listings/favorites/user/${userId}`);
-        return response.data.map((item: any) => ({
-            id: item.id,
-            sellerId: item.sellerId,
-            birdId: item.birdId,
-            breed: item.birdBreed || 'Ave',
-            mutations: item.attributes?.map((a: any) => a.value) || [],
-            gender: item.birdGender || 'UNKNOWN',
-            birthDate: item.birdBirthDate || new Date().toISOString(),
-            status: item.status,
-            price: item.priceAmount?.toString() || '0',
-            currency: item.priceCurrency || 'BRL',
-            createdAt: item.createdAt
-        }));
+    async getUserFavoriteListings(userId: number, page = 0, size = 8): Promise<PageResponse<Listing>> {
+        const response = await api.get(`/api/v1/listings/favorites/user/${userId}`, {
+            params: { page, size, sort: 'createdAt,desc' }
+        });
+        const raw: PageResponse<any> = response.data;
+        return {
+            ...raw,
+            content: raw.content.map((item: any) => ({
+                id: item.id,
+                sellerId: item.sellerId,
+                birdId: item.birdId,
+                breed: item.birdBreed || 'Ave',
+                mutations: item.attributes?.map((a: any) => a.value) || [],
+                gender: item.birdGender || 'UNKNOWN',
+                birthDate: item.birdBirthDate || new Date().toISOString(),
+                status: item.status,
+                price: item.priceAmount?.toString() || '0',
+                currency: item.priceCurrency || 'BRL',
+                createdAt: item.createdAt
+            }))
+        };
     },
 
     async favoriteListing(listingId: string, userId: number): Promise<void> {

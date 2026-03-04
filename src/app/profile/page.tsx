@@ -146,7 +146,7 @@ export default function ProfilePage() {
                                 </CardTitle>
                                 <CardDescription className="mt-1 flex items-center gap-1">
                                     <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
-                                    {user.role === 'ROLE_ADMIN' ? 'Administrador' : 'Conta Ativa'}
+                                    {user.role === 'ROLE_ADMIN' ? t("profile.roleAdmin") : t("profile.roleUser")}
                                 </CardDescription>
                             </div>
                         </div>
@@ -212,7 +212,7 @@ export default function ProfilePage() {
                                     className="flex h-11 w-full rounded-md border border-input bg-muted px-3 py-2 text-sm ring-offset-background cursor-not-allowed opacity-60"
                                     value={user.email}
                                 />
-                                <p className="text-xs text-muted-foreground">O e-mail não pode ser alterado após o cadastro.</p>
+                                <p className="text-xs text-muted-foreground">{t("profile.emailHelp")}</p>
                             </div>
 
                             {/* CPF Field - Read Only */}
@@ -227,7 +227,7 @@ export default function ProfilePage() {
                                     className="flex h-11 w-full rounded-md border border-input bg-muted px-3 py-2 text-sm ring-offset-background cursor-not-allowed opacity-60"
                                     value={user.cpf}
                                 />
-                                <p className="text-xs text-muted-foreground">Documento fiscal bloqueado para edição.</p>
+                                <p className="text-xs text-muted-foreground">{t("profile.cpfHelp")}</p>
                             </div>
                         </div>
                     </CardContent>

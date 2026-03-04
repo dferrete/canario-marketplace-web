@@ -47,11 +47,15 @@ export default function EditListingPage({ params }: { params: Promise<{ id: stri
 
                 // Protect UI - Ensure it's PAUSED or DRAFT and belongs to the user
                 if (listingData.status !== 'PAUSED' && listingData.status !== 'DRAFT') {
-                    throw new Error("Apenas anúncios Pausados ou em Rascunho podem ser editados.");
+                    setError(t("dashboard.editListing.errors.notEditable"));
+                    setIsLoadingData(false);
+                    return;
                 }
 
                 if (listingData.sellerId !== user?.id) {
-                    throw new Error("Você não tem permissão para editar este anúncio.");
+                    setError(t("dashboard.editListing.errors.noPermission"));
+                    setIsLoadingData(false);
+                    return;
                 }
 
                 if (isMounted) {
@@ -160,7 +164,7 @@ export default function EditListingPage({ params }: { params: Promise<{ id: stri
                         <CardHeader className="border-b border-border/50 bg-muted/20 pb-4">
                             <CardTitle className="flex items-center gap-2 text-lg">
                                 <Bird className="w-5 h-5 text-primary" />
-                                {t("dashboard.createListing.birdSection")} (Somente Leitura)
+                                {t("dashboard.createListing.birdSection")} {t("dashboard.createListing.birdSectionReadOnly")}
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">

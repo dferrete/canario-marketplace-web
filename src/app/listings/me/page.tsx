@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { Pagination } from "@/components/ui/Pagination";
 
 export default function MyListingsPage() {
     const { user, isAuthenticated, isLoading: authLoading } = useAuth();
@@ -18,6 +19,9 @@ export default function MyListingsPage() {
     const [error, setError] = useState<string | null>(null);
     const [actionLoading, setActionLoading] = useState<string | null>(null);
     const [openDialog, setOpenDialog] = useState<{ id: string, action: 'activate' | 'pause' | 'cancel' } | null>(null);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
+    const [totalElements, setTotalElements] = useState(0);
 
     useEffect(() => {
         if (!authLoading && !isAuthenticated) {
@@ -29,10 +33,13 @@ export default function MyListingsPage() {
         let isMounted = true;
         const fetchListings = async () => {
             if (!user) return;
+            setLoading(true);
             try {
-                const data = await userService.getUserListings(user.id);
+                const data = await userService.getUserListings(user.id, currentPage);
                 if (isMounted) {
-                    setListings(data);
+                    setListings(data.content);
+                    setTotalPages(data.totalPages);
+                    setTotalElements(data.totalElements);
                     setLoading(false);
                 }
             } catch (err) {
@@ -46,7 +53,8 @@ export default function MyListingsPage() {
         if (user) {
             fetchListings();
         }
-    }, [user, t]);
+        return () => { isMounted = false; };
+    }, [user, t, currentPage]);
 
     const handleAction = async (listingId: string, action: 'activate' | 'pause' | 'cancel') => {
         setActionLoading(listingId);
@@ -200,6 +208,14 @@ export default function MyListingsPage() {
                     </div>
                 )}
             </div>
+
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                totalElements={totalElements}
+                onPageChange={setCurrentPage}
+                className="mt-8"
+            />
 
             {/* Action Confirmation Dialog */}
             <Dialog open={openDialog !== null} onOpenChange={(open: boolean) => !open && setOpenDialog(null)}>

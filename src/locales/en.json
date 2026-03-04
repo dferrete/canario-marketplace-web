@@ -72,9 +72,58 @@
         "subtitle": "Browse active offers from the best breeders in the country. 100% secure platform with delivery guarantee.",
         "noListingsTitle": "No offers available",
         "noListingsDesc": "Breeders haven't posted new birds today.",
+        "availableBirdsEyebrow": "Live marketplace",
         "availableBirds": "Featured Birds",
-        "availableBirdsSubtitle": "Explore our collection of the best birds from selected breeders. Find the perfect canary for you.",
-        "viewAll": "View All"
+        "availableBirdsSubtitle": "Explore our collection of the best birds from the best selected sellers. Find the perfect canary for you.",
+        "viewAll": "View All",
+        "categories": {
+            "eyebrow": "Browse by category",
+            "title": "Our Categories",
+            "subtitle": "Find the right category for the canary you are looking for.",
+            "sizeCanary": "Posture Canary",
+            "sizeCanaryDesc": "Birds selected for body structure, proportions and elegance. Ideal for exhibitors and high-standard breeders.",
+            "colorCanary": "Color Canary",
+            "colorCanaryDesc": "Specimens with rare genetic mutations and vibrant coloring. A living palette of unique and striking tones.",
+            "singCanary": "Singing Canary",
+            "singCanaryDesc": "Birds with refined melody and distinctive vocal technique. For those who appreciate the harmonious song of canaries.",
+            "exploreLink": "Explore category"
+        },
+        "topSellers": {
+            "eyebrow": "Monthly ranking",
+            "title": "Top Sellers",
+            "subtitle": "The highest-rated breeders with the most sales on the platform.",
+            "colSeller": "Seller",
+            "colLocation": "State",
+            "colSales": "Sales",
+            "colRating": "Rating",
+            "colBadge": "Badge",
+            "salesUnit": "sales",
+            "badge_gold": "Gold",
+            "badge_silver": "Silver",
+            "badge_bronze": "Bronze",
+            "disclaimer": "Data updated monthly. Ranking based on sales and buyer reviews."
+        },
+        "sponsored": {
+            "eyebrow": "Featured partners",
+            "title": "Sponsored Space",
+            "subtitle": "Meet our partners who value aviculture and are here to support you.",
+            "label": "Sponsored",
+            "sponsor1": {
+                "tagline": "Specialists in ornamental bird health",
+                "description": "Partner vet clinics specialized in birds. Book your consultation online and ensure your canary's health.",
+                "cta": "Book a Consultation"
+            },
+            "sponsor2": {
+                "tagline": "Safe and specialized bird transport",
+                "description": "Climate-controlled fleet, real-time tracking, and insurance included. The safest way to transport your birds across the country.",
+                "cta": "Request a Quote"
+            },
+            "sponsor3": {
+                "tagline": "Premium nutrition for competition canaries",
+                "description": "Feed and supplements developed by animal nutrition experts focused on the performance and plumage of your canaries.",
+                "cta": "View Products"
+            }
+        }
     },
     "birdsSearch": {
         "title": "Bird Collection",
@@ -102,7 +151,159 @@
         "sellerBadge": "Seller Badge",
         "protected": "100% Protected",
         "protectedDesc": "Your order money is safe until the bird delivery is confirmed.",
-        "rights": "All rights reserved."
+        "rights": "All rights reserved.",
+        "partners": "Partners",
+        "partnerVet": "Become a Partner Vet",
+        "partnerCarrier": "Become a Partner Carrier",
+        "partnerAdvertise": "Advertise with Us"
+    },
+    "comingSoon": {
+        "badge": "Coming Soon",
+        "whatsComingLabel": "What's coming",
+        "cta": "Browse Available Birds",
+        "back": "Back to Home",
+        "raffles": {
+            "title": "Bird Raffles",
+            "description": "Soon you'll be able to join exclusive raffles for rare and high-value birds. A fun and affordable way to get your next feathered companion!",
+            "features": [
+                "Weekly raffles with rare birds",
+                "Affordable ticket prices",
+                "Live and transparent draws",
+                "Automatic winner notifications"
+            ]
+        },
+        "auctions": {
+            "title": "Bird Auctions",
+            "description": "Auctions are coming soon! Compete with other breeders for exceptional birds in real time, with bids that reflect the best specimens.",
+            "features": [
+                "Real-time auctions",
+                "Bird quality verification",
+                "Secure and auditable bids",
+                "Won auctions history"
+            ]
+        },
+        "batches": {
+            "title": "Bird Batches",
+            "description": "Buy multiple birds in special batches with even better prices. Ideal for breeders looking to expand their flock efficiently.",
+            "features": [
+                "Progressive batch discounts",
+                "Categories by breed and mutation",
+                "Combined delivery to save shipping",
+                "Flock health guarantee"
+            ]
+        }
+    },
+    "advertise": {
+        "hero": {
+            "eyebrow": "Partnership opportunity",
+            "titlePart1": "Advertise your brand to",
+            "titlePart2": "thousands of breeders",
+            "subtitle": "Connect your business to Brazil's largest canary marketplace. Reach a passionate and engaged audience ready to discover what you offer.",
+            "cta": "I Want to Advertise"
+        },
+        "advantages": {
+            "eyebrow": "Why advertise with us",
+            "title": "Benefits of Being a Sponsor",
+            "subtitle": "Your brand alongside those who most understand and love the world of birds.",
+            "brand": {
+                "title": "Highlight Your Brand",
+                "desc": "Position your company in high-visibility spaces on the platform, ensuring exposure to thousands of active users."
+            },
+            "sales": {
+                "title": "Increase Your Sales",
+                "desc": "Reach qualified buyers and breeders who are actively searching for bird-related products and services."
+            },
+            "reach": {
+                "title": "Reach Thousands",
+                "desc": "Our audience grows every day. Your ad is shown to a highly segmented and engaged public."
+            },
+            "speed": {
+                "title": "Fast Activation",
+                "desc": "From contract to publication in up to 48h. Simple process, no red tape, with dedicated support throughout the partnership."
+            }
+        },
+        "plans": {
+            "eyebrow": "Choose your plan",
+            "title": "Sponsorship Plans",
+            "subtitle": "Choose the ideal duration and start being seen by the right audience.",
+            "popular": "Most Popular",
+            "perMonth": "/ plan",
+            "selectPlan": "Select Plan",
+            "month1": {
+                "name": "1 Month",
+                "price": "R$ 100",
+                "desc": "Take the first step. Put your brand in front of passionate breeders and buyers and see what happens.",
+                "features": [
+                    "Banner in Sponsored Space",
+                    "Logo on home page",
+                    "Email support"
+                ]
+            },
+            "month3": {
+                "name": "3 Months",
+                "price": "R$ 250",
+                "desc": "3 months is just enough time to build recognition. Your brand starts feeling familiar to the people who matter most.",
+                "features": [
+                    "Everything in Monthly",
+                    "Newsletter highlight",
+                    "Monthly access report"
+                ]
+            },
+            "month6": {
+                "name": "6 Months",
+                "price": "R$ 400",
+                "desc": "With half a year of presence, you become a go-to name. Plus, you save R$200 compared to going month by month.",
+                "features": [
+                    "Everything in Quarterly",
+                    "Exclusive partner section",
+                    "Social media post",
+                    "Bi-weekly report"
+                ]
+            },
+            "year1": {
+                "name": "1 Year",
+                "price": "R$ 600",
+                "desc": "The plan for those who want to be unforgettable. Always on, all year long, and R$600 less in your pocket.",
+                "features": [
+                    "Everything in Semi-annual",
+                    "Logo in footer",
+                    "Exclusive seasonal banner",
+                    "Dedicated account manager"
+                ]
+            }
+        },
+        "form": {
+            "eyebrow": "Let's talk",
+            "title": "Request Your Sponsorship",
+            "subtitle": "Fill out the form with your details and ad content. Our team will get back to you within 24h.",
+            "selectedPlan": "Selected plan",
+            "sectionContact": "Contact details",
+            "nameLabel": "Full Name",
+            "namePlaceholder": "Your name",
+            "companyLabel": "Company / Brand",
+            "companyPlaceholder": "Company name",
+            "emailLabel": "Email",
+            "emailPlaceholder": "your@email.com",
+            "phoneLabel": "Phone (optional)",
+            "phonePlaceholder": "(00) 000-0000",
+            "sectionAd": "Ad content",
+            "adTitleLabel": "Ad Title",
+            "adTitlePlaceholder": "Ex: AveVet Clinics — Health for Birds",
+            "adSubtitleLabel": "Subtitle (optional)",
+            "adSubtitlePlaceholder": "Ex: Specialists in ornamental birds",
+            "adDescLabel": "Description",
+            "adDescPlaceholder": "Describe what you offer, your differentials, and why visitors should click on your ad.",
+            "adUrlLabel": "Website / Destination URL (optional)",
+            "adUrlPlaceholder": "https://www.yourcompany.com",
+            "adImageLabel": "Ad Image",
+            "adImageHint": "Click to upload an image",
+            "adImageFormats": "PNG, JPG, WEBP or SVG · Max. 5MB",
+            "adNotesLabel": "Notes (optional)",
+            "adNotesPlaceholder": "Additional information, placement preferences, or any important details...",
+            "submit": "Send Request",
+            "successTitle": "Request Sent!",
+            "successDesc": "We received your contact. Our team will review your request and get back to you within 24 hours."
+        }
     },
     "listingCard": {
         "available": "Available",
@@ -163,7 +364,20 @@
     },
     "dashboard": {
         "favorites": {
-            "title": "My Favorites"
+            "title": "My Favorites",
+            "subtitle": "Listings you have liked",
+            "count_one": "favorite",
+            "count_other": "favorites",
+            "unauthenticated": {
+                "title": "Sign in to view your favorites",
+                "desc": "Create an account or sign in to save your favorite listings and access them later.",
+                "button": "Sign in to my account"
+            },
+            "empty": {
+                "title": "You have no favorites yet",
+                "desc": "Explore the marketplace and click the heart on the listings you like the most to save them here.",
+                "button": "Explore Birds"
+            }
         },
         "orders": {
             "title": "My Orders",
@@ -203,12 +417,17 @@
         },
         "editListing": {
             "title": "Edit Listing",
-            "description": "Update the selling price and other mutable characteristics of the listing."
+            "description": "Update the selling price and other alterable features of the listing.",
+            "errors": {
+                "notEditable": "Only Paused or Draft listings can be edited.",
+                "noPermission": "You do not have permission to edit this listing."
+            }
         },
         "createListing": {
             "title": "Create New Listing",
             "description": "Fill in the bird's details and price to publish it on the marketplace.",
             "birdSection": "Bird Details",
+            "birdSectionReadOnly": " (Read Only)",
             "listingSection": "Sale Details",
             "fields": {
                 "species": "Species",
@@ -247,6 +466,10 @@
     "profile": {
         "title": "My Profile",
         "description": "View and update your account information.",
+        "roleAdmin": "Administrator",
+        "roleUser": "Active Account",
+        "emailHelp": "The email cannot be changed after registration.",
+        "cpfHelp": "Tax document is locked for editing.",
         "personalInfo": "Personal Information",
         "nameLabel": "Full Name",
         "emailLabel": "Email (Access)",
@@ -268,5 +491,13 @@
         "avatarUpdateError": "Error updating picture",
         "avatarSizeError": "Image must be under 5MB",
         "avatarTypeError": "Invalid format. Use JPG, PNG or WebP"
+    },
+    "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {current} of {total}",
+        "recordSingular": "record",
+        "recordPlural": "records",
+        "totalInfo": "{total} {label} in total"
     }
 }
