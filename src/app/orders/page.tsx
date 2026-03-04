@@ -5,6 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { userService, UserOrder } from "@/services/user.service";
 import { ShoppingBag, Loader2, AlertCircle } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
+import { Pagination } from "@/components/ui/Pagination";
 
 export default function MyOrdersPage() {
     const { user, isAuthenticated, isLoading: authLoading } = useAuth();
@@ -12,6 +13,9 @@ export default function MyOrdersPage() {
     const [orders, setOrders] = useState<UserOrder[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
+    const [totalElements, setTotalElements] = useState(0);
 
     useEffect(() => {
         if (!authLoading && !isAuthenticated) {
@@ -23,15 +27,18 @@ export default function MyOrdersPage() {
         let isMounted = true;
         const fetchOrders = async () => {
             if (!user) return;
+            setLoading(true);
             try {
-                const data = await userService.getUserOrders(user.id);
+                const data = await userService.getUserOrders(user.id, currentPage);
                 if (isMounted) {
-                    setOrders(data);
+                    setOrders(data.content);
+                    setTotalPages(data.totalPages);
+                    setTotalElements(data.totalElements);
                     setLoading(false);
                 }
             } catch (err) {
                 if (isMounted) {
-                    setError("Failed to fetch orders");
+                    setError(t("dashboard.errorLoading"));
                     setLoading(false);
                 }
             }
@@ -40,7 +47,8 @@ export default function MyOrdersPage() {
         if (user) {
             fetchOrders();
         }
-    }, [user]);
+        return () => { isMounted = false; };
+    }, [user, currentPage]);
 
     if (authLoading || loading) {
         return (
@@ -130,6 +138,14 @@ export default function MyOrdersPage() {
                     </div>
                 )}
             </div>
+
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                totalElements={totalElements}
+                onPageChange={setCurrentPage}
+                className="mt-8"
+            />
         </div>
     );
 }

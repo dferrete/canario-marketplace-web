@@ -55,15 +55,15 @@ export function Navbar() {
                         <Bird className="w-4 h-4" />
                         {t("nav.birds")}
                     </Link>
-                    <Link href="#" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors px-3 py-2 rounded-full hover:bg-primary/5">
+                    <Link href="/raffles" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors px-3 py-2 rounded-full hover:bg-primary/5">
                         <Ticket className="w-4 h-4" />
                         {t("nav.raffles")}
                     </Link>
-                    <Link href="#" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors px-3 py-2 rounded-full hover:bg-primary/5">
+                    <Link href="/auctions" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors px-3 py-2 rounded-full hover:bg-primary/5">
                         <Gavel className="w-4 h-4" />
                         {t("nav.auctions")}
                     </Link>
-                    <Link href="#" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors px-3 py-2 rounded-full hover:bg-primary/5">
+                    <Link href="/batches" className="flex items-center gap-1.5 text-foreground/80 hover:text-primary font-medium transition-colors px-3 py-2 rounded-full hover:bg-primary/5">
                         <Package className="w-4 h-4" />
                         {t("nav.batches")}
                     </Link>
@@ -189,15 +189,15 @@ export function Navbar() {
                             <Bird className="w-5 h-5 text-primary/80" />
                             {t("nav.birds")}
                         </Link>
-                        <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-xl font-medium transition-colors text-lg flex items-center gap-3">
+                        <Link href="/raffles" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-xl font-medium transition-colors text-lg flex items-center gap-3">
                             <Ticket className="w-5 h-5 text-primary/80" />
                             {t("nav.raffles")}
                         </Link>
-                        <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-xl font-medium transition-colors text-lg flex items-center gap-3">
+                        <Link href="/auctions" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-xl font-medium transition-colors text-lg flex items-center gap-3">
                             <Gavel className="w-5 h-5 text-primary/80" />
                             {t("nav.auctions")}
                         </Link>
-                        <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-xl font-medium transition-colors text-lg flex items-center gap-3">
+                        <Link href="/batches" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-xl font-medium transition-colors text-lg flex items-center gap-3">
                             <Package className="w-5 h-5 text-primary/80" />
                             {t("nav.batches")}
                         </Link>

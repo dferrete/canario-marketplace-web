@@ -72,9 +72,58 @@
         "subtitle": "Navegue pelas ofertas ativas dos melhores criadores do país. Plataforma 100% segura com garantia de entrega.",
         "noListingsTitle": "Nenhuma oferta disponível",
         "noListingsDesc": "Os criadores ainda não publicaram novas aves hoje.",
+        "availableBirdsEyebrow": "Marketplace ao vivo",
         "availableBirds": "Aves em Destaque",
-        "availableBirdsSubtitle": "Explore nossa coleção com as melhores aves dos criatórios selecionados. Encontre o canário perfeito para você.",
-        "viewAll": "Ver Todas"
+        "availableBirdsSubtitle": "Explore nossa coleção com as melhores aves dos melhores vendedores selecionados. Encontre o canário perfeito para você.",
+        "viewAll": "Ver Todas",
+        "categories": {
+            "eyebrow": "Explore por categoria",
+            "title": "Nossas Categorias",
+            "subtitle": "Descubra a categoria certa para o canário que você procura.",
+            "sizeCanary": "Canário de Porte",
+            "sizeCanaryDesc": "Aves selecionadas pela estrutura corporal, proporções e elegância do porte. Ideal para expositores e criadores de alto padrão.",
+            "colorCanary": "Canário de Cor",
+            "colorCanaryDesc": "Espécimes com mutações genéticas raras e coloração exuberante. Uma paleta viva de tonalidades únicas e marcantes.",
+            "singCanary": "Canário de Canto",
+            "singCanaryDesc": "Aves com melodia refinada e técnica vocal distinta. Para quem valoriza a música e o canto harmonioso dos canários.",
+            "exploreLink": "Explorar categoria"
+        },
+        "topSellers": {
+            "eyebrow": "Ranking do mês",
+            "title": "Melhores Vendedores",
+            "subtitle": "Os vendedores mais bem avaliados e com maior volume de vendas da plataforma.",
+            "colSeller": "Vendedor",
+            "colLocation": "UF",
+            "colSales": "Vendas",
+            "colRating": "Avaliação",
+            "colBadge": "Selo",
+            "salesUnit": "vendas",
+            "badge_gold": "Ouro",
+            "badge_silver": "Prata",
+            "badge_bronze": "Bronze",
+            "disclaimer": "Dados atualizados mensalmente. Ranking baseado em vendas e avaliações dos compradores."
+        },
+        "sponsored": {
+            "eyebrow": "Parceiros em destaque",
+            "title": "Espaço Patrocinado",
+            "subtitle": "Conheça nossos parceiros que valorizam a avicultura e estão aqui para apoiar você.",
+            "label": "Patrocinado",
+            "sponsor1": {
+                "tagline": "Especialistas em saúde de aves ornamentais",
+                "description": "Clínicas veterinárias parceiras especializadas em aves. Agende sua consulta online e garanta a saúde do seu canário.",
+                "cta": "Agendar Consulta"
+            },
+            "sponsor2": {
+                "tagline": "Transporte seguro e especializado de aves",
+                "description": "Frota climatizada, monitoramento em tempo real e seguro incluso. A forma mais segura de transportar suas aves pelo país.",
+                "cta": "Solicitar Orçamento"
+            },
+            "sponsor3": {
+                "tagline": "Nutrição premium para canários de competição",
+                "description": "Rações e suplementos desenvolvidos por nutrição animal com foco no desempenho e plumagem dos seus canários.",
+                "cta": "Ver Produtos"
+            }
+        }
     },
     "birdsSearch": {
         "title": "Acervo de Aves",
@@ -102,7 +151,159 @@
         "sellerBadge": "Selo Vendedor",
         "protected": "100% Protegido",
         "protectedDesc": "O dinheiro do seu pedido fica seguro até a confirmação da entrega da ave.",
-        "rights": "Todos os direitos reservados."
+        "rights": "Todos os direitos reservados.",
+        "partners": "Parceiros",
+        "partnerVet": "Seja um Veterinário Parceiro",
+        "partnerCarrier": "Seja um Transportador Parceiro",
+        "partnerAdvertise": "Anuncie Conosco"
+    },
+    "comingSoon": {
+        "badge": "Em Breve",
+        "whatsComingLabel": "O que está por vir",
+        "cta": "Ver Aves Disponíveis",
+        "back": "Voltar ao Início",
+        "raffles": {
+            "title": "Rifas de Aves",
+            "description": "Em breve você poderá participar de rifas exclusivas de aves raras e de alto valor. Uma forma divertida e acessível de adquirir sua próxima ave!",
+            "features": [
+                "Rifas semanais com aves raras",
+                "Preços de bilhetes acessíveis",
+                "Sorteios ao vivo e transparentes",
+                "Notificações automáticas para ganhadores"
+            ]
+        },
+        "auctions": {
+            "title": "Leilões de Aves",
+            "description": "Os leilões chegam em breve! Dispute com outros criadores por aves excepcionais em tempo real, com lances que valorizam os melhores espécimes.",
+            "features": [
+                "Leilões em tempo real",
+                "Verificação de qualidade das aves",
+                "Lances seguros e auditáveis",
+                "Histórico de leilões vencidos"
+            ]
+        },
+        "batches": {
+            "title": "Lotes de Aves",
+            "description": "Compre múltiplas aves em lotes especiais com preços ainda mais vantajosos. Ideal para criadores que buscam expandir o plantel com eficiência.",
+            "features": [
+                "Lotes com desconto progressivo",
+                "Categorias por raça e mutação",
+                "Entrega combinada para economizar frete",
+                "Garantia de saúde do plantel"
+            ]
+        }
+    },
+    "advertise": {
+        "hero": {
+            "eyebrow": "Oportunidade de parceria",
+            "titlePart1": "Anuncie sua marca para",
+            "titlePart2": "milhares de criadores",
+            "subtitle": "Conecte seu negócio ao maior marketplace de canários do Brasil. Alcance um público apaixonado e engajado, pronto para conhecer o que você oferece.",
+            "cta": "Quero Anunciar"
+        },
+        "advantages": {
+            "eyebrow": "Por que anunciar conosco",
+            "title": "Vantagens de ser Patrocinador",
+            "subtitle": "Sua marca ao lado de quem mais entende e ama o mundo das aves.",
+            "brand": {
+                "title": "Destaque sua Marca",
+                "desc": "Posicione sua empresa em espaços de alto destaque na plataforma, garantindo visibilidade para milharees de usuários ativos."
+            },
+            "sales": {
+                "title": "Aumente suas Vendas",
+                "desc": "Alcance compradores e criadores qualificados que estão ativamente buscando produtos e serviços relacionados às aves."
+            },
+            "reach": {
+                "title": "Alcance Milhares",
+                "desc": "Nossa base cresce a cada dia. Seu anúncio é exibido para um público altamente segmentado e engajado."
+            },
+            "speed": {
+                "title": "Ativação Rápida",
+                "desc": "Do contrato à publicação em até 48h. Processo simples, sem burocracia, com suporte dedicado durante toda a parceria."
+            }
+        },
+        "plans": {
+            "eyebrow": "Escolha seu plano",
+            "title": "Planos de Patrocínio",
+            "subtitle": "Escolha a duração ideal e comece a ser visto pelo público certo.",
+            "popular": "Mais Popular",
+            "perMonth": "/ plano",
+            "selectPlan": "Selecionar Plano",
+            "month1": {
+                "name": "1 Mês",
+                "price": "R$ 100",
+                "desc": "Dê o primeiro passo. Ponha sua marca na frente de criadores e compradores apaixonados por aves e veja o que acontece.",
+                "features": [
+                    "Banner no Espaço Patrocinado",
+                    "Logo na página inicial",
+                    "Suporte por e-mail"
+                ]
+            },
+            "month3": {
+                "name": "3 Meses",
+                "price": "R$ 250",
+                "desc": "3 meses é tempo o suficiente para construir reconhecimento. Sua marca já começa a se tornar familiar para quem mais importa.",
+                "features": [
+                    "Tudo do plano Mensal",
+                    "Destaque em Newsletter",
+                    "Relatório mensal de acessos"
+                ]
+            },
+            "month6": {
+                "name": "6 Meses",
+                "price": "R$ 400",
+                "desc": "Com meio ano de presença, você se torna uma referência. Além disso, economiza R$200 em relação ao mensal.",
+                "features": [
+                    "Tudo do plano Trimestral",
+                    "Sessão exclusiva de parceiro",
+                    "Post nas redes sociais",
+                    "Relatório quinzenal"
+                ]
+            },
+            "year1": {
+                "name": "1 Ano",
+                "price": "R$ 600",
+                "desc": "O plano de quem quer ser inesquecível. Presença constante o ano todo e R$600 a menos no bolso.",
+                "features": [
+                    "Tudo do plano Semestral",
+                    "Logotipo no rodapé",
+                    "Banner exclusivo sazonal",
+                    "Gerente de conta dedicado"
+                ]
+            }
+        },
+        "form": {
+            "eyebrow": "Vamos conversar",
+            "title": "Solicite seu Patrocínio",
+            "subtitle": "Preencha o formulário com seus dados e o conteúdo do anúncio. Nossa equipe entrará em contato em até 24h.",
+            "selectedPlan": "Plano selecionado",
+            "sectionContact": "Dados de contato",
+            "nameLabel": "Nome Completo",
+            "namePlaceholder": "Seu nome",
+            "companyLabel": "Empresa / Marca",
+            "companyPlaceholder": "Nome da empresa",
+            "emailLabel": "E-mail",
+            "emailPlaceholder": "seu@email.com",
+            "phoneLabel": "Telefone (opcional)",
+            "phonePlaceholder": "(00) 00000-0000",
+            "sectionAd": "Conteúdo do anúncio",
+            "adTitleLabel": "Título do Anúncio",
+            "adTitlePlaceholder": "Ex: AveVet Clínicas — Saúde para Aves",
+            "adSubtitleLabel": "Subtítulo (opcional)",
+            "adSubtitlePlaceholder": "Ex: Especialistas em aves ornamentais",
+            "adDescLabel": "Descrição",
+            "adDescPlaceholder": "Descreva o que você oferece, seus diferenciais e por que os visitantes devem clicar no seu anúncio.",
+            "adUrlLabel": "Site / URL do destino (opcional)",
+            "adUrlPlaceholder": "https://www.suaempresa.com.br",
+            "adImageLabel": "Imagem do Anúncio",
+            "adImageHint": "Clique para enviar uma imagem",
+            "adImageFormats": "PNG, JPG, WEBP ou SVG · Máx. 5MB",
+            "adNotesLabel": "Observações (opcional)",
+            "adNotesPlaceholder": "Informações adicionais, preferências de veiculação ou qualquer detalhe importante...",
+            "submit": "Enviar Solicitação",
+            "successTitle": "Solicitação Enviada!",
+            "successDesc": "Recebemos seu contato. Nossa equipe analisará sua solicitação e retornará em até 24 horas."
+        }
     },
     "listingCard": {
         "available": "Disponível",
@@ -162,7 +363,20 @@
     },
     "dashboard": {
         "favorites": {
-            "title": "Meus Favoritos"
+            "title": "Meus Favoritos",
+            "subtitle": "Anúncios que você marcou com gostei",
+            "count_one": "favorito",
+            "count_other": "favoritos",
+            "unauthenticated": {
+                "title": "Faça login para ver seus favoritos",
+                "desc": "Crie uma conta ou faça login para salvar seus anúncios favoritos e acessá-los mais tarde.",
+                "button": "Entrar na minha conta"
+            },
+            "empty": {
+                "title": "Você ainda não tem favoritos",
+                "desc": "Explore o marketplace e clique no coração dos anúncios que você mais gostar para salvá-los aqui.",
+                "button": "Explorar Aves"
+            }
         },
         "orders": {
             "title": "Meus Pedidos",
@@ -202,12 +416,17 @@
         },
         "editListing": {
             "title": "Editar Anúncio",
-            "description": "Atualize o valor de venda e demais características alteráveis do anúncio."
+            "description": "Atualize o valor de venda e demais características alteráveis do anúncio.",
+            "errors": {
+                "notEditable": "Apenas anúncios Pausados ou em Rascunho podem ser editados.",
+                "noPermission": "Você não tem permissão para editar este anúncio."
+            }
         },
         "createListing": {
             "title": "Criar Novo Anúncio",
             "description": "Preencha os dados da ave e o valor para publicá-la no marketplace.",
             "birdSection": "Detalhes da Ave",
+            "birdSectionReadOnly": " (Somente Leitura)",
             "listingSection": "Detalhes da Venda",
             "fields": {
                 "species": "Espécie",
@@ -246,6 +465,10 @@
     "profile": {
         "title": "Meu Perfil",
         "description": "Visualize e atualize suas informações de conta.",
+        "roleAdmin": "Administrador",
+        "roleUser": "Conta Ativa",
+        "emailHelp": "O e-mail não pode ser alterado após o cadastro.",
+        "cpfHelp": "Documento fiscal bloqueado para edição.",
         "personalInfo": "Informações Pessoais",
         "nameLabel": "Nome Completo",
         "emailLabel": "E-mail (Acesso)",
@@ -267,5 +490,13 @@
         "avatarUpdateError": "Erro ao atualizar foto",
         "avatarSizeError": "A foto deve ter no máximo 5MB",
         "avatarTypeError": "Formato inválido. Use JPG, PNG ou WebP"
+    },
+    "pagination": {
+        "previous": "Anterior",
+        "next": "Próximo",
+        "pageOf": "Página {current} de {total}",
+        "recordSingular": "registro",
+        "recordPlural": "registros",
+        "totalInfo": "{total} {label} no total"
     }
 }

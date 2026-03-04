@@ -1,54 +1,103 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Listing } from "@/types/interfaces";
+import React, { useState, useEffect, useCallback } from "react";
+import { Listing, ListingResponse } from "@/types/interfaces";
 import { useI18n } from "@/contexts/I18nContext";
 import { ListingCard } from "@/components/ui/ListingCard";
 import { Bird, SlidersHorizontal, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Pagination } from "@/components/ui/Pagination";
 import api from "@/lib/api";
+
+interface PageResponse {
+    content: ListingResponse[];
+    page: number;
+    size: number;
+    totalElements: number;
+    totalPages: number;
+    last: boolean;
+}
 
 interface ListingsSearchClientProps {
     initialListings: Listing[];
+    initialTotalPages?: number;
 }
 
-export default function ListingsSearchClient({ initialListings }: ListingsSearchClientProps) {
+export default function ListingsSearchClient({ initialListings, initialTotalPages = 1 }: ListingsSearchClientProps) {
     const { t } = useI18n();
     const [listings, setListings] = useState<Listing[]>(initialListings);
     const [filteredListings, setFilteredListings] = useState<Listing[]>(initialListings);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(initialTotalPages);
+    const [isLoadingPage, setIsLoadingPage] = useState(false);
 
     // Filters State
     const [searchTerm, setSearchTerm] = useState("");
     const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
 
-    // Enrich the listings with bird data on the client side since the API doesn't return joined data
-    useEffect(() => {
-        const enrichListings = async () => {
+    // Fetch a specific page from the API
+    const fetchPage = useCallback(async (page: number) => {
+        setIsLoadingPage(true);
+        setSearchTerm(""); // Reset search when navigating pages
+        try {
+            const response = await api.get<PageResponse>("/api/v1/listings", {
+                params: { page, size: 12, sort: "createdAt,desc" }
+            });
+            const data = response.data;
+            setTotalPages(data.totalPages);
+
+            // Enrich with bird data
             const enriched = await Promise.all(
-                initialListings.map(async (listing) => {
+                data.content.map(async (l) => {
+                    let breed = "Ave";
+                    let gender: string = "UNKNOWN";
+                    let birthDate = new Date().toISOString();
                     try {
-                        const birdRes = await api.get(`/api/v1/birds/${listing.birdId}`);
+                        const birdRes = await api.get(`/api/v1/birds/${l.birdId}`);
                         const bird = birdRes.data;
-                        return {
-                            ...listing,
-                            breed: bird.species || 'Ave',
-                            gender: bird.gender || 'UNKNOWN',
-                            birthDate: bird.birthDate || listing.birthDate,
-                        };
-                    } catch (err) {
-                        return listing; // fallback to default
-                    }
+                        breed = bird.species || "Ave";
+                        gender = bird.gender || "UNKNOWN";
+                        birthDate = bird.birthDate || birthDate;
+                    } catch { /* fallback */ }
+                    return {
+                        id: l.id,
+                        sellerId: l.sellerId,
+                        birdId: l.birdId,
+                        breed,
+                        mutations: l.attributes?.map((a: any) => a.value) || [],
+                        gender,
+                        birthDate,
+                        status: l.status,
+                        price: l.priceAmount?.toString() || "0",
+                        currency: l.priceCurrency,
+                        createdAt: l.createdAt
+                    } as Listing;
                 })
             );
             setListings(enriched);
-            setFilteredListings(enriched);
-        };
-
-        if (initialListings.length > 0) {
-            enrichListings();
+            setFilteredListings(enriched.filter(l => l.status === "ACTIVE" || l.status === "RESERVED"));
+        } finally {
+            setIsLoadingPage(false);
         }
-    }, [initialListings]);
+    }, []);
+
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+        fetchPage(page);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    // Enrich the initial SSR listings on first load
+    useEffect(() => {
+        if (initialListings.length > 0) {
+            // The initial page 0 data comes from SSR; just apply initial filter
+            const filtered = initialListings.filter(l => l.status === "ACTIVE" || l.status === "RESERVED");
+            setListings(initialListings);
+            setFilteredListings(filtered);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []); // Only runs once on mount
 
     // Apply Filters Effect
     useEffect(() => {
@@ -146,7 +195,11 @@ export default function ListingsSearchClient({ initialListings }: ListingsSearch
                         {filteredListings.length} {filteredListings.length === 1 ? t("birdsSearch.result") : t("birdsSearch.results")}
                     </div>
 
-                    {filteredListings.length === 0 ? (
+                    {isLoadingPage ? (
+                        <div className="flex items-center justify-center h-64">
+                            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-primary" />
+                        </div>
+                    ) : filteredListings.length === 0 ? (
                         <div className="flex flex-col items-center justify-center p-12 sm:p-20 text-center bg-surface border border-border border-dashed rounded-3xl h-[50vh]">
                             <div className="w-16 h-16 bg-muted/50 rounded-full flex items-center justify-center mb-4">
                                 <Bird className="w-8 h-8 text-muted-foreground" />
@@ -168,6 +221,13 @@ export default function ListingsSearchClient({ initialListings }: ListingsSearch
                             ))}
                         </div>
                     )}
+
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={handlePageChange}
+                        className="mt-8"
+                    />
                 </main>
             </div>
         </div>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 async function getListings(): Promise<Listing[]> {
     try {
         const response = await api.get("/api/v1/listings");
-        const data: ListingResponse[] = response.data;
+        const data: ListingResponse[] = response.data.content;
 
         return data.map((l) => ({
             id: l.id,
