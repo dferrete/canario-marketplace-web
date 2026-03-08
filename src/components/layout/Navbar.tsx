@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Bird, ShoppingCart, User, LogOut, Loader2, Globe, Menu, X, Heart, Ticket, Gavel, Package, ShoppingBag, Store } from "lucide-react";
+import { Bird, ShoppingCart, User, LogOut, Loader2, Globe, Menu, X, Heart, Ticket, Gavel, Package, ShoppingBag, Store, Shield } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useI18n } from "@/contexts/I18nContext";
 import { Button } from "@/components/ui/button";
@@ -146,6 +146,12 @@ export function Navbar() {
                                             {t("nav.myListings")}
                                         </Link>
                                         <div className="h-px bg-border my-1 mx-2" />
+                                        {user?.role === "ROLE_ADMIN" && (
+                                            <Link href="/admin" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center px-4 py-2.5 text-sm font-medium text-purple-600 hover:text-purple-700 hover:bg-purple-50 transition-colors">
+                                                <Shield className="w-4 h-4 mr-2" />
+                                                {t("nav.adminPanel")}
+                                            </Link>
+                                        )}
                                         <button
                                             onClick={() => {
                                                 setIsUserMenuOpen(false);
@@ -221,6 +227,12 @@ export function Navbar() {
                                     <Heart className="w-5 h-5 text-primary/80" />
                                     {t("nav.favorites")}
                                 </Link>
+                                {user?.role === "ROLE_ADMIN" && (
+                                    <Link href="/admin" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-purple-600 hover:text-purple-700 hover:bg-purple-50 rounded-xl font-medium transition-colors text-lg flex items-center gap-3">
+                                        <Shield className="w-5 h-5 text-purple-600" />
+                                        {t("nav.adminPanel")}
+                                    </Link>
+                                )}
                                 <button
                                     onClick={() => {
                                         logout();

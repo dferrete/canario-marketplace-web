@@ -33,6 +33,9 @@ export interface AuthResponse {
         phone?: string;
         cpf: string;
         avatarUrl?: string;
+        role?: string;
+        status?: "ACTIVE" | "PENDING_APPROVAL" | "SUSPENDED" | "BLOCKED";
+        rating?: number;
     };
 }
 

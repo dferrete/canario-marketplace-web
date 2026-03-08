@@ -14,7 +14,8 @@
         "hello": "Hello",
         "myProfile": "My Profile",
         "favorites": "Favorites",
-        "myListings": "My Listings"
+        "myListings": "My Listings",
+        "adminPanel": "Admin Panel"
     },
     "auth": {
         "login": {
@@ -191,6 +192,186 @@
                 "Combined delivery to save shipping",
                 "Flock health guarantee"
             ]
+        }
+    },
+    "partnerCarrier": {
+        "hero": {
+            "eyebrow": "Partner carrier program",
+            "titlePart1": "Transport birds safely and",
+            "titlePart2": "become our partner",
+            "subtitle": "Connect with breeders and buyers who need to transport birds with care and responsibility. Expand your routes, build loyal customers, and be recognized as a specialist in animal transportation."
+        },
+        "benefits": {
+            "eyebrow": "Why become a partner",
+            "title": "Partnership Benefits",
+            "subtitle": "Be part of a network that values safe and responsible transportation of ornamental birds.",
+            "demand": {
+                "title": "Consistent Demand",
+                "desc": "Access an active base of breeders and buyers who regularly need specialized freight for birds."
+            },
+            "trust": {
+                "title": "Verified Credential",
+                "desc": "Your profile goes through validation. Clients know they're hiring a carrier approved by the platform."
+            },
+            "routes": {
+                "title": "New Routes and Regions",
+                "desc": "Discover opportunities on routes you already cover and expand into regions with high demand for bird transport."
+            },
+            "ratings": {
+                "title": "Reputation and Ratings",
+                "desc": "Every successful delivery builds your reputation. Positive ratings attract more clients and increase your visibility."
+            }
+        },
+        "steps": {
+            "eyebrow": "How it works",
+            "title": "Your Path to Partnership",
+            "subtitle": "Simple and straightforward process. From registration to your first trip in just a few days.",
+            "apply": {
+                "title": "Sign Up",
+                "desc": "Fill out the form with your details and information about your fleet."
+            },
+            "review": {
+                "title": "Review",
+                "desc": "Our team evaluates your profile and documentation within 3 business days."
+            },
+            "approved": {
+                "title": "Approved",
+                "desc": "You receive confirmation and your profile becomes available to receive requests."
+            },
+            "active": {
+                "title": "Start Delivering",
+                "desc": "Accept freight requests and build your reputation on the platform."
+            }
+        },
+        "form": {
+            "eyebrow": "Let's get started",
+            "title": "Request Your Partnership",
+            "subtitle": "Fill out the form and our team will get back to you within 3 business days.",
+            "sectionContact": "Contact details",
+            "nameLabel": "Full Name",
+            "namePlaceholder": "Your name",
+            "companyLabel": "Company / Carrier (optional)",
+            "companyPlaceholder": "Company or carrier name",
+            "emailLabel": "Email",
+            "emailPlaceholder": "your@email.com",
+            "phoneLabel": "Phone",
+            "phonePlaceholder": "(00) 000-0000",
+            "cityLabel": "Home base city",
+            "cityPlaceholder": "Your main operating city",
+            "stateLabel": "State",
+            "statePlaceholder": "Ex: CA",
+            "sectionOperational": "Operational details",
+            "vehicleTypeLabel": "Primary vehicle type",
+            "vehicleTypePlaceholder": "Select",
+            "vehicleCar": "Car / Passenger vehicle",
+            "vehicleVan": "Van / Light commercial",
+            "vehicleTruck": "Truck",
+            "vehicleTransport": "Dedicated animal transport vehicle",
+            "plateCountLabel": "Number of vehicles in fleet",
+            "plateCountPlaceholder": "Select",
+            "animalExpLabel": "Experience transporting birds",
+            "animalExpPlaceholder": "Select",
+            "expNone": "Never transported birds",
+            "expSome": "A few times, occasionally",
+            "expRegular": "I do it regularly",
+            "expSpecialist": "Specialized in animal transport",
+            "routesLabel": "Routes and regions served",
+            "routesPlaceholder": "Ex: Northeast corridor, Pacific coast, nationwide...",
+            "docLabel": "Vehicle document or transport license (optional)",
+            "docHint": "Click to upload a file",
+            "docFormats": "PNG, JPG, WEBP or PDF · Max. 10MB",
+            "notesLabel": "Additional information (optional)",
+            "notesPlaceholder": "Transport conditions, available equipment, route restrictions...",
+            "submit": "Send Request",
+            "successTitle": "Request Sent!",
+            "successDesc": "We received your information. Our team will review your profile and get back to you within 3 business days."
+        }
+    },
+    "partnerVet": {
+        "hero": {
+            "eyebrow": "Veterinary partnership program",
+            "titlePart1": "Become the go-to vet",
+            "titlePart2": "for breeders",
+            "subtitle": "Connect with ornamental bird owners and breeders looking for a trusted professional. Grow your client base and build your reputation as an avian care specialist."
+        },
+        "benefits": {
+            "eyebrow": "Why join as a partner",
+            "title": "Partnership Benefits",
+            "subtitle": "Be part of a network that values the health and well-being of birds.",
+            "reach": {
+                "title": "Reach New Clients",
+                "desc": "Expose your work to thousands of active breeders who need specialized avian veterinary guidance."
+            },
+            "trust": {
+                "title": "Credibility and Visibility",
+                "desc": "Your verified profile builds trust. Users know they're talking to a licensed professional."
+            },
+            "grow": {
+                "title": "Grow Your Practice",
+                "desc": "Consultations, telehealth and referrals. A consistent source of new patients from people who truly love birds."
+            },
+            "referral": {
+                "title": "Referral Network",
+                "desc": "Platform members recommend partner vets to each other, generating an organic flow of referrals."
+            }
+        },
+        "steps": {
+            "eyebrow": "How it works",
+            "title": "Your Path to Partnership",
+            "subtitle": "Simple and fast process. From sign-up to approval in just a few days.",
+            "apply": {
+                "title": "Sign Up",
+                "desc": "Fill out the form with your personal details and professional credentials."
+            },
+            "review": {
+                "title": "Review",
+                "desc": "Our team evaluates your profile and verifies your license within 3 business days."
+            },
+            "approved": {
+                "title": "Approved",
+                "desc": "You receive confirmation and your profile becomes visible on the platform."
+            },
+            "active": {
+                "title": "Start Seeing Patients",
+                "desc": "Receive contacts from breeders and bird owners directly through the marketplace."
+            }
+        },
+        "form": {
+            "eyebrow": "Let's get started",
+            "title": "Request Your Partnership",
+            "subtitle": "Fill out the form and our team will get back to you within 3 business days.",
+            "sectionPersonal": "Contact details",
+            "nameLabel": "Full Name",
+            "namePlaceholder": "Dr./Dr. Your Name",
+            "clinicLabel": "Clinic / Practice (optional)",
+            "clinicPlaceholder": "Name of your practice",
+            "emailLabel": "Professional email",
+            "emailPlaceholder": "your@email.com",
+            "phoneLabel": "Phone",
+            "phonePlaceholder": "(00) 000-0000",
+            "cityLabel": "City",
+            "cityPlaceholder": "Your city",
+            "stateLabel": "State",
+            "statePlaceholder": "Ex: CA",
+            "sectionCredentials": "Professional credentials",
+            "crmvLabel": "Veterinary License Number",
+            "crmvPlaceholder": "Ex: CRMV-SP 12345",
+            "experienceLabel": "Experience with ornamental birds",
+            "experiencePlaceholder": "Select",
+            "exp1": "Less than 1 year",
+            "exp3": "1 to 3 years",
+            "exp5": "3 to 5 years",
+            "exp10": "More than 5 years",
+            "specialtiesLabel": "Specialties and areas of practice",
+            "specialtiesPlaceholder": "Ex: Canaries, parrots, exotic birds, avian surgery...",
+            "photoLabel": "Professional photo or clinic logo (optional)",
+            "photoHint": "Click to upload an image",
+            "photoFormats": "PNG, JPG or WEBP · Max. 5MB",
+            "notesLabel": "Additional information (optional)",
+            "notesPlaceholder": "Office hours, telehealth availability, other relevant details...",
+            "submit": "Send Request",
+            "successTitle": "Request Sent!",
+            "successDesc": "We received your information. Our team will review your profile and get back to you within 3 business days."
         }
     },
     "advertise": {
@@ -499,5 +680,125 @@
         "recordSingular": "record",
         "recordPlural": "records",
         "totalInfo": "{total} {label} in total"
+    },
+    "setupAccount": {
+        "form": {
+            "title": "Create your Password",
+            "subtitle": "Your partnership was approved. Set your access password below.",
+            "passwordLabel": "New Password",
+            "confirmPasswordLabel": "Confirm Password",
+            "submitButton": "Save and Continue"
+        },
+        "success": {
+            "title": "Password saved successfully!",
+            "desc": "Your account is now active. You can now log into the platform using your email and the newly created password.",
+            "loginButton": "Go to Platform"
+        },
+        "error": {
+            "invalidLink": "Invalid or Expired Link",
+            "missingToken": "The verification token is required.",
+            "missingTokenDesc": "The setup link you used does not have a valid token or has expired. Check your email or contact support.",
+            "passwordMismatch": "The passwords do not match.",
+            "passwordLength": "The password must be at least 6 characters long.",
+            "generic": "An unexpected error occurred while setting your password."
+        }
+    },
+    "admin": {
+        "dashboard": {
+            "title": "Overview",
+            "welcome": "Welcome to the administrative panel. Select an option from the sidebar to manage platform entities.",
+            "pendingUsers": "Pending Users",
+            "pendingUsersDesc": "Manage logistics and veterinary partners waiting for approval in the Users tab."
+        },
+        "sidebar": {
+            "groupAdmin": "Administration",
+            "groupUsers": "Users & Partners",
+            "groupContent": "Content Management",
+            "groupFinance": "Financial Management",
+            "navOverview": "Overview",
+            "navMembers": "Members & Users",
+            "navVets": "Partner Vets",
+            "navCarriers": "Partner Carriers",
+            "navSponsors": "Sponsors",
+            "navListings": "Listings",
+            "navRaffles": "Raffles",
+            "navAuctions": "Auctions",
+            "navBatches": "Batches",
+            "navCoupons": "Discount Coupons",
+            "navPayouts": "Seller Payouts",
+            "navFees": "Platform Fees"
+        },
+        "users": {
+            "roles": {
+                "admin": "Admin",
+                "member": "Member",
+                "vet": "Partner Vet",
+                "carrier": "Partner Carrier",
+                "unknown": "Unknown"
+            },
+            "status": {
+                "all": "All Statuses",
+                "active": "Active",
+                "pending": "Pending",
+                "suspended": "Suspended",
+                "blocked": "Blocked",
+                "labelActive": "Active",
+                "labelPending": "Pending",
+                "labelSuspended": "Suspended",
+                "labelBlocked": "Blocked"
+            },
+            "searchPlaceholder": "Search by name, email or CPF",
+            "colId": "ID",
+            "colUser": "User",
+            "colRole": "Role & Ref",
+            "colRating": "Reputation",
+            "colStatus": "Status",
+            "colActions": "Actions",
+            "noPhone": "No phone",
+            "loading": "Fetching records...",
+            "emptyTitle": "No results found.",
+            "emptyDesc": "Try adjusting your search filters for this table.",
+            "actionView": "View Details",
+            "actionApprove": "Approve Partner",
+            "actionSuspend": "Suspend Temporarily",
+            "actionBlock": "Block Permanently",
+            "confirmBlock": "Are you sure you want to permanently block this user?",
+            "toastApproveSuccess": "User successfully approved",
+            "toastApproveError": "Error approving user",
+            "toastSuspendSuccess": "User suspended",
+            "toastSuspendError": "Error suspending user",
+            "toastBlockSuccess": "User permanently blocked",
+            "toastBlockError": "Error blocking user"
+        },
+        "pages": {
+            "members": {
+                "eyebrow": "Administration / Members",
+                "title": "Members & Users",
+                "subtitle": "Consumers, breeders, and enthusiasts using the P2P ecosystem"
+            },
+            "vets": {
+                "eyebrow": "Administration / Veterinary Sector",
+                "title": "Partner Vets",
+                "subtitle": "Manage veterinarians responsible for certifying the health of birds"
+            },
+            "carriers": {
+                "eyebrow": "Administration / Logistics Sector",
+                "title": "Partner Carriers",
+                "subtitle": "Monitor and validate the partner carrier network in the system"
+            },
+            "underDevelopment": {
+                "title": "Under Development",
+                "description": "This section will be responsible for the moderation of {entity}.",
+                "entities": {
+                    "listings": "Bird listings and reports",
+                    "raffles": "Active and audited raffles",
+                    "auctions": "Live auctions and suspended bids",
+                    "batches": "Corporate batch analysis",
+                    "coupons": "Issuing of coupons and vouchers",
+                    "payouts": "Approval of bi-weekly payouts",
+                    "fees": "Configuration of Platform and Gateway Fees"
+                }
+            }
+        }
     }
 }

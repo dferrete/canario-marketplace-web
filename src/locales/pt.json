@@ -14,7 +14,8 @@
         "hello": "Olá",
         "myProfile": "Meu perfil",
         "favorites": "Favoritos",
-        "myListings": "Meus anúncios"
+        "myListings": "Meus anúncios",
+        "adminPanel": "Painel Admin"
     },
     "auth": {
         "login": {
@@ -191,6 +192,186 @@
                 "Entrega combinada para economizar frete",
                 "Garantia de saúde do plantel"
             ]
+        }
+    },
+    "partnerCarrier": {
+        "hero": {
+            "eyebrow": "Programa de transportadores parceiros",
+            "titlePart1": "Leve aves com segurança e",
+            "titlePart2": "seja nosso parceiro",
+            "subtitle": "Conecte-se a criadores e compradores que precisam transportar aves com cuidado e responsabilidade. Amplie sua rota, fidelize clientes e seja reconhecido como referência no transporte de animais."
+        },
+        "benefits": {
+            "eyebrow": "Por que ser parceiro",
+            "title": "Vantagens da Parceria",
+            "subtitle": "Faça parte de uma rede que valoriza o transporte seguro e responsável de aves ornamentais.",
+            "demand": {
+                "title": "Demanda Consistente",
+                "desc": "Acesse uma base ativa de criadores e compradores que precisam de frete especializado para aves com regularidade."
+            },
+            "trust": {
+                "title": "Credencial Verificada",
+                "desc": "Seu perfil passa por validação. Os clientes sabem que estão contratando um transportador aprovado pela plataforma."
+            },
+            "routes": {
+                "title": "Novas Rotas e Regiões",
+                "desc": "Descubra oportunidades em rotas que você já faz e expanda sua operação para regiões com alta procura por transporte de aves."
+            },
+            "ratings": {
+                "title": "Reputação e Avaliações",
+                "desc": "Cada entrega bem-feita constrói sua reputação. Avaliações positivas atraem mais clientes e aumentam sua visibilidade."
+            }
+        },
+        "steps": {
+            "eyebrow": "Como funciona",
+            "title": "Seu Caminho até a Parceria",
+            "subtitle": "Processo simples e direto. Do cadastro à primeira viagem em poucos dias.",
+            "apply": {
+                "title": "Cadastre-se",
+                "desc": "Preencha o formulário com seus dados e informações sobre sua frota."
+            },
+            "review": {
+                "title": "Análise",
+                "desc": "Nossa equipe avalia seu perfil e documentação em até 3 dias úteis."
+            },
+            "approved": {
+                "title": "Aprovado",
+                "desc": "Você recebe a confirmação e seu perfil fica disponível para receber solicitações."
+            },
+            "active": {
+                "title": "Comece a Transportar",
+                "desc": "Aceite pedidos de frete e construa sua reputação na plataforma."
+            }
+        },
+        "form": {
+            "eyebrow": "Vamos começar",
+            "title": "Solicite sua Parceria",
+            "subtitle": "Preencha o formulário e nossa equipe entrará em contato em até 3 dias úteis.",
+            "sectionContact": "Dados de contato",
+            "nameLabel": "Nome Completo",
+            "namePlaceholder": "Seu nome",
+            "companyLabel": "Empresa / Transportadora (opcional)",
+            "companyPlaceholder": "Nome da empresa ou transportadora",
+            "emailLabel": "E-mail",
+            "emailPlaceholder": "seu@email.com",
+            "phoneLabel": "Telefone",
+            "phonePlaceholder": "(00) 00000-0000",
+            "cityLabel": "Cidade base",
+            "cityPlaceholder": "Sua cidade principal de operação",
+            "stateLabel": "Estado (UF)",
+            "statePlaceholder": "Ex: SP",
+            "sectionOperational": "Dados operacionais",
+            "vehicleTypeLabel": "Tipo de veículo principal",
+            "vehicleTypePlaceholder": "Selecione",
+            "vehicleCar": "Automóvel / Passeio",
+            "vehicleVan": "Van / Utilitário",
+            "vehicleTruck": "Caminhão",
+            "vehicleTransport": "Veículo de transporte de animais",
+            "plateCountLabel": "Quantidade de veículos na frota",
+            "plateCountPlaceholder": "Selecione",
+            "animalExpLabel": "Experiência com transporte de aves",
+            "animalExpPlaceholder": "Selecione",
+            "expNone": "Nunca transportei aves",
+            "expSome": "Poucas vezes, de forma ocasional",
+            "expRegular": "Faço com regularidade",
+            "expSpecialist": "Especializado em transporte de animais",
+            "routesLabel": "Rotas e regiões atendidas",
+            "routesPlaceholder": "Ex: Interior de SP, litoral de SC, toda a região Sul...",
+            "docLabel": "Documento do veículo ou licença de transporte (opcional)",
+            "docHint": "Clique para enviar um arquivo",
+            "docFormats": "PNG, JPG, WEBP ou PDF · Máx. 10MB",
+            "notesLabel": "Informações adicionais (opcional)",
+            "notesPlaceholder": "Condições de transporte, equipamentos disponíveis, restrições de rota...",
+            "submit": "Enviar Solicitação",
+            "successTitle": "Solicitação Enviada!",
+            "successDesc": "Recebemos seus dados. Nossa equipe analisará seu perfil e retornará em até 3 dias úteis."
+        }
+    },
+    "partnerVet": {
+        "hero": {
+            "eyebrow": "Programa de parceria veterinária",
+            "titlePart1": "Seja o veterinário de referência",
+            "titlePart2": "dos criadores",
+            "subtitle": "Conecte-se a donos e criadores de aves ornamentais que buscam um profissional de confiança. Amplie sua carteira de clientes e seja reconhecido como especialista em avicultura."
+        },
+        "benefits": {
+            "eyebrow": "Por que ser parceiro",
+            "title": "Vantagens da Parceria",
+            "subtitle": "Faça parte de uma rede que valoriza a saúde e o bem-estar das aves.",
+            "reach": {
+                "title": "Alcance Novos Clientes",
+                "desc": "Exponha seu trabalho para milhares de criadores ativos que precisam de orientação veterinária especializada."
+            },
+            "trust": {
+                "title": "Credibilidade e Visibilidade",
+                "desc": "Seu perfil verificado transmite confiança. Os usuários sabem que estão falando com um profissional habilitado."
+            },
+            "grow": {
+                "title": "Cresça sua Prática",
+                "desc": "Consultas, teleatendimentos e indicações. Uma fonte consistente de novos pacientes vindos de quem realmente ama aves."
+            },
+            "referral": {
+                "title": "Rede de Indicações",
+                "desc": "Integrantes da plataforma recomendam os veterinários parceiros entre si, gerando um fluxo orgânico de indicações."
+            }
+        },
+        "steps": {
+            "eyebrow": "Como funciona",
+            "title": "Seu Caminho até a Parceria",
+            "subtitle": "Processo simples e rápido. Do cadastro à aprovação em poucos dias.",
+            "apply": {
+                "title": "Cadastre-se",
+                "desc": "Preencha o formulário com seus dados e credenciais profissionais."
+            },
+            "review": {
+                "title": "Análise",
+                "desc": "Nossa equipe avalia seu perfil e verifica o CRMV em até 3 dias úteis."
+            },
+            "approved": {
+                "title": "Aprovado",
+                "desc": "Você recebe a confirmação e seu perfil fica disponível na plataforma."
+            },
+            "active": {
+                "title": "Comece a Atender",
+                "desc": "Receba contatos de criadores e donos de aves diretamente pelo marketplace."
+            }
+        },
+        "form": {
+            "eyebrow": "Vamos começar",
+            "title": "Solicite sua Parceria",
+            "subtitle": "Preencha o formulário e nossa equipe entrará em contato em até 3 dias úteis.",
+            "sectionPersonal": "Dados de contato",
+            "nameLabel": "Nome Completo",
+            "namePlaceholder": "Dr(a). Seu Nome",
+            "clinicLabel": "Clínica / Consultório (opcional)",
+            "clinicPlaceholder": "Nome do local de atendimento",
+            "emailLabel": "E-mail profissional",
+            "emailPlaceholder": "seu@email.com",
+            "phoneLabel": "Telefone",
+            "phonePlaceholder": "(00) 00000-0000",
+            "cityLabel": "Cidade",
+            "cityPlaceholder": "Sua cidade",
+            "stateLabel": "Estado (UF)",
+            "statePlaceholder": "Ex: SP",
+            "sectionCredentials": "Credenciais profissionais",
+            "crmvLabel": "CRMV",
+            "crmvPlaceholder": "Ex: CRMV-SP 12345",
+            "experienceLabel": "Experiência com aves ornamentais",
+            "experiencePlaceholder": "Selecione",
+            "exp1": "Menos de 1 ano",
+            "exp3": "1 a 3 anos",
+            "exp5": "3 a 5 anos",
+            "exp10": "Mais de 5 anos",
+            "specialtiesLabel": "Especialidades e áreas de atuação",
+            "specialtiesPlaceholder": "Ex: Canários, psitáceos, aves exóticas, cirurgia avícola...",
+            "photoLabel": "Foto profissional ou logotipo da clínica (opcional)",
+            "photoHint": "Clique para enviar uma imagem",
+            "photoFormats": "PNG, JPG ou WEBP · Máx. 5MB",
+            "notesLabel": "Informações adicionais (opcional)",
+            "notesPlaceholder": "Horários de atendimento, teleatendimento, outras informações relevantes...",
+            "submit": "Enviar Solicitação",
+            "successTitle": "Solicitação Enviada!",
+            "successDesc": "Recebemos seus dados. Nossa equipe analisará seu perfil e retornará em até 3 dias úteis."
         }
     },
     "advertise": {
@@ -498,5 +679,125 @@
         "recordSingular": "registro",
         "recordPlural": "registros",
         "totalInfo": "{total} {label} no total"
+    },
+    "setupAccount": {
+        "form": {
+            "title": "Crie sua Senha",
+            "subtitle": "Sua parceria foi aprovada. Defina sua senha de acesso abaixo.",
+            "passwordLabel": "Nova Senha",
+            "confirmPasswordLabel": "Confirme a Senha",
+            "submitButton": "Salvar e Continuar"
+        },
+        "success": {
+            "title": "Senha definida com sucesso!",
+            "desc": "Sua conta agora está ativa. Você já pode acessar a plataforma utilizando o seu e-mail e a senha que acabou de criar.",
+            "loginButton": "Acessar Plataforma"
+        },
+        "error": {
+            "invalidLink": "Link Inválido ou Expirado",
+            "missingToken": "O token de verificação é obrigatório.",
+            "missingTokenDesc": "O link de configuração que você utilizou não possui um token válido ou já expirou. Verifique seu e-mail ou entre em contato com o suporte.",
+            "passwordMismatch": "As senhas digitadas não coincidem.",
+            "passwordLength": "A senha deve conter no mínimo 6 caracteres.",
+            "generic": "Ocorreu um erro inesperado ao definir sua senha."
+        }
+    },
+    "admin": {
+        "dashboard": {
+            "title": "Visão Geral",
+            "welcome": "Bem-vindo ao painel administrativo. Selecione uma opção no menu lateral para gerenciar as entidades da plataforma.",
+            "pendingUsers": "Usuários Pendentes",
+            "pendingUsersDesc": "Gerencie parceiros aguardando aprovação na aba de Usuários."
+        },
+        "sidebar": {
+            "groupAdmin": "Administração",
+            "groupUsers": "Usuários & Parceiros",
+            "groupContent": "Gestão de Conteúdo",
+            "groupFinance": "Gestão Financeira",
+            "navOverview": "Visão Geral",
+            "navMembers": "Membros e Usuários",
+            "navVets": "Veterinários Parceiros",
+            "navCarriers": "Transportadores Parceiros",
+            "navSponsors": "Patrocinadores",
+            "navListings": "Anúncios",
+            "navRaffles": "Rifas",
+            "navAuctions": "Leilões",
+            "navBatches": "Lotes",
+            "navCoupons": "Cupons de Desconto",
+            "navPayouts": "Repasses ao Vendedor",
+            "navFees": "Taxas da Plataforma"
+        },
+        "users": {
+            "roles": {
+                "admin": "Admin",
+                "member": "Membro",
+                "vet": "Vet Parceiro",
+                "carrier": "Transp. Parceiro",
+                "unknown": "Desconhecido"
+            },
+            "status": {
+                "all": "Todos Status",
+                "active": "Ativos",
+                "pending": "Pendentes",
+                "suspended": "Suspensos",
+                "blocked": "Bloqueados",
+                "labelActive": "Ativo",
+                "labelPending": "Pendente",
+                "labelSuspended": "Suspenso",
+                "labelBlocked": "Bloqueado"
+            },
+            "searchPlaceholder": "Buscar por nome, email ou CPF",
+            "colId": "ID",
+            "colUser": "Usuário",
+            "colRole": "Papel & Ref",
+            "colRating": "Reputação",
+            "colStatus": "Status",
+            "colActions": "Ações",
+            "noPhone": "Sem fone",
+            "loading": "Buscando registros...",
+            "emptyTitle": "Nenhum resultado encontrado.",
+            "emptyDesc": "Tente ajustar seus filtros de busca para esta tabela.",
+            "actionView": "Visualizar Detalhes",
+            "actionApprove": "Aprovar Parceiro",
+            "actionSuspend": "Suspender Temporariamente",
+            "actionBlock": "Bloquear Definitivamente",
+            "confirmBlock": "Deseja realmente bloquear este usuário permanentemente?",
+            "toastApproveSuccess": "Usuário aprovado com sucesso",
+            "toastApproveError": "Erro ao aprovar usuário",
+            "toastSuspendSuccess": "Usuário suspenso",
+            "toastSuspendError": "Erro ao suspender usuário",
+            "toastBlockSuccess": "Usuário bloqueado permanentemente",
+            "toastBlockError": "Erro ao bloquear usuário"
+        },
+        "pages": {
+            "members": {
+                "eyebrow": "Administração / Membros",
+                "title": "Membros e Usuários",
+                "subtitle": "Consumidores, criadores e entusiastas utilizando o ecossistema P2P"
+            },
+            "vets": {
+                "eyebrow": "Administração / Setor Veterinário",
+                "title": "Veterinários Parceiros",
+                "subtitle": "Gerencie os médicos veterinários responsáveis por atestar a saúde das aves"
+            },
+            "carriers": {
+                "eyebrow": "Administração / Setor Logístico",
+                "title": "Transportadores Parceiros",
+                "subtitle": "Acompanhe e valide a rede de transportadores parceiros no sistema"
+            },
+            "underDevelopment": {
+                "title": "Em Desenvolvimento",
+                "description": "Esta seção será responsável pela moderação de {entity}.",
+                "entities": {
+                    "listings": "Anúncios e denúncias de Aves",
+                    "raffles": "Sorteios ativos e auditados",
+                    "auctions": "Leilões ao vivo e lances suspensos",
+                    "batches": "Análise de Lotes corporativos",
+                    "coupons": "Emissão de Cupons e vouchers",
+                    "payouts": "Aprovação de Payouts quinzenais",
+                    "fees": "Configuração da Taxa da Plataforma e Gateway"
+                }
+            }
+        }
     }
 }

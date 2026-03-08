@@ -57,8 +57,8 @@ export function Footer() {
                 <div>
                     <h4 className="font-bold text-foreground mb-4">{t("footer.partners")}</h4>
                     <ul className="space-y-3">
-                        <li><Link href="#" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.partnerVet")}</Link></li>
-                        <li><Link href="#" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.partnerCarrier")}</Link></li>
+                        <li><Link href="/partner-vet" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.partnerVet")}</Link></li>
+                        <li><Link href="/partner-carrier" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.partnerCarrier")}</Link></li>
                         <li><Link href="/advertise" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.partnerAdvertise")}</Link></li>
                     </ul>
                 </div>

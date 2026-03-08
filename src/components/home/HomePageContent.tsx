@@ -17,7 +17,7 @@ export default function HomePageContent({ listings }: HomePageContentProps) {
     const { t } = useI18n();
 
     return (
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 animate-in fade-in slide-in-from-bottom-8 duration-500">
             {/* Hero */}
             <header className="py-10 sm:py-12 md:py-16 text-center max-w-2xl mx-auto space-y-3 sm:space-y-4 px-2 sm:px-0">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight leading-tight">

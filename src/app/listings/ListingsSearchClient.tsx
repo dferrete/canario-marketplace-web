@@ -121,7 +121,7 @@ export default function ListingsSearchClient({ initialListings, initialTotalPage
 
 
     return (
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
+        <div className="container mx-auto px-4 py-8 max-w-7xl animate-in fade-in slide-in-from-bottom-8 duration-500">
             {/* Header / Breadcrumbs Area */}
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>

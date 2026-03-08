@@ -10,8 +10,10 @@ interface User {
     email: string;
     telefone: string;
     cpf: string;
+    role: string;
     avatarUrl?: string;
-    role?: string;
+    status: "ACTIVE" | "PENDING_APPROVAL" | "SUSPENDED" | "BLOCKED";
+    rating: number;
 }
 
 interface AuthContextType {
@@ -40,7 +42,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         if (storedToken && storedUser) {
             setToken(storedToken);
-            setUser(JSON.parse(storedUser));
+            const parsedUser = JSON.parse(storedUser);
+            // Defaulting fallback values if old cached version doesn't export them
+            setUser({
+                ...parsedUser,
+                role: parsedUser.role || "ROLE_USER",
+                status: parsedUser.status || "ACTIVE",
+                rating: parsedUser.rating || 5.0
+            });
             // Optionally verify token with backend here
         }
 
@@ -75,7 +84,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         try {
             await authService.updateProfile(data);
             if (user) {
-                const updatedUser = { ...user, name: data.nome, telefone: data.telefone };
+                const updatedUser: User = {
+                    ...user,
+                    name: data.nome,
+                    telefone: data.telefone
+                };
                 setUser(updatedUser);
                 localStorage.setItem("canario_user", JSON.stringify(updatedUser));
             }
@@ -90,7 +103,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         try {
             const response = await authService.uploadAvatar(user.id, file);
             if (response && response.avatarUrl) {
-                const updatedUser = { ...user, avatarUrl: response.avatarUrl };
+                const updatedUser: User = {
+                    ...user,
+                    avatarUrl: response.avatarUrl
+                };
                 setUser(updatedUser);
                 localStorage.setItem("canario_user", JSON.stringify(updatedUser));
             }
@@ -109,11 +125,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
 
     const handleAuthSuccess = (response: AuthResponse) => {
-        const { token, user } = response;
+        const { token, user: responseUser } = response;
+        const normalizedUser: User = {
+            ...responseUser,
+            telefone: responseUser.phone || responseUser.telefone || "",
+            role: responseUser.role || "ROLE_USER",
+            status: responseUser.status || "ACTIVE",
+            rating: responseUser.rating || 5.0
+        };
         setToken(token);
-        setUser(user);
+        setUser(normalizedUser);
         localStorage.setItem("canario_token", token);
-        localStorage.setItem("canario_user", JSON.stringify(user));
+        localStorage.setItem("canario_user", JSON.stringify(normalizedUser));
     };
 
     // Sync token with axios instance dynamically
