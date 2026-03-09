@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { adminService, UserResponse } from "@/services/admin.service";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
-import { Star, Search, Loader2, UserCheck, UserX, ShieldBan, Eye, CheckCircle, Clock, AlertTriangle, ShieldAlert } from "lucide-react";
+import { Star, Search, Loader2, UserCheck, UserX, ShieldBan, Eye, CheckCircle, Clock, AlertTriangle, ShieldAlert, Shield } from "lucide-react";
 import { Pagination } from "@/components/ui/Pagination";
 import { Input } from "@/components/ui/input";
 import { useI18n } from "@/contexts/I18nContext";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 export function UserTableSection({
     eyebrow,
@@ -18,19 +19,31 @@ export function UserTableSection({
     eyebrow: string;
     title: string;
     subtitle: string;
-    roleParam: "ROLE_USER" | "ROLE_VET" | "ROLE_LOGISTICS";
+    roleParam: "ROLE_USER" | "ROLE_VET" | "ROLE_LOGISTICS" | "ROLE_USER,ROLE_ADMIN" | "ALL";
 }) {
     const [users, setUsers] = useState<UserResponse[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [actionLoading, setActionLoading] = useState<number | null>(null);
     const [activeStatus, setActiveStatus] = useState<string>("ALL");
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedUser, setSelectedUser] = useState<UserResponse | null>(null);
+    const [actionConfirmation, setActionConfirmation] = useState<{ id: number, type: 'APPROVE' | 'SUSPEND' | 'BLOCK' | 'MAKE_ADMIN' | 'REACTIVATE' | 'DEMOTE' } | null>(null);
+    const [suspendDays, setSuspendDays] = useState<number>(7);
     const { t } = useI18n();
 
     // Pagination state
     const [currentPage, setCurrentPage] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
     const [totalElements, setTotalElements] = useState(0);
+
+    // Metrics state
+    const [metrics, setMetrics] = useState({
+        active: 0,
+        pending: 0,
+        suspended: 0,
+        blocked: 0
+    });
+    const [isMetricsLoading, setIsMetricsLoading] = useState(true);
 
     const fetchUsers = async () => {
         try {
@@ -46,6 +59,28 @@ export function UserTableSection({
         }
     };
 
+    const fetchMetrics = async () => {
+        try {
+            setIsMetricsLoading(true);
+            const [activeRes, pendingRes, suspendedRes, blockedRes] = await Promise.all([
+                adminService.getAllUsers(0, 1, "", roleParam, "ACTIVE"),
+                adminService.getAllUsers(0, 1, "", roleParam, "PENDING_APPROVAL"),
+                adminService.getAllUsers(0, 1, "", roleParam, "SUSPENDED"),
+                adminService.getAllUsers(0, 1, "", roleParam, "BLOCKED")
+            ]);
+            setMetrics({
+                active: activeRes.totalElements,
+                pending: pendingRes.totalElements,
+                suspended: suspendedRes.totalElements,
+                blocked: blockedRes.totalElements
+            });
+        } catch (error) {
+            console.error("Failed to fetch metrics", error);
+        } finally {
+            setIsMetricsLoading(false);
+        }
+    };
+
     useEffect(() => {
         const delayDebounceFn = setTimeout(() => {
             fetchUsers();
@@ -55,12 +90,18 @@ export function UserTableSection({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, activeStatus, searchTerm, roleParam]);
 
+    useEffect(() => {
+        fetchMetrics();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [roleParam]);
+
     const handleApprove = async (id: number) => {
         setActionLoading(id);
         try {
             await adminService.approveUser(id);
             toast.success(t("admin.users.toastApproveSuccess"));
             fetchUsers();
+            fetchMetrics();
         } catch (error) {
             toast.error(t("admin.users.toastApproveError"));
         } finally {
@@ -68,31 +109,92 @@ export function UserTableSection({
         }
     };
 
-    const handleSuspend = async (id: number) => {
+    const handleSuspend = async (id: number, days: number) => {
         setActionLoading(id);
         try {
-            await adminService.suspendUser(id);
-            toast.success(t("admin.users.toastSuspendSuccess"));
+            await adminService.suspendUser(id, days);
+            toast.success(t("admin.users.toastSuspendSuccess") || "Usuário suspenso com sucesso!");
             fetchUsers();
+            fetchMetrics();
         } catch (error) {
-            toast.error(t("admin.users.toastSuspendError"));
+            toast.error(t("admin.users.toastSuspendError") || "Erro ao suspender usuário.");
         } finally {
             setActionLoading(null);
+            setActionConfirmation(null);
+        }
+    };
+
+    const handleReactivate = async (id: number) => {
+        setActionLoading(id);
+        try {
+            await adminService.reactivateUser(id);
+            toast.success("Usuário reativado com sucesso!");
+            fetchUsers();
+            fetchMetrics();
+        } catch (error) {
+            toast.error("Erro ao reativar usuário.");
+        } finally {
+            setActionLoading(null);
+            setActionConfirmation(null);
+        }
+    };
+
+    const handleDemote = async (id: number) => {
+        setActionLoading(id);
+        try {
+            await adminService.demoteAdmin(id);
+            toast.success("Privilégios de Administrador revogados!");
+            fetchUsers();
+            fetchMetrics();
+        } catch (error) {
+            toast.error("Erro ao revogar privilégios do administrador.");
+        } finally {
+            setActionLoading(null);
+            setActionConfirmation(null);
         }
     };
 
     const handleBlock = async (id: number) => {
-        if (confirm(t("admin.users.confirmBlock"))) {
-            setActionLoading(id);
-            try {
-                await adminService.blockUser(id);
-                toast.success(t("admin.users.toastBlockSuccess"));
-                fetchUsers();
-            } catch (error) {
-                toast.error(t("admin.users.toastBlockError"));
-            } finally {
-                setActionLoading(null);
-            }
+        setActionLoading(id);
+        try {
+            await adminService.blockUser(id);
+            toast.success(t("admin.users.toastBlockSuccess"));
+            fetchUsers();
+            fetchMetrics();
+        } catch (error) {
+            toast.error(t("admin.users.toastBlockError") || "Erro ao bloquear usuário.");
+        } finally {
+            setActionLoading(null);
+            setActionConfirmation(null);
+        }
+    };
+
+    const handleMakeAdmin = async (id: number) => {
+        setActionLoading(id);
+        try {
+            await adminService.makeAdmin(id);
+            toast.success("Usuário promovido a Administrador com sucesso!");
+            fetchUsers();
+        } catch (error) {
+            toast.error("Erro ao promover usuário a administrador.");
+        } finally {
+            setActionLoading(null);
+            setActionConfirmation(null);
+        }
+    };
+
+    const confirmAction = () => {
+        if (!actionConfirmation) return;
+        if (actionConfirmation.type === 'BLOCK') {
+            handleBlock(actionConfirmation.id);
+        } else if (actionConfirmation.type === 'MAKE_ADMIN') {
+            handleMakeAdmin(actionConfirmation.id);
+        } else if (actionConfirmation.type === 'SUSPEND') {
+            handleSuspend(actionConfirmation.id, suspendDays);
+        } else if (actionConfirmation.type === 'REACTIVATE') {
+            handleReactivate(actionConfirmation.id);
+        } else if (actionConfirmation.type === 'DEMOTE') {
+            handleDemote(actionConfirmation.id);
         }
     };
 
@@ -146,7 +248,7 @@ export function UserTableSection({
                 >
                     <div>
                         <p className={`text-sm font-medium mb-1 ${activeStatus === "ACTIVE" ? "text-emerald-700 font-bold" : "text-gray-500"}`}>{t("admin.users.status.active")}</p>
-                        <h4 className="text-2xl font-bold text-gray-900">--</h4>
+                        <h4 className="text-2xl font-bold text-gray-900">{isMetricsLoading ? <Loader2 className="w-5 h-5 animate-spin text-gray-400 mt-1" /> : metrics.active}</h4>
                     </div>
                     <div className="h-10 w-10 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center">
                         <CheckCircle className="w-5 h-5" />
@@ -159,7 +261,7 @@ export function UserTableSection({
                 >
                     <div>
                         <p className={`text-sm font-medium mb-1 ${activeStatus === "PENDING_APPROVAL" ? "text-amber-700 font-bold" : "text-gray-500"}`}>{t("admin.users.status.pending")}</p>
-                        <h4 className="text-2xl font-bold text-gray-900">--</h4>
+                        <h4 className="text-2xl font-bold text-gray-900">{isMetricsLoading ? <Loader2 className="w-5 h-5 animate-spin text-gray-400 mt-1" /> : metrics.pending}</h4>
                     </div>
                     <div className="h-10 w-10 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center">
                         <Clock className="w-5 h-5" />
@@ -172,7 +274,7 @@ export function UserTableSection({
                 >
                     <div>
                         <p className={`text-sm font-medium mb-1 ${activeStatus === "SUSPENDED" ? "text-orange-700 font-bold" : "text-gray-500"}`}>{t("admin.users.status.suspended")}</p>
-                        <h4 className="text-2xl font-bold text-gray-900">--</h4>
+                        <h4 className="text-2xl font-bold text-gray-900">{isMetricsLoading ? <Loader2 className="w-5 h-5 animate-spin text-gray-400 mt-1" /> : metrics.suspended}</h4>
                     </div>
                     <div className="h-10 w-10 bg-orange-50 text-orange-600 rounded-full flex items-center justify-center">
                         <AlertTriangle className="w-5 h-5" />
@@ -185,7 +287,7 @@ export function UserTableSection({
                 >
                     <div>
                         <p className={`text-sm font-medium mb-1 ${activeStatus === "BLOCKED" ? "text-red-700 font-bold" : "text-gray-500"}`}>{t("admin.users.status.blocked")}</p>
-                        <h4 className="text-2xl font-bold text-gray-900">--</h4>
+                        <h4 className="text-2xl font-bold text-gray-900">{isMetricsLoading ? <Loader2 className="w-5 h-5 animate-spin text-gray-400 mt-1" /> : metrics.blocked}</h4>
                     </div>
                     <div className="h-10 w-10 bg-red-50 text-red-600 rounded-full flex items-center justify-center">
                         <ShieldAlert className="w-5 h-5" />
@@ -290,7 +392,11 @@ export function UserTableSection({
                                         </td>
                                         <td className="px-6 py-4 text-right align-middle">
                                             <div className="flex items-center justify-end gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
-                                                <button className="p-2 text-gray-400 hover:text-primary transition-colors hover:bg-primary/10 rounded-full" title={t("admin.users.actionView")}>
+                                                <button
+                                                    onClick={() => setSelectedUser(u)}
+                                                    className="p-2 text-gray-400 hover:text-primary transition-colors hover:bg-primary/10 rounded-full"
+                                                    title={t("admin.users.actionView")}
+                                                >
                                                     <Eye size={18} />
                                                 </button>
 
@@ -308,22 +414,55 @@ export function UserTableSection({
                                                 {u.status === "ACTIVE" && u.role !== "ROLE_ADMIN" && (
                                                     <button
                                                         disabled={actionLoading === u.id}
-                                                        onClick={() => handleSuspend(u.id)}
+                                                        onClick={() => setActionConfirmation({ id: u.id, type: 'SUSPEND' })}
                                                         className="p-2 text-orange-500 hover:text-orange-600 transition-colors hover:bg-orange-500/10 rounded-full"
                                                         title={t("admin.users.actionSuspend")}
                                                     >
-                                                        {actionLoading === u.id ? <Loader2 size={18} className="animate-spin" /> : <ShieldBan size={18} />}
+                                                        {actionLoading === u.id && actionConfirmation?.type === 'SUSPEND' ? <Loader2 size={18} className="animate-spin" /> : <ShieldBan size={18} />}
                                                     </button>
                                                 )}
 
                                                 {u.role !== "ROLE_ADMIN" && u.status !== "BLOCKED" && (
                                                     <button
                                                         disabled={actionLoading === u.id}
-                                                        onClick={() => handleBlock(u.id)}
+                                                        onClick={() => setActionConfirmation({ id: u.id, type: 'BLOCK' })}
                                                         className="p-2 text-red-500 hover:text-red-600 transition-colors hover:bg-red-500/10 rounded-full"
                                                         title={t("admin.users.actionBlock")}
                                                     >
-                                                        {actionLoading === u.id ? <Loader2 size={18} className="animate-spin" /> : <UserX size={18} />}
+                                                        {actionLoading === u.id && actionConfirmation?.type === 'BLOCK' ? <Loader2 size={18} className="animate-spin" /> : <UserX size={18} />}
+                                                    </button>
+                                                )}
+
+                                                {u.role === "ROLE_USER" && u.status === "ACTIVE" && (
+                                                    <button
+                                                        disabled={actionLoading === u.id}
+                                                        onClick={() => setActionConfirmation({ id: u.id, type: 'MAKE_ADMIN' })}
+                                                        className="p-2 text-purple-500 hover:text-purple-600 transition-colors hover:bg-purple-500/10 rounded-full"
+                                                        title="Promover a Admin"
+                                                    >
+                                                        {actionLoading === u.id && actionConfirmation?.type === 'MAKE_ADMIN' ? <Loader2 size={18} className="animate-spin" /> : <Shield size={18} />}
+                                                    </button>
+                                                )}
+
+                                                {u.role === "ROLE_ADMIN" && (
+                                                    <button
+                                                        disabled={actionLoading === u.id}
+                                                        onClick={() => setActionConfirmation({ id: u.id, type: 'DEMOTE' })}
+                                                        className="p-2 text-gray-500 hover:text-gray-600 transition-colors hover:bg-gray-500/10 rounded-full"
+                                                        title="Revogar Privilégios de Administrador"
+                                                    >
+                                                        {actionLoading === u.id && actionConfirmation?.type === 'DEMOTE' ? <Loader2 size={18} className="animate-spin" /> : <ShieldAlert size={18} />}
+                                                    </button>
+                                                )}
+
+                                                {(u.status === "SUSPENDED" || u.status === "BLOCKED") && (
+                                                    <button
+                                                        disabled={actionLoading === u.id}
+                                                        onClick={() => setActionConfirmation({ id: u.id, type: 'REACTIVATE' })}
+                                                        className="p-2 text-emerald-500 hover:text-emerald-600 transition-colors hover:bg-emerald-500/10 rounded-full"
+                                                        title="Reativar Usuário"
+                                                    >
+                                                        {actionLoading === u.id && actionConfirmation?.type === 'REACTIVATE' ? <Loader2 size={18} className="animate-spin" /> : <CheckCircle size={18} />}
                                                     </button>
                                                 )}
                                             </div>
@@ -345,6 +484,113 @@ export function UserTableSection({
                     className="mt-6"
                 />
             )}
+
+            <Dialog open={!!selectedUser} onOpenChange={(open) => !open && setSelectedUser(null)}>
+                <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                        <DialogTitle>Detalhes do Usuário</DialogTitle>
+                        <DialogDescription>
+                            Informações completas do perfil e status no sistema.
+                        </DialogDescription>
+                    </DialogHeader>
+                    {selectedUser && (
+                        <div className="space-y-4 py-4">
+                            <div className="flex items-center gap-4">
+                                <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-2xl shadow-sm">
+                                    {selectedUser.name.charAt(0).toUpperCase()}
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-lg text-foreground">{selectedUser.name}</h3>
+                                    <p className="text-gray-500">{selectedUser.email}</p>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4 pt-4 border-t">
+                                <div>
+                                    <p className="text-sm text-gray-500 font-medium">CPF</p>
+                                    <p className="font-mono text-sm">{selectedUser.cpf}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm text-gray-500 font-medium">Telefone</p>
+                                    <p className="font-mono text-sm">{selectedUser.phone || "Não informado"}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm text-gray-500 font-medium">Papel / Função</p>
+                                    <div className="mt-1">{getRoleBadge(selectedUser.role)}</div>
+                                </div>
+                                <div>
+                                    <p className="text-sm text-gray-500 font-medium">Status Atual</p>
+                                    <div className="mt-1">{getStatusBadge(selectedUser.status)}</div>
+                                </div>
+                                {selectedUser.partnerDocumentType && (
+                                    <div className="col-span-2">
+                                        <p className="text-sm text-gray-500 font-medium">Documento Profissional ({selectedUser.partnerDocumentType})</p>
+                                        <p className="font-mono text-sm bg-gray-50 p-2 rounded border mt-1">{selectedUser.partnerDocumentNumber}</p>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
+                </DialogContent>
+            </Dialog>
+            <Dialog open={!!actionConfirmation} onOpenChange={(open) => !open && setActionConfirmation(null)}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>
+                            {actionConfirmation?.type === 'BLOCK' ? "Bloquear Conta" :
+                                actionConfirmation?.type === 'SUSPEND' ? "Suspender Conta" :
+                                    actionConfirmation?.type === 'MAKE_ADMIN' ? "Promover a Administrador" :
+                                        actionConfirmation?.type === 'REACTIVATE' ? "Reativar Conta" :
+                                            "Revogar Administrador"}
+                        </DialogTitle>
+                        <DialogDescription>
+                            {actionConfirmation?.type === 'BLOCK'
+                                ? (t("admin.users.confirmBlock") || "Tem certeza de que deseja bloquear este usuário permanentemente? Ele perderá acesso à plataforma.")
+                                : actionConfirmation?.type === 'SUSPEND'
+                                    ? "Defina o período (em dias) em que este usuário ficará impedido de acessar seus recursos."
+                                    : actionConfirmation?.type === 'MAKE_ADMIN'
+                                        ? "Tem certeza de que deseja promover este usuário a Administrador? Ele terá acesso total ao painel administrativo."
+                                        : actionConfirmation?.type === 'REACTIVATE'
+                                            ? "Ao reativar, este usuário voltará a ter acesso normal à plataforma."
+                                            : "O usuário perderá o acesso ao painel administrativo. Tem certeza?"}
+                        </DialogDescription>
+                    </DialogHeader>
+
+                    {actionConfirmation?.type === 'SUSPEND' && (
+                        <div className="py-4">
+                            <label className="text-sm font-medium mb-1 block">Dias de Suspensão:</label>
+                            <Input
+                                type="number"
+                                min={1}
+                                max={365}
+                                value={suspendDays}
+                                onChange={(e) => setSuspendDays(parseInt(e.target.value) || 1)}
+                                className="w-full"
+                            />
+                        </div>
+                    )}
+                    <div className="flex justify-end gap-3 mt-4">
+                        <button
+                            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+                            onClick={() => setActionConfirmation(null)}
+                            disabled={actionLoading !== null}
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                            className={`px-4 py-2 text-sm font-medium text-white rounded-md transition-colors flex items-center justify-center min-w-[100px] ${actionConfirmation?.type === 'BLOCK' || actionConfirmation?.type === 'DEMOTE' ? 'bg-red-600 hover:bg-red-700' :
+                                actionConfirmation?.type === 'SUSPEND' ? 'bg-orange-600 hover:bg-orange-700' :
+                                    actionConfirmation?.type === 'REACTIVATE' ? 'bg-emerald-600 hover:bg-emerald-700' :
+                                        'bg-purple-600 hover:bg-purple-700'
+                                }`}
+                            onClick={confirmAction}
+                            disabled={actionLoading !== null}
+                        >
+                            {actionLoading !== null ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmar"}
+                        </button>
+                    </div>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

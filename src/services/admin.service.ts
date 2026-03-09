@@ -12,6 +12,7 @@ export interface UserResponse {
     rating: number;
     partnerDocumentType?: string;
     partnerDocumentNumber?: string;
+    suspendedUntil?: string;
 }
 
 export const adminService = {
@@ -33,13 +34,28 @@ export const adminService = {
         return response.data;
     },
 
-    async suspendUser(userId: number): Promise<UserResponse> {
-        const response = await api.put(`/api/v1/users/${userId}/suspend`);
+    async suspendUser(userId: number, days: number = 7): Promise<UserResponse> {
+        const response = await api.put(`/api/v1/users/${userId}/suspend?days=${days}`);
         return response.data;
     },
 
     async blockUser(userId: number): Promise<UserResponse> {
         const response = await api.put(`/api/v1/users/${userId}/block`);
+        return response.data;
+    },
+
+    async makeAdmin(userId: number): Promise<UserResponse> {
+        const response = await api.put(`/api/v1/users/${userId}/role`, { role: "ROLE_ADMIN" });
+        return response.data;
+    },
+
+    async reactivateUser(userId: number): Promise<UserResponse> {
+        const response = await api.put(`/api/v1/users/${userId}/reactivate`);
+        return response.data;
+    },
+
+    async demoteAdmin(userId: number): Promise<UserResponse> {
+        const response = await api.put(`/api/v1/users/${userId}/demote`);
         return response.data;
     }
 };

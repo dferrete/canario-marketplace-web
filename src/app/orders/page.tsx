@@ -75,7 +75,7 @@ export default function MyOrdersPage() {
     };
 
     return (
-        <div className="container mx-auto px-4 py-12 max-w-6xl animate-in fade-in slide-in-from-bottom-8 duration-500">
+        <div className="container mx-auto px-4 py-12 max-w-5xl animate-in fade-in slide-in-from-bottom-8 duration-500">
             <div className="mb-8 flex items-center gap-4">
                 <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-sm border border-primary/20">
                     <ShoppingBag size={28} />

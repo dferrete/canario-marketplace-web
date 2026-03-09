@@ -100,8 +100,11 @@ export default function ProfilePage() {
         : null;
 
     return (
-        <div className="container mx-auto px-4 py-12 max-w-3xl animate-in fade-in slide-in-from-bottom-8 duration-500">
-            <div className="mb-8 flex items-center justify-between">
+        <div className="container mx-auto px-4 py-12 max-w-5xl animate-in fade-in slide-in-from-bottom-8 duration-500">
+            <div className="mb-8 flex items-center gap-4">
+                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-sm border border-primary/20">
+                    <UserIcon size={28} />
+                </div>
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight text-foreground">{t("profile.title")}</h1>
                     <p className="text-muted-foreground mt-1">{t("profile.description")}</p>

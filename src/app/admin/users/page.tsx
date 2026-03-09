@@ -12,7 +12,7 @@ export default function AdminUsersPage() {
                 eyebrow={t("admin.pages.members.eyebrow")}
                 title={t("admin.pages.members.title")}
                 subtitle={t("admin.pages.members.subtitle")}
-                roleParam="ROLE_USER"
+                roleParam="ROLE_USER,ROLE_ADMIN"
             />
         </div>
     );

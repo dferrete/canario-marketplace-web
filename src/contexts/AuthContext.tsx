@@ -14,6 +14,7 @@ interface User {
     avatarUrl?: string;
     status: "ACTIVE" | "PENDING_APPROVAL" | "SUSPENDED" | "BLOCKED";
     rating: number;
+    suspendedUntil?: string;
 }
 
 interface AuthContextType {
@@ -48,7 +49,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 ...parsedUser,
                 role: parsedUser.role || "ROLE_USER",
                 status: parsedUser.status || "ACTIVE",
-                rating: parsedUser.rating || 5.0
+                rating: parsedUser.rating || 5.0,
+                suspendedUntil: parsedUser.suspendedUntil
             });
             // Optionally verify token with backend here
         }
