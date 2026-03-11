@@ -10,7 +10,7 @@ export interface PartnerApplicationData {
     role: "ROLE_VET" | "ROLE_LOGISTICS";
     documentType: "CRMV" | "ANTT" | "CNH" | "OUTRO";
     documentNumber: string;
-    specialty?: string;
+    servicesOffered?: string;
     vehicleDetails?: string;
     coverageArea?: string;
 }
