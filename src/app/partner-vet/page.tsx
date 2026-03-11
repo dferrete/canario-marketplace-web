@@ -36,6 +36,29 @@ const INPUT_CLS = "w-full px-4 py-2.5 rounded-xl border border-border bg-backgro
 const LABEL_CLS = "text-sm font-semibold text-foreground/80";
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Constants
+// ─────────────────────────────────────────────────────────────────────────────
+const BRAZILIAN_STATES = [
+    { value: 'AC', label: 'Acre' }, { value: 'AL', label: 'Alagoas' }, { value: 'AP', label: 'Amapá' },
+    { value: 'AM', label: 'Amazonas' }, { value: 'BA', label: 'Bahia' }, { value: 'CE', label: 'Ceará' },
+    { value: 'DF', label: 'Distrito Federal' }, { value: 'ES', label: 'Espírito Santo' }, { value: 'GO', label: 'Goiás' },
+    { value: 'MA', label: 'Maranhão' }, { value: 'MT', label: 'Mato Grosso' }, { value: 'MS', label: 'Mato Grosso do Sul' },
+    { value: 'MG', label: 'Minas Gerais' }, { value: 'PA', label: 'Pará' }, { value: 'PB', label: 'Paraíba' },
+    { value: 'PR', label: 'Paraná' }, { value: 'PE', label: 'Pernambuco' }, { value: 'PI', label: 'Piauí' },
+    { value: 'RJ', label: 'Rio de Janeiro' }, { value: 'RN', label: 'Rio Grande do Norte' }, { value: 'RS', label: 'Rio Grande do Sul' },
+    { value: 'RO', label: 'Rondônia' }, { value: 'RR', label: 'Roraima' }, { value: 'SC', label: 'Santa Catarina' },
+    { value: 'SP', label: 'São Paulo' }, { value: 'SE', label: 'Sergipe' }, { value: 'TO', label: 'Tocantins' }
+];
+
+const PREDEFINED_SERVICES = [
+    "GTA (Guia de Trânsito Animal)",
+    "Atestado de saúde",
+    "Consulta clínica",
+    "Exames laboratoriais",
+    "Outro"
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Page
 // ─────────────────────────────────────────────────────────────────────────────
 export default function PartnerVetPage() {
@@ -50,8 +73,26 @@ export default function PartnerVetPage() {
 
     const [form, setForm] = useState({
         name: "", clinic: "", email: "", phone: "", cpfCnpj: "", city: "", state: "",
-        crmv: "", specialties: "", experience: "", notes: "",
+        crmv: "", experience: "", notes: "",
     });
+
+    const [services, setServices] = useState<{ name: string, price: string }[]>([
+        { name: "GTA (Guia de Trânsito Animal)", price: "" }
+    ]);
+
+    const handleServiceChange = (index: number, field: 'name' | 'price', value: string) => {
+        const newServices = [...services];
+        newServices[index][field] = value;
+        setServices(newServices);
+    };
+
+    const addService = () => {
+        setServices([...services, { name: "", price: "" }]);
+    };
+
+    const removeService = (index: number) => {
+        setServices(services.filter((_, i) => i !== index));
+    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -84,7 +125,7 @@ export default function PartnerVetPage() {
                 role: "ROLE_VET",
                 documentType: "CRMV",
                 documentNumber: form.crmv,
-                specialty: form.specialties
+                servicesOffered: JSON.stringify(services.filter(s => s.name.trim() !== "" && s.price.trim() !== ""))
             };
 
             await partnerService.applyForPartnership(payload);
@@ -234,7 +275,12 @@ export default function PartnerVetPage() {
                                         </div>
                                         <div className="space-y-1.5">
                                             <label className={LABEL_CLS}>{t("partnerVet.form.stateLabel")}</label>
-                                            <input type="text" name="state" value={form.state} onChange={handleChange} required placeholder={t("partnerVet.form.statePlaceholder")} className={INPUT_CLS} />
+                                            <select name="state" value={form.state} onChange={handleChange} required className={INPUT_CLS}>
+                                                <option value="" disabled>{t("partnerVet.form.statePlaceholder")}</option>
+                                                {BRAZILIAN_STATES.map(s => (
+                                                    <option key={s.value} value={s.value}>{s.label}</option>
+                                                ))}
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -262,9 +308,56 @@ export default function PartnerVetPage() {
                                             </div>
                                         </div>
 
-                                        <div className="space-y-1.5">
-                                            <label className={LABEL_CLS}>{t("partnerVet.form.specialtiesLabel")}</label>
-                                            <textarea name="specialties" value={form.specialties} onChange={handleChange} rows={3} placeholder={t("partnerVet.form.specialtiesPlaceholder")} className={cn(INPUT_CLS, "resize-none")} />
+                                        <div className="space-y-3">
+                                            <div className="flex items-center justify-between">
+                                                <label className={LABEL_CLS}>Serviços Oferecidos e Valores (R$)</label>
+                                                <Button type="button" variant="outline" size="sm" onClick={addService} className="h-8 text-xs border-dashed border-primary/50 text-primary hover:bg-primary/5">
+                                                    + Adicionar Serviço
+                                                </Button>
+                                            </div>
+
+                                            {services.map((svc, idx) => (
+                                                <div key={idx} className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+                                                    <div className="flex-1 w-full">
+                                                        <input
+                                                            type="text"
+                                                            list="predefined-services"
+                                                            value={svc.name}
+                                                            onChange={(e) => handleServiceChange(idx, 'name', e.target.value)}
+                                                            placeholder="Ex: Consulta Clínica"
+                                                            className={INPUT_CLS}
+                                                            required
+                                                        />
+                                                    </div>
+                                                    <div className="w-full sm:w-32 relative">
+                                                        <span className="absolute left-3 top-2.5 text-foreground/50 text-sm">R$</span>
+                                                        <input
+                                                            type="number"
+                                                            step="0.01"
+                                                            min="0"
+                                                            value={svc.price}
+                                                            onChange={(e) => handleServiceChange(idx, 'price', e.target.value)}
+                                                            placeholder="0,00"
+                                                            className={cn(INPUT_CLS, "pl-9")}
+                                                            required
+                                                        />
+                                                    </div>
+                                                    {services.length > 1 && (
+                                                        <Button
+                                                            type="button"
+                                                            variant="ghost"
+                                                            size="icon"
+                                                            onClick={() => removeService(idx)}
+                                                            className="text-foreground/40 hover:text-destructive hover:bg-destructive/10 -mt-1 sm:mt-0"
+                                                        >
+                                                            <X className="w-4 h-4" />
+                                                        </Button>
+                                                    )}
+                                                </div>
+                                            ))}
+                                            <datalist id="predefined-services">
+                                                {PREDEFINED_SERVICES.map(p => <option key={p} value={p} />)}
+                                            </datalist>
                                         </div>
 
                                         {/* Photo / Document upload */}
