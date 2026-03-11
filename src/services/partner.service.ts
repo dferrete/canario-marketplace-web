@@ -1,6 +1,4 @@
-import axios from "axios";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api/v1";
+import api from "../lib/api";
 
 export interface PartnerApplicationData {
     name: string;
@@ -17,12 +15,12 @@ export interface PartnerApplicationData {
 
 export const partnerService = {
     applyForPartnership: async (data: PartnerApplicationData) => {
-        const response = await axios.post(`${API_URL}/partners/apply`, data);
+        const response = await api.post("/api/v1/partners/apply", data);
         return response.data;
     },
 
     setupPassword: async (token: string, password: string) => {
-        const response = await axios.post(`${API_URL}/partners/setup-password`, { token, password });
+        const response = await api.post("/api/v1/partners/setup-password", { token, password });
         return response.data;
     }
 };

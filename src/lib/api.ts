@@ -1,7 +1,13 @@
 import axios from "axios";
 
+// Clean the Base URL to avoid duplicated /api/v1 if present in ENV variables
+let baseUrlEnv = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+if (baseUrlEnv.endsWith("/api/v1")) {
+    baseUrlEnv = baseUrlEnv.replace(/\/api\/v1$/, "");
+}
+
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080",
+    baseURL: baseUrlEnv,
     headers: {
         "Content-Type": "application/json",
     },
