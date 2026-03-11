@@ -7,7 +7,7 @@ import HomePageContent from "@/components/home/HomePageContent";
 async function getListings(): Promise<Listing[]> {
   try {
     const res = await api.get('/api/v1/listings');
-    const listingsRaw: ListingResponse[] = res.data;
+    const listingsRaw: ListingResponse[] = res.data.content;
 
     // For each listing, fetch the bird details to complete the UI model
     const fullListings = await Promise.all(

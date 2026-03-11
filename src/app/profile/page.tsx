@@ -6,7 +6,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useI18n } from "@/contexts/I18nContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, User as UserIcon, Mail, Phone, Hash, Save, X, Edit2, Bird, ShoppingCart, Ticket, Gavel, Package, Camera } from "lucide-react";
+import { Loader2, User as UserIcon, Mail, Phone, Hash, Save, X, Edit2, Bird, ShoppingCart, Ticket, Gavel, Package, Camera, Star } from "lucide-react";
 
 export default function ProfilePage() {
     const router = useRouter();
@@ -100,8 +100,11 @@ export default function ProfilePage() {
         : null;
 
     return (
-        <div className="container mx-auto px-4 py-12 max-w-3xl animate-in fade-in slide-in-from-bottom-8 duration-500">
-            <div className="mb-8 flex items-center justify-between">
+        <div className="container mx-auto px-4 py-12 max-w-5xl animate-in fade-in slide-in-from-bottom-8 duration-500">
+            <div className="mb-8 flex items-center gap-4">
+                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-sm border border-primary/20">
+                    <UserIcon size={28} />
+                </div>
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight text-foreground">{t("profile.title")}</h1>
                     <p className="text-muted-foreground mt-1">{t("profile.description")}</p>
@@ -144,10 +147,16 @@ export default function ProfilePage() {
                                     <UserIcon className="w-5 h-5 text-primary" />
                                     {t("profile.personalInfo")}
                                 </CardTitle>
-                                <CardDescription className="mt-1 flex items-center gap-1">
-                                    <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
-                                    {user.role === 'ROLE_ADMIN' ? 'Administrador' : 'Conta Ativa'}
-                                </CardDescription>
+                                <div className="mt-1 flex items-center gap-3">
+                                    <CardDescription className="flex items-center gap-1">
+                                        <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
+                                        {user.role === 'ROLE_ADMIN' ? t("profile.roleAdmin") : t("profile.roleUser")}
+                                    </CardDescription>
+                                    <div className="flex items-center gap-1 bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded-full border border-yellow-200">
+                                        <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
+                                        <span className="font-semibold text-xs">{user.rating ? user.rating.toFixed(1) : "5.0"}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -212,7 +221,7 @@ export default function ProfilePage() {
                                     className="flex h-11 w-full rounded-md border border-input bg-muted px-3 py-2 text-sm ring-offset-background cursor-not-allowed opacity-60"
                                     value={user.email}
                                 />
-                                <p className="text-xs text-muted-foreground">O e-mail não pode ser alterado após o cadastro.</p>
+                                <p className="text-xs text-muted-foreground">{t("profile.emailHelp")}</p>
                             </div>
 
                             {/* CPF Field - Read Only */}
@@ -227,7 +236,7 @@ export default function ProfilePage() {
                                     className="flex h-11 w-full rounded-md border border-input bg-muted px-3 py-2 text-sm ring-offset-background cursor-not-allowed opacity-60"
                                     value={user.cpf}
                                 />
-                                <p className="text-xs text-muted-foreground">Documento fiscal bloqueado para edição.</p>
+                                <p className="text-xs text-muted-foreground">{t("profile.cpfHelp")}</p>
                             </div>
                         </div>
                     </CardContent>

@@ -14,7 +14,8 @@
         "hello": "Olá",
         "myProfile": "Meu perfil",
         "favorites": "Favoritos",
-        "myListings": "Meus anúncios"
+        "myListings": "Meus anúncios",
+        "adminPanel": "Painel Admin"
     },
     "auth": {
         "login": {
@@ -72,9 +73,58 @@
         "subtitle": "Navegue pelas ofertas ativas dos melhores criadores do país. Plataforma 100% segura com garantia de entrega.",
         "noListingsTitle": "Nenhuma oferta disponível",
         "noListingsDesc": "Os criadores ainda não publicaram novas aves hoje.",
+        "availableBirdsEyebrow": "Marketplace ao vivo",
         "availableBirds": "Aves em Destaque",
-        "availableBirdsSubtitle": "Explore nossa coleção com as melhores aves dos criatórios selecionados. Encontre o canário perfeito para você.",
-        "viewAll": "Ver Todas"
+        "availableBirdsSubtitle": "Explore nossa coleção com as melhores aves dos melhores vendedores selecionados. Encontre o canário perfeito para você.",
+        "viewAll": "Ver Todas",
+        "categories": {
+            "eyebrow": "Explore por categoria",
+            "title": "Nossas Categorias",
+            "subtitle": "Descubra a categoria certa para o canário que você procura.",
+            "sizeCanary": "Canário de Porte",
+            "sizeCanaryDesc": "Aves selecionadas pela estrutura corporal, proporções e elegância do porte. Ideal para expositores e criadores de alto padrão.",
+            "colorCanary": "Canário de Cor",
+            "colorCanaryDesc": "Espécimes com mutações genéticas raras e coloração exuberante. Uma paleta viva de tonalidades únicas e marcantes.",
+            "singCanary": "Canário de Canto",
+            "singCanaryDesc": "Aves com melodia refinada e técnica vocal distinta. Para quem valoriza a música e o canto harmonioso dos canários.",
+            "exploreLink": "Explorar categoria"
+        },
+        "topSellers": {
+            "eyebrow": "Ranking do mês",
+            "title": "Melhores Vendedores",
+            "subtitle": "Os vendedores mais bem avaliados e com maior volume de vendas da plataforma.",
+            "colSeller": "Vendedor",
+            "colLocation": "UF",
+            "colSales": "Vendas",
+            "colRating": "Avaliação",
+            "colBadge": "Selo",
+            "salesUnit": "vendas",
+            "badge_gold": "Ouro",
+            "badge_silver": "Prata",
+            "badge_bronze": "Bronze",
+            "disclaimer": "Dados atualizados mensalmente. Ranking baseado em vendas e avaliações dos compradores."
+        },
+        "sponsored": {
+            "eyebrow": "Parceiros em destaque",
+            "title": "Espaço Patrocinado",
+            "subtitle": "Conheça nossos parceiros que valorizam a avicultura e estão aqui para apoiar você.",
+            "label": "Patrocinado",
+            "sponsor1": {
+                "tagline": "Especialistas em saúde de aves ornamentais",
+                "description": "Clínicas veterinárias parceiras especializadas em aves. Agende sua consulta online e garanta a saúde do seu canário.",
+                "cta": "Agendar Consulta"
+            },
+            "sponsor2": {
+                "tagline": "Transporte seguro e especializado de aves",
+                "description": "Frota climatizada, monitoramento em tempo real e seguro incluso. A forma mais segura de transportar suas aves pelo país.",
+                "cta": "Solicitar Orçamento"
+            },
+            "sponsor3": {
+                "tagline": "Nutrição premium para canários de competição",
+                "description": "Rações e suplementos desenvolvidos por nutrição animal com foco no desempenho e plumagem dos seus canários.",
+                "cta": "Ver Produtos"
+            }
+        }
     },
     "birdsSearch": {
         "title": "Acervo de Aves",
@@ -102,7 +152,339 @@
         "sellerBadge": "Selo Vendedor",
         "protected": "100% Protegido",
         "protectedDesc": "O dinheiro do seu pedido fica seguro até a confirmação da entrega da ave.",
-        "rights": "Todos os direitos reservados."
+        "rights": "Todos os direitos reservados.",
+        "partners": "Parceiros",
+        "partnerVet": "Seja um Veterinário Parceiro",
+        "partnerCarrier": "Seja um Transportador Parceiro",
+        "partnerAdvertise": "Anuncie Conosco"
+    },
+    "comingSoon": {
+        "badge": "Em Breve",
+        "whatsComingLabel": "O que está por vir",
+        "cta": "Ver Aves Disponíveis",
+        "back": "Voltar ao Início",
+        "raffles": {
+            "title": "Rifas de Aves",
+            "description": "Em breve você poderá participar de rifas exclusivas de aves raras e de alto valor. Uma forma divertida e acessível de adquirir sua próxima ave!",
+            "features": [
+                "Rifas semanais com aves raras",
+                "Preços de bilhetes acessíveis",
+                "Sorteios ao vivo e transparentes",
+                "Notificações automáticas para ganhadores"
+            ]
+        },
+        "auctions": {
+            "title": "Leilões de Aves",
+            "description": "Os leilões chegam em breve! Dispute com outros criadores por aves excepcionais em tempo real, com lances que valorizam os melhores espécimes.",
+            "features": [
+                "Leilões em tempo real",
+                "Verificação de qualidade das aves",
+                "Lances seguros e auditáveis",
+                "Histórico de leilões vencidos"
+            ]
+        },
+        "batches": {
+            "title": "Lotes de Aves",
+            "description": "Compre múltiplas aves em lotes especiais com preços ainda mais vantajosos. Ideal para criadores que buscam expandir o plantel com eficiência.",
+            "features": [
+                "Lotes com desconto progressivo",
+                "Categorias por raça e mutação",
+                "Entrega combinada para economizar frete",
+                "Garantia de saúde do plantel"
+            ]
+        }
+    },
+    "partnerCarrier": {
+        "hero": {
+            "eyebrow": "Programa de transportadores parceiros",
+            "titlePart1": "Leve aves com segurança e",
+            "titlePart2": "seja nosso parceiro",
+            "subtitle": "Conecte-se a criadores e compradores que precisam transportar aves com cuidado e responsabilidade. Amplie sua rota, fidelize clientes e seja reconhecido como referência no transporte de animais."
+        },
+        "benefits": {
+            "eyebrow": "Por que ser parceiro",
+            "title": "Vantagens da Parceria",
+            "subtitle": "Faça parte de uma rede que valoriza o transporte seguro e responsável de aves ornamentais.",
+            "demand": {
+                "title": "Demanda Consistente",
+                "desc": "Acesse uma base ativa de criadores e compradores que precisam de frete especializado para aves com regularidade."
+            },
+            "trust": {
+                "title": "Credencial Verificada",
+                "desc": "Seu perfil passa por validação. Os clientes sabem que estão contratando um transportador aprovado pela plataforma."
+            },
+            "routes": {
+                "title": "Novas Rotas e Regiões",
+                "desc": "Descubra oportunidades em rotas que você já faz e expanda sua operação para regiões com alta procura por transporte de aves."
+            },
+            "ratings": {
+                "title": "Reputação e Avaliações",
+                "desc": "Cada entrega bem-feita constrói sua reputação. Avaliações positivas atraem mais clientes e aumentam sua visibilidade."
+            }
+        },
+        "steps": {
+            "eyebrow": "Como funciona",
+            "title": "Seu Caminho até a Parceria",
+            "subtitle": "Processo simples e direto. Do cadastro à primeira viagem em poucos dias.",
+            "apply": {
+                "title": "Cadastre-se",
+                "desc": "Preencha o formulário com seus dados e informações sobre sua frota."
+            },
+            "review": {
+                "title": "Análise",
+                "desc": "Nossa equipe avalia seu perfil e documentação em até 3 dias úteis."
+            },
+            "approved": {
+                "title": "Aprovado",
+                "desc": "Você recebe a confirmação e seu perfil fica disponível para receber solicitações."
+            },
+            "active": {
+                "title": "Comece a Transportar",
+                "desc": "Aceite pedidos de frete e construa sua reputação na plataforma."
+            }
+        },
+        "form": {
+            "eyebrow": "Vamos começar",
+            "title": "Solicite sua Parceria",
+            "subtitle": "Preencha o formulário e nossa equipe entrará em contato em até 3 dias úteis.",
+            "sectionContact": "Dados de contato",
+            "nameLabel": "Nome Completo",
+            "namePlaceholder": "Seu nome",
+            "companyLabel": "Empresa / Transportadora (opcional)",
+            "companyPlaceholder": "Nome da empresa ou transportadora",
+            "emailLabel": "E-mail",
+            "emailPlaceholder": "seu@email.com",
+            "phoneLabel": "Telefone",
+            "phonePlaceholder": "(00) 00000-0000",
+            "cityLabel": "Cidade base",
+            "cityPlaceholder": "Sua cidade principal de operação",
+            "stateLabel": "Estado (UF)",
+            "statePlaceholder": "Ex: SP",
+            "sectionOperational": "Dados operacionais",
+            "vehicleTypeLabel": "Tipo de veículo principal",
+            "vehicleTypePlaceholder": "Selecione",
+            "vehicleCar": "Automóvel / Passeio",
+            "vehicleVan": "Van / Utilitário",
+            "vehicleTruck": "Caminhão",
+            "vehicleTransport": "Veículo de transporte de animais",
+            "plateCountLabel": "Quantidade de veículos na frota",
+            "plateCountPlaceholder": "Selecione",
+            "animalExpLabel": "Experiência com transporte de aves",
+            "animalExpPlaceholder": "Selecione",
+            "expNone": "Nunca transportei aves",
+            "expSome": "Poucas vezes, de forma ocasional",
+            "expRegular": "Faço com regularidade",
+            "expSpecialist": "Especializado em transporte de animais",
+            "routesLabel": "Rotas e regiões atendidas",
+            "routesPlaceholder": "Ex: Interior de SP, litoral de SC, toda a região Sul...",
+            "docLabel": "Documento do veículo ou licença de transporte (opcional)",
+            "docHint": "Clique para enviar um arquivo",
+            "docFormats": "PNG, JPG, WEBP ou PDF · Máx. 10MB",
+            "notesLabel": "Informações adicionais (opcional)",
+            "notesPlaceholder": "Condições de transporte, equipamentos disponíveis, restrições de rota...",
+            "submit": "Enviar Solicitação",
+            "successTitle": "Solicitação Enviada!",
+            "successDesc": "Recebemos seus dados. Nossa equipe analisará seu perfil e retornará em até 3 dias úteis."
+        }
+    },
+    "partnerVet": {
+        "hero": {
+            "eyebrow": "Programa de parceria veterinária",
+            "titlePart1": "Seja o veterinário de referência",
+            "titlePart2": "dos criadores",
+            "subtitle": "Conecte-se a donos e criadores de aves ornamentais que buscam um profissional de confiança. Amplie sua carteira de clientes e seja reconhecido como especialista em avicultura."
+        },
+        "benefits": {
+            "eyebrow": "Por que ser parceiro",
+            "title": "Vantagens da Parceria",
+            "subtitle": "Faça parte de uma rede que valoriza a saúde e o bem-estar das aves.",
+            "reach": {
+                "title": "Alcance Novos Clientes",
+                "desc": "Exponha seu trabalho para milhares de criadores ativos que precisam de orientação veterinária especializada."
+            },
+            "trust": {
+                "title": "Credibilidade e Visibilidade",
+                "desc": "Seu perfil verificado transmite confiança. Os usuários sabem que estão falando com um profissional habilitado."
+            },
+            "grow": {
+                "title": "Cresça sua Prática",
+                "desc": "Consultas, teleatendimentos e indicações. Uma fonte consistente de novos pacientes vindos de quem realmente ama aves."
+            },
+            "referral": {
+                "title": "Rede de Indicações",
+                "desc": "Integrantes da plataforma recomendam os veterinários parceiros entre si, gerando um fluxo orgânico de indicações."
+            }
+        },
+        "steps": {
+            "eyebrow": "Como funciona",
+            "title": "Seu Caminho até a Parceria",
+            "subtitle": "Processo simples e rápido. Do cadastro à aprovação em poucos dias.",
+            "apply": {
+                "title": "Cadastre-se",
+                "desc": "Preencha o formulário com seus dados e credenciais profissionais."
+            },
+            "review": {
+                "title": "Análise",
+                "desc": "Nossa equipe avalia seu perfil e verifica o CRMV em até 3 dias úteis."
+            },
+            "approved": {
+                "title": "Aprovado",
+                "desc": "Você recebe a confirmação e seu perfil fica disponível na plataforma."
+            },
+            "active": {
+                "title": "Comece a Atender",
+                "desc": "Receba contatos de criadores e donos de aves diretamente pelo marketplace."
+            }
+        },
+        "form": {
+            "eyebrow": "Vamos começar",
+            "title": "Solicite sua Parceria",
+            "subtitle": "Preencha o formulário e nossa equipe entrará em contato em até 3 dias úteis.",
+            "sectionPersonal": "Dados de contato",
+            "nameLabel": "Nome Completo",
+            "namePlaceholder": "Dr(a). Seu Nome",
+            "clinicLabel": "Clínica / Consultório (opcional)",
+            "clinicPlaceholder": "Nome do local de atendimento",
+            "emailLabel": "E-mail profissional",
+            "emailPlaceholder": "seu@email.com",
+            "phoneLabel": "Telefone",
+            "phonePlaceholder": "(00) 00000-0000",
+            "cityLabel": "Cidade",
+            "cityPlaceholder": "Sua cidade",
+            "stateLabel": "Estado (UF)",
+            "statePlaceholder": "Ex: SP",
+            "sectionCredentials": "Credenciais profissionais",
+            "crmvLabel": "CRMV",
+            "crmvPlaceholder": "Ex: CRMV-SP 12345",
+            "experienceLabel": "Experiência com aves ornamentais",
+            "experiencePlaceholder": "Selecione",
+            "exp1": "Menos de 1 ano",
+            "exp3": "1 a 3 anos",
+            "exp5": "3 a 5 anos",
+            "exp10": "Mais de 5 anos",
+            "specialtiesLabel": "Especialidades e áreas de atuação",
+            "specialtiesPlaceholder": "Ex: Canários, psitáceos, aves exóticas, cirurgia avícola...",
+            "photoLabel": "Foto profissional ou logotipo da clínica (opcional)",
+            "photoHint": "Clique para enviar uma imagem",
+            "photoFormats": "PNG, JPG ou WEBP · Máx. 5MB",
+            "notesLabel": "Informações adicionais (opcional)",
+            "notesPlaceholder": "Horários de atendimento, teleatendimento, outras informações relevantes...",
+            "submit": "Enviar Solicitação",
+            "successTitle": "Solicitação Enviada!",
+            "successDesc": "Recebemos seus dados. Nossa equipe analisará seu perfil e retornará em até 3 dias úteis."
+        }
+    },
+    "advertise": {
+        "hero": {
+            "eyebrow": "Oportunidade de parceria",
+            "titlePart1": "Anuncie sua marca para",
+            "titlePart2": "milhares de criadores",
+            "subtitle": "Conecte seu negócio ao maior marketplace de canários do Brasil. Alcance um público apaixonado e engajado, pronto para conhecer o que você oferece.",
+            "cta": "Quero Anunciar"
+        },
+        "advantages": {
+            "eyebrow": "Por que anunciar conosco",
+            "title": "Vantagens de ser Patrocinador",
+            "subtitle": "Sua marca ao lado de quem mais entende e ama o mundo das aves.",
+            "brand": {
+                "title": "Destaque sua Marca",
+                "desc": "Posicione sua empresa em espaços de alto destaque na plataforma, garantindo visibilidade para milharees de usuários ativos."
+            },
+            "sales": {
+                "title": "Aumente suas Vendas",
+                "desc": "Alcance compradores e criadores qualificados que estão ativamente buscando produtos e serviços relacionados às aves."
+            },
+            "reach": {
+                "title": "Alcance Milhares",
+                "desc": "Nossa base cresce a cada dia. Seu anúncio é exibido para um público altamente segmentado e engajado."
+            },
+            "speed": {
+                "title": "Ativação Rápida",
+                "desc": "Do contrato à publicação em até 48h. Processo simples, sem burocracia, com suporte dedicado durante toda a parceria."
+            }
+        },
+        "plans": {
+            "eyebrow": "Escolha seu plano",
+            "title": "Planos de Patrocínio",
+            "subtitle": "Escolha a duração ideal e comece a ser visto pelo público certo.",
+            "popular": "Mais Popular",
+            "perMonth": "/ plano",
+            "selectPlan": "Selecionar Plano",
+            "month1": {
+                "name": "1 Mês",
+                "price": "R$ 100",
+                "desc": "Dê o primeiro passo. Ponha sua marca na frente de criadores e compradores apaixonados por aves e veja o que acontece.",
+                "features": [
+                    "Banner no Espaço Patrocinado",
+                    "Logo na página inicial",
+                    "Suporte por e-mail"
+                ]
+            },
+            "month3": {
+                "name": "3 Meses",
+                "price": "R$ 250",
+                "desc": "3 meses é tempo o suficiente para construir reconhecimento. Sua marca já começa a se tornar familiar para quem mais importa.",
+                "features": [
+                    "Tudo do plano Mensal",
+                    "Destaque em Newsletter",
+                    "Relatório mensal de acessos"
+                ]
+            },
+            "month6": {
+                "name": "6 Meses",
+                "price": "R$ 400",
+                "desc": "Com meio ano de presença, você se torna uma referência. Além disso, economiza R$200 em relação ao mensal.",
+                "features": [
+                    "Tudo do plano Trimestral",
+                    "Sessão exclusiva de parceiro",
+                    "Post nas redes sociais",
+                    "Relatório quinzenal"
+                ]
+            },
+            "year1": {
+                "name": "1 Ano",
+                "price": "R$ 600",
+                "desc": "O plano de quem quer ser inesquecível. Presença constante o ano todo e R$600 a menos no bolso.",
+                "features": [
+                    "Tudo do plano Semestral",
+                    "Logotipo no rodapé",
+                    "Banner exclusivo sazonal",
+                    "Gerente de conta dedicado"
+                ]
+            }
+        },
+        "form": {
+            "eyebrow": "Vamos conversar",
+            "title": "Solicite seu Patrocínio",
+            "subtitle": "Preencha o formulário com seus dados e o conteúdo do anúncio. Nossa equipe entrará em contato em até 24h.",
+            "selectedPlan": "Plano selecionado",
+            "sectionContact": "Dados de contato",
+            "nameLabel": "Nome Completo",
+            "namePlaceholder": "Seu nome",
+            "companyLabel": "Empresa / Marca",
+            "companyPlaceholder": "Nome da empresa",
+            "emailLabel": "E-mail",
+            "emailPlaceholder": "seu@email.com",
+            "phoneLabel": "Telefone (opcional)",
+            "phonePlaceholder": "(00) 00000-0000",
+            "sectionAd": "Conteúdo do anúncio",
+            "adTitleLabel": "Título do Anúncio",
+            "adTitlePlaceholder": "Ex: AveVet Clínicas — Saúde para Aves",
+            "adSubtitleLabel": "Subtítulo (opcional)",
+            "adSubtitlePlaceholder": "Ex: Especialistas em aves ornamentais",
+            "adDescLabel": "Descrição",
+            "adDescPlaceholder": "Descreva o que você oferece, seus diferenciais e por que os visitantes devem clicar no seu anúncio.",
+            "adUrlLabel": "Site / URL do destino (opcional)",
+            "adUrlPlaceholder": "https://www.suaempresa.com.br",
+            "adImageLabel": "Imagem do Anúncio",
+            "adImageHint": "Clique para enviar uma imagem",
+            "adImageFormats": "PNG, JPG, WEBP ou SVG · Máx. 5MB",
+            "adNotesLabel": "Observações (opcional)",
+            "adNotesPlaceholder": "Informações adicionais, preferências de veiculação ou qualquer detalhe importante...",
+            "submit": "Enviar Solicitação",
+            "successTitle": "Solicitação Enviada!",
+            "successDesc": "Recebemos seu contato. Nossa equipe analisará sua solicitação e retornará em até 24 horas."
+        }
     },
     "listingCard": {
         "available": "Disponível",
@@ -162,7 +544,20 @@
     },
     "dashboard": {
         "favorites": {
-            "title": "Meus Favoritos"
+            "title": "Meus Favoritos",
+            "subtitle": "Anúncios que você marcou com gostei",
+            "count_one": "favorito",
+            "count_other": "favoritos",
+            "unauthenticated": {
+                "title": "Faça login para ver seus favoritos",
+                "desc": "Crie uma conta ou faça login para salvar seus anúncios favoritos e acessá-los mais tarde.",
+                "button": "Entrar na minha conta"
+            },
+            "empty": {
+                "title": "Você ainda não tem favoritos",
+                "desc": "Explore o marketplace e clique no coração dos anúncios que você mais gostar para salvá-los aqui.",
+                "button": "Explorar Aves"
+            }
         },
         "orders": {
             "title": "Meus Pedidos",
@@ -202,12 +597,17 @@
         },
         "editListing": {
             "title": "Editar Anúncio",
-            "description": "Atualize o valor de venda e demais características alteráveis do anúncio."
+            "description": "Atualize o valor de venda e demais características alteráveis do anúncio.",
+            "errors": {
+                "notEditable": "Apenas anúncios Pausados ou em Rascunho podem ser editados.",
+                "noPermission": "Você não tem permissão para editar este anúncio."
+            }
         },
         "createListing": {
             "title": "Criar Novo Anúncio",
             "description": "Preencha os dados da ave e o valor para publicá-la no marketplace.",
             "birdSection": "Detalhes da Ave",
+            "birdSectionReadOnly": " (Somente Leitura)",
             "listingSection": "Detalhes da Venda",
             "fields": {
                 "species": "Espécie",
@@ -246,6 +646,10 @@
     "profile": {
         "title": "Meu Perfil",
         "description": "Visualize e atualize suas informações de conta.",
+        "roleAdmin": "Administrador",
+        "roleUser": "Conta Ativa",
+        "emailHelp": "O e-mail não pode ser alterado após o cadastro.",
+        "cpfHelp": "Documento fiscal bloqueado para edição.",
         "personalInfo": "Informações Pessoais",
         "nameLabel": "Nome Completo",
         "emailLabel": "E-mail (Acesso)",
@@ -267,5 +671,133 @@
         "avatarUpdateError": "Erro ao atualizar foto",
         "avatarSizeError": "A foto deve ter no máximo 5MB",
         "avatarTypeError": "Formato inválido. Use JPG, PNG ou WebP"
+    },
+    "pagination": {
+        "previous": "Anterior",
+        "next": "Próximo",
+        "pageOf": "Página {current} de {total}",
+        "recordSingular": "registro",
+        "recordPlural": "registros",
+        "totalInfo": "{total} {label} no total"
+    },
+    "setupAccount": {
+        "form": {
+            "title": "Crie sua Senha",
+            "subtitle": "Sua parceria foi aprovada. Defina sua senha de acesso abaixo.",
+            "passwordLabel": "Nova Senha",
+            "confirmPasswordLabel": "Confirme a Senha",
+            "submitButton": "Salvar e Continuar"
+        },
+        "success": {
+            "title": "Senha definida com sucesso!",
+            "desc": "Sua conta agora está ativa. Você já pode acessar a plataforma utilizando o seu e-mail e a senha que acabou de criar.",
+            "loginButton": "Acessar Plataforma"
+        },
+        "error": {
+            "invalidLink": "Link Inválido ou Expirado",
+            "missingToken": "O token de verificação é obrigatório.",
+            "missingTokenDesc": "O link de configuração que você utilizou não possui um token válido ou já expirou. Verifique seu e-mail ou entre em contato com o suporte.",
+            "passwordMismatch": "As senhas digitadas não coincidem.",
+            "passwordLength": "A senha deve conter no mínimo 6 caracteres.",
+            "generic": "Ocorreu um erro inesperado ao definir sua senha."
+        }
+    },
+    "admin": {
+        "dashboard": {
+            "title": "Visão Geral",
+            "welcome": "Bem-vindo ao painel administrativo. Selecione uma opção no menu lateral para gerenciar as entidades da plataforma.",
+            "pendingUsers": "Usuários Pendentes",
+            "pendingUsersDesc": "Gerencie parceiros aguardando aprovação na aba de Usuários."
+        },
+        "sidebar": {
+            "groupAdmin": "Administração",
+            "groupUsers": "Usuários & Parceiros",
+            "groupContent": "Gestão de Conteúdo",
+            "groupFinance": "Gestão Financeira",
+            "navOverview": "Visão Geral",
+            "navMembers": "Membros e Usuários",
+            "navVets": "Veterinários Parceiros",
+            "navCarriers": "Transportadores Parceiros",
+            "navSponsors": "Patrocinadores",
+            "navListings": "Anúncios",
+            "navRaffles": "Rifas",
+            "navAuctions": "Leilões",
+            "navBatches": "Lotes",
+            "navCoupons": "Cupons de Desconto",
+            "navPayouts": "Repasses ao Vendedor",
+            "navFees": "Taxas da Plataforma"
+        },
+        "users": {
+            "roles": {
+                "admin": "Admin",
+                "member": "Membro",
+                "vet": "Vet Parceiro",
+                "carrier": "Transp. Parceiro",
+                "unknown": "Desconhecido"
+            },
+            "status": {
+                "all": "Todos Status",
+                "active": "Ativos",
+                "pending": "Pendentes",
+                "suspended": "Suspensos",
+                "blocked": "Bloqueados",
+                "labelActive": "Ativo",
+                "labelPending": "Pendente",
+                "labelSuspended": "Suspenso",
+                "labelBlocked": "Bloqueado"
+            },
+            "searchPlaceholder": "Buscar por nome, email ou CPF",
+            "colId": "ID",
+            "colUser": "Usuário",
+            "colRole": "Papel & Ref",
+            "colRating": "Reputação",
+            "colStatus": "Status",
+            "colActions": "Ações",
+            "noPhone": "Sem fone",
+            "loading": "Buscando registros...",
+            "emptyTitle": "Nenhum resultado encontrado.",
+            "emptyDesc": "Tente ajustar seus filtros de busca para esta tabela.",
+            "actionView": "Visualizar Detalhes",
+            "actionApprove": "Aprovar Parceiro",
+            "actionSuspend": "Suspender Temporariamente",
+            "actionBlock": "Bloquear Definitivamente",
+            "confirmBlock": "Deseja realmente bloquear este usuário permanentemente?",
+            "toastApproveSuccess": "Usuário aprovado com sucesso",
+            "toastApproveError": "Erro ao aprovar usuário",
+            "toastSuspendSuccess": "Usuário suspenso",
+            "toastSuspendError": "Erro ao suspender usuário",
+            "toastBlockSuccess": "Usuário bloqueado permanentemente",
+            "toastBlockError": "Erro ao bloquear usuário"
+        },
+        "pages": {
+            "members": {
+                "eyebrow": "Administração / Membros",
+                "title": "Membros e Usuários",
+                "subtitle": "Consumidores, criadores e entusiastas utilizando o ecossistema P2P"
+            },
+            "vets": {
+                "eyebrow": "Administração / Setor Veterinário",
+                "title": "Veterinários Parceiros",
+                "subtitle": "Gerencie os médicos veterinários responsáveis por atestar a saúde das aves"
+            },
+            "carriers": {
+                "eyebrow": "Administração / Setor Logístico",
+                "title": "Transportadores Parceiros",
+                "subtitle": "Acompanhe e valide a rede de transportadores parceiros no sistema"
+            },
+            "underDevelopment": {
+                "title": "Em Desenvolvimento",
+                "description": "Esta seção será responsável pela moderação de {entity}.",
+                "entities": {
+                    "listings": "Anúncios e denúncias de Aves",
+                    "raffles": "Sorteios ativos e auditados",
+                    "auctions": "Leilões ao vivo e lances suspensos",
+                    "batches": "Análise de Lotes corporativos",
+                    "coupons": "Emissão de Cupons e vouchers",
+                    "payouts": "Aprovação de Payouts quinzenais",
+                    "fees": "Configuração da Taxa da Plataforma e Gateway"
+                }
+            }
+        }
     }
 }

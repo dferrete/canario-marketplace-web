@@ -1,0 +1,87 @@
+name: Deploy to DigitalOcean Staging
+
+on:
+  push:
+    branches:
+      - develop
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=staging
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            NEXT_PUBLIC_API_URL=${{ secrets.STAGING_NEXT_PUBLIC_API_URL }}
+
+  deploy-to-droplet:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Execute Remote SSH Commands
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USERNAME }}
+          key: ${{ secrets.STAGING_SSH_KEY }}
+          envs: GITHUB_TOKEN
+          script: |
+            # Navigate to the workspace
+            mkdir -p /opt/canario-marketplace-web
+            cd /opt/canario-marketplace-web || exit
+            
+            # Export the TAG and Github Owner variable for docker-compose
+            export IMAGE_TAG=staging
+            export GITHUB_REPOSITORY_OWNER=${{ github.repository_owner }}
+            
+            # Clone or just pull the repository containing the docker-compose file
+            if [ ! -d ".git" ]; then
+              git clone -b develop https://github.com/${{ github.repository }}.git .
+            else
+              git fetch origin develop
+              git reset --hard origin/develop
+            fi
+            
+            # Login to GHCR to pull the fresh image
+            echo $GITHUB_TOKEN | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            
+            # Pull the new image and re-create both services
+            docker compose -f docker-compose.prod.yml pull web
+            docker compose -f docker-compose.prod.yml up -d --remove-orphans web nginx
+            
+            # Cleanup old dangling images to save disk space
+            docker image prune -f

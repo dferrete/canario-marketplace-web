@@ -14,7 +14,8 @@
         "hello": "Hello",
         "myProfile": "My Profile",
         "favorites": "Favorites",
-        "myListings": "My Listings"
+        "myListings": "My Listings",
+        "adminPanel": "Admin Panel"
     },
     "auth": {
         "login": {
@@ -72,9 +73,58 @@
         "subtitle": "Browse active offers from the best breeders in the country. 100% secure platform with delivery guarantee.",
         "noListingsTitle": "No offers available",
         "noListingsDesc": "Breeders haven't posted new birds today.",
+        "availableBirdsEyebrow": "Live marketplace",
         "availableBirds": "Featured Birds",
-        "availableBirdsSubtitle": "Explore our collection of the best birds from selected breeders. Find the perfect canary for you.",
-        "viewAll": "View All"
+        "availableBirdsSubtitle": "Explore our collection of the best birds from the best selected sellers. Find the perfect canary for you.",
+        "viewAll": "View All",
+        "categories": {
+            "eyebrow": "Browse by category",
+            "title": "Our Categories",
+            "subtitle": "Find the right category for the canary you are looking for.",
+            "sizeCanary": "Posture Canary",
+            "sizeCanaryDesc": "Birds selected for body structure, proportions and elegance. Ideal for exhibitors and high-standard breeders.",
+            "colorCanary": "Color Canary",
+            "colorCanaryDesc": "Specimens with rare genetic mutations and vibrant coloring. A living palette of unique and striking tones.",
+            "singCanary": "Singing Canary",
+            "singCanaryDesc": "Birds with refined melody and distinctive vocal technique. For those who appreciate the harmonious song of canaries.",
+            "exploreLink": "Explore category"
+        },
+        "topSellers": {
+            "eyebrow": "Monthly ranking",
+            "title": "Top Sellers",
+            "subtitle": "The highest-rated breeders with the most sales on the platform.",
+            "colSeller": "Seller",
+            "colLocation": "State",
+            "colSales": "Sales",
+            "colRating": "Rating",
+            "colBadge": "Badge",
+            "salesUnit": "sales",
+            "badge_gold": "Gold",
+            "badge_silver": "Silver",
+            "badge_bronze": "Bronze",
+            "disclaimer": "Data updated monthly. Ranking based on sales and buyer reviews."
+        },
+        "sponsored": {
+            "eyebrow": "Featured partners",
+            "title": "Sponsored Space",
+            "subtitle": "Meet our partners who value aviculture and are here to support you.",
+            "label": "Sponsored",
+            "sponsor1": {
+                "tagline": "Specialists in ornamental bird health",
+                "description": "Partner vet clinics specialized in birds. Book your consultation online and ensure your canary's health.",
+                "cta": "Book a Consultation"
+            },
+            "sponsor2": {
+                "tagline": "Safe and specialized bird transport",
+                "description": "Climate-controlled fleet, real-time tracking, and insurance included. The safest way to transport your birds across the country.",
+                "cta": "Request a Quote"
+            },
+            "sponsor3": {
+                "tagline": "Premium nutrition for competition canaries",
+                "description": "Feed and supplements developed by animal nutrition experts focused on the performance and plumage of your canaries.",
+                "cta": "View Products"
+            }
+        }
     },
     "birdsSearch": {
         "title": "Bird Collection",
@@ -102,7 +152,339 @@
         "sellerBadge": "Seller Badge",
         "protected": "100% Protected",
         "protectedDesc": "Your order money is safe until the bird delivery is confirmed.",
-        "rights": "All rights reserved."
+        "rights": "All rights reserved.",
+        "partners": "Partners",
+        "partnerVet": "Become a Partner Vet",
+        "partnerCarrier": "Become a Partner Carrier",
+        "partnerAdvertise": "Advertise with Us"
+    },
+    "comingSoon": {
+        "badge": "Coming Soon",
+        "whatsComingLabel": "What's coming",
+        "cta": "Browse Available Birds",
+        "back": "Back to Home",
+        "raffles": {
+            "title": "Bird Raffles",
+            "description": "Soon you'll be able to join exclusive raffles for rare and high-value birds. A fun and affordable way to get your next feathered companion!",
+            "features": [
+                "Weekly raffles with rare birds",
+                "Affordable ticket prices",
+                "Live and transparent draws",
+                "Automatic winner notifications"
+            ]
+        },
+        "auctions": {
+            "title": "Bird Auctions",
+            "description": "Auctions are coming soon! Compete with other breeders for exceptional birds in real time, with bids that reflect the best specimens.",
+            "features": [
+                "Real-time auctions",
+                "Bird quality verification",
+                "Secure and auditable bids",
+                "Won auctions history"
+            ]
+        },
+        "batches": {
+            "title": "Bird Batches",
+            "description": "Buy multiple birds in special batches with even better prices. Ideal for breeders looking to expand their flock efficiently.",
+            "features": [
+                "Progressive batch discounts",
+                "Categories by breed and mutation",
+                "Combined delivery to save shipping",
+                "Flock health guarantee"
+            ]
+        }
+    },
+    "partnerCarrier": {
+        "hero": {
+            "eyebrow": "Partner carrier program",
+            "titlePart1": "Transport birds safely and",
+            "titlePart2": "become our partner",
+            "subtitle": "Connect with breeders and buyers who need to transport birds with care and responsibility. Expand your routes, build loyal customers, and be recognized as a specialist in animal transportation."
+        },
+        "benefits": {
+            "eyebrow": "Why become a partner",
+            "title": "Partnership Benefits",
+            "subtitle": "Be part of a network that values safe and responsible transportation of ornamental birds.",
+            "demand": {
+                "title": "Consistent Demand",
+                "desc": "Access an active base of breeders and buyers who regularly need specialized freight for birds."
+            },
+            "trust": {
+                "title": "Verified Credential",
+                "desc": "Your profile goes through validation. Clients know they're hiring a carrier approved by the platform."
+            },
+            "routes": {
+                "title": "New Routes and Regions",
+                "desc": "Discover opportunities on routes you already cover and expand into regions with high demand for bird transport."
+            },
+            "ratings": {
+                "title": "Reputation and Ratings",
+                "desc": "Every successful delivery builds your reputation. Positive ratings attract more clients and increase your visibility."
+            }
+        },
+        "steps": {
+            "eyebrow": "How it works",
+            "title": "Your Path to Partnership",
+            "subtitle": "Simple and straightforward process. From registration to your first trip in just a few days.",
+            "apply": {
+                "title": "Sign Up",
+                "desc": "Fill out the form with your details and information about your fleet."
+            },
+            "review": {
+                "title": "Review",
+                "desc": "Our team evaluates your profile and documentation within 3 business days."
+            },
+            "approved": {
+                "title": "Approved",
+                "desc": "You receive confirmation and your profile becomes available to receive requests."
+            },
+            "active": {
+                "title": "Start Delivering",
+                "desc": "Accept freight requests and build your reputation on the platform."
+            }
+        },
+        "form": {
+            "eyebrow": "Let's get started",
+            "title": "Request Your Partnership",
+            "subtitle": "Fill out the form and our team will get back to you within 3 business days.",
+            "sectionContact": "Contact details",
+            "nameLabel": "Full Name",
+            "namePlaceholder": "Your name",
+            "companyLabel": "Company / Carrier (optional)",
+            "companyPlaceholder": "Company or carrier name",
+            "emailLabel": "Email",
+            "emailPlaceholder": "your@email.com",
+            "phoneLabel": "Phone",
+            "phonePlaceholder": "(00) 000-0000",
+            "cityLabel": "Home base city",
+            "cityPlaceholder": "Your main operating city",
+            "stateLabel": "State",
+            "statePlaceholder": "Ex: CA",
+            "sectionOperational": "Operational details",
+            "vehicleTypeLabel": "Primary vehicle type",
+            "vehicleTypePlaceholder": "Select",
+            "vehicleCar": "Car / Passenger vehicle",
+            "vehicleVan": "Van / Light commercial",
+            "vehicleTruck": "Truck",
+            "vehicleTransport": "Dedicated animal transport vehicle",
+            "plateCountLabel": "Number of vehicles in fleet",
+            "plateCountPlaceholder": "Select",
+            "animalExpLabel": "Experience transporting birds",
+            "animalExpPlaceholder": "Select",
+            "expNone": "Never transported birds",
+            "expSome": "A few times, occasionally",
+            "expRegular": "I do it regularly",
+            "expSpecialist": "Specialized in animal transport",
+            "routesLabel": "Routes and regions served",
+            "routesPlaceholder": "Ex: Northeast corridor, Pacific coast, nationwide...",
+            "docLabel": "Vehicle document or transport license (optional)",
+            "docHint": "Click to upload a file",
+            "docFormats": "PNG, JPG, WEBP or PDF · Max. 10MB",
+            "notesLabel": "Additional information (optional)",
+            "notesPlaceholder": "Transport conditions, available equipment, route restrictions...",
+            "submit": "Send Request",
+            "successTitle": "Request Sent!",
+            "successDesc": "We received your information. Our team will review your profile and get back to you within 3 business days."
+        }
+    },
+    "partnerVet": {
+        "hero": {
+            "eyebrow": "Veterinary partnership program",
+            "titlePart1": "Become the go-to vet",
+            "titlePart2": "for breeders",
+            "subtitle": "Connect with ornamental bird owners and breeders looking for a trusted professional. Grow your client base and build your reputation as an avian care specialist."
+        },
+        "benefits": {
+            "eyebrow": "Why join as a partner",
+            "title": "Partnership Benefits",
+            "subtitle": "Be part of a network that values the health and well-being of birds.",
+            "reach": {
+                "title": "Reach New Clients",
+                "desc": "Expose your work to thousands of active breeders who need specialized avian veterinary guidance."
+            },
+            "trust": {
+                "title": "Credibility and Visibility",
+                "desc": "Your verified profile builds trust. Users know they're talking to a licensed professional."
+            },
+            "grow": {
+                "title": "Grow Your Practice",
+                "desc": "Consultations, telehealth and referrals. A consistent source of new patients from people who truly love birds."
+            },
+            "referral": {
+                "title": "Referral Network",
+                "desc": "Platform members recommend partner vets to each other, generating an organic flow of referrals."
+            }
+        },
+        "steps": {
+            "eyebrow": "How it works",
+            "title": "Your Path to Partnership",
+            "subtitle": "Simple and fast process. From sign-up to approval in just a few days.",
+            "apply": {
+                "title": "Sign Up",
+                "desc": "Fill out the form with your personal details and professional credentials."
+            },
+            "review": {
+                "title": "Review",
+                "desc": "Our team evaluates your profile and verifies your license within 3 business days."
+            },
+            "approved": {
+                "title": "Approved",
+                "desc": "You receive confirmation and your profile becomes visible on the platform."
+            },
+            "active": {
+                "title": "Start Seeing Patients",
+                "desc": "Receive contacts from breeders and bird owners directly through the marketplace."
+            }
+        },
+        "form": {
+            "eyebrow": "Let's get started",
+            "title": "Request Your Partnership",
+            "subtitle": "Fill out the form and our team will get back to you within 3 business days.",
+            "sectionPersonal": "Contact details",
+            "nameLabel": "Full Name",
+            "namePlaceholder": "Dr./Dr. Your Name",
+            "clinicLabel": "Clinic / Practice (optional)",
+            "clinicPlaceholder": "Name of your practice",
+            "emailLabel": "Professional email",
+            "emailPlaceholder": "your@email.com",
+            "phoneLabel": "Phone",
+            "phonePlaceholder": "(00) 000-0000",
+            "cityLabel": "City",
+            "cityPlaceholder": "Your city",
+            "stateLabel": "State",
+            "statePlaceholder": "Ex: CA",
+            "sectionCredentials": "Professional credentials",
+            "crmvLabel": "Veterinary License Number",
+            "crmvPlaceholder": "Ex: CRMV-SP 12345",
+            "experienceLabel": "Experience with ornamental birds",
+            "experiencePlaceholder": "Select",
+            "exp1": "Less than 1 year",
+            "exp3": "1 to 3 years",
+            "exp5": "3 to 5 years",
+            "exp10": "More than 5 years",
+            "specialtiesLabel": "Specialties and areas of practice",
+            "specialtiesPlaceholder": "Ex: Canaries, parrots, exotic birds, avian surgery...",
+            "photoLabel": "Professional photo or clinic logo (optional)",
+            "photoHint": "Click to upload an image",
+            "photoFormats": "PNG, JPG or WEBP · Max. 5MB",
+            "notesLabel": "Additional information (optional)",
+            "notesPlaceholder": "Office hours, telehealth availability, other relevant details...",
+            "submit": "Send Request",
+            "successTitle": "Request Sent!",
+            "successDesc": "We received your information. Our team will review your profile and get back to you within 3 business days."
+        }
+    },
+    "advertise": {
+        "hero": {
+            "eyebrow": "Partnership opportunity",
+            "titlePart1": "Advertise your brand to",
+            "titlePart2": "thousands of breeders",
+            "subtitle": "Connect your business to Brazil's largest canary marketplace. Reach a passionate and engaged audience ready to discover what you offer.",
+            "cta": "I Want to Advertise"
+        },
+        "advantages": {
+            "eyebrow": "Why advertise with us",
+            "title": "Benefits of Being a Sponsor",
+            "subtitle": "Your brand alongside those who most understand and love the world of birds.",
+            "brand": {
+                "title": "Highlight Your Brand",
+                "desc": "Position your company in high-visibility spaces on the platform, ensuring exposure to thousands of active users."
+            },
+            "sales": {
+                "title": "Increase Your Sales",
+                "desc": "Reach qualified buyers and breeders who are actively searching for bird-related products and services."
+            },
+            "reach": {
+                "title": "Reach Thousands",
+                "desc": "Our audience grows every day. Your ad is shown to a highly segmented and engaged public."
+            },
+            "speed": {
+                "title": "Fast Activation",
+                "desc": "From contract to publication in up to 48h. Simple process, no red tape, with dedicated support throughout the partnership."
+            }
+        },
+        "plans": {
+            "eyebrow": "Choose your plan",
+            "title": "Sponsorship Plans",
+            "subtitle": "Choose the ideal duration and start being seen by the right audience.",
+            "popular": "Most Popular",
+            "perMonth": "/ plan",
+            "selectPlan": "Select Plan",
+            "month1": {
+                "name": "1 Month",
+                "price": "R$ 100",
+                "desc": "Take the first step. Put your brand in front of passionate breeders and buyers and see what happens.",
+                "features": [
+                    "Banner in Sponsored Space",
+                    "Logo on home page",
+                    "Email support"
+                ]
+            },
+            "month3": {
+                "name": "3 Months",
+                "price": "R$ 250",
+                "desc": "3 months is just enough time to build recognition. Your brand starts feeling familiar to the people who matter most.",
+                "features": [
+                    "Everything in Monthly",
+                    "Newsletter highlight",
+                    "Monthly access report"
+                ]
+            },
+            "month6": {
+                "name": "6 Months",
+                "price": "R$ 400",
+                "desc": "With half a year of presence, you become a go-to name. Plus, you save R$200 compared to going month by month.",
+                "features": [
+                    "Everything in Quarterly",
+                    "Exclusive partner section",
+                    "Social media post",
+                    "Bi-weekly report"
+                ]
+            },
+            "year1": {
+                "name": "1 Year",
+                "price": "R$ 600",
+                "desc": "The plan for those who want to be unforgettable. Always on, all year long, and R$600 less in your pocket.",
+                "features": [
+                    "Everything in Semi-annual",
+                    "Logo in footer",
+                    "Exclusive seasonal banner",
+                    "Dedicated account manager"
+                ]
+            }
+        },
+        "form": {
+            "eyebrow": "Let's talk",
+            "title": "Request Your Sponsorship",
+            "subtitle": "Fill out the form with your details and ad content. Our team will get back to you within 24h.",
+            "selectedPlan": "Selected plan",
+            "sectionContact": "Contact details",
+            "nameLabel": "Full Name",
+            "namePlaceholder": "Your name",
+            "companyLabel": "Company / Brand",
+            "companyPlaceholder": "Company name",
+            "emailLabel": "Email",
+            "emailPlaceholder": "your@email.com",
+            "phoneLabel": "Phone (optional)",
+            "phonePlaceholder": "(00) 000-0000",
+            "sectionAd": "Ad content",
+            "adTitleLabel": "Ad Title",
+            "adTitlePlaceholder": "Ex: AveVet Clinics — Health for Birds",
+            "adSubtitleLabel": "Subtitle (optional)",
+            "adSubtitlePlaceholder": "Ex: Specialists in ornamental birds",
+            "adDescLabel": "Description",
+            "adDescPlaceholder": "Describe what you offer, your differentials, and why visitors should click on your ad.",
+            "adUrlLabel": "Website / Destination URL (optional)",
+            "adUrlPlaceholder": "https://www.yourcompany.com",
+            "adImageLabel": "Ad Image",
+            "adImageHint": "Click to upload an image",
+            "adImageFormats": "PNG, JPG, WEBP or SVG · Max. 5MB",
+            "adNotesLabel": "Notes (optional)",
+            "adNotesPlaceholder": "Additional information, placement preferences, or any important details...",
+            "submit": "Send Request",
+            "successTitle": "Request Sent!",
+            "successDesc": "We received your contact. Our team will review your request and get back to you within 24 hours."
+        }
     },
     "listingCard": {
         "available": "Available",
@@ -163,7 +545,20 @@
     },
     "dashboard": {
         "favorites": {
-            "title": "My Favorites"
+            "title": "My Favorites",
+            "subtitle": "Listings you have liked",
+            "count_one": "favorite",
+            "count_other": "favorites",
+            "unauthenticated": {
+                "title": "Sign in to view your favorites",
+                "desc": "Create an account or sign in to save your favorite listings and access them later.",
+                "button": "Sign in to my account"
+            },
+            "empty": {
+                "title": "You have no favorites yet",
+                "desc": "Explore the marketplace and click the heart on the listings you like the most to save them here.",
+                "button": "Explore Birds"
+            }
         },
         "orders": {
             "title": "My Orders",
@@ -203,12 +598,17 @@
         },
         "editListing": {
             "title": "Edit Listing",
-            "description": "Update the selling price and other mutable characteristics of the listing."
+            "description": "Update the selling price and other alterable features of the listing.",
+            "errors": {
+                "notEditable": "Only Paused or Draft listings can be edited.",
+                "noPermission": "You do not have permission to edit this listing."
+            }
         },
         "createListing": {
             "title": "Create New Listing",
             "description": "Fill in the bird's details and price to publish it on the marketplace.",
             "birdSection": "Bird Details",
+            "birdSectionReadOnly": " (Read Only)",
             "listingSection": "Sale Details",
             "fields": {
                 "species": "Species",
@@ -247,6 +647,10 @@
     "profile": {
         "title": "My Profile",
         "description": "View and update your account information.",
+        "roleAdmin": "Administrator",
+        "roleUser": "Active Account",
+        "emailHelp": "The email cannot be changed after registration.",
+        "cpfHelp": "Tax document is locked for editing.",
         "personalInfo": "Personal Information",
         "nameLabel": "Full Name",
         "emailLabel": "Email (Access)",
@@ -268,5 +672,133 @@
         "avatarUpdateError": "Error updating picture",
         "avatarSizeError": "Image must be under 5MB",
         "avatarTypeError": "Invalid format. Use JPG, PNG or WebP"
+    },
+    "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {current} of {total}",
+        "recordSingular": "record",
+        "recordPlural": "records",
+        "totalInfo": "{total} {label} in total"
+    },
+    "setupAccount": {
+        "form": {
+            "title": "Create your Password",
+            "subtitle": "Your partnership was approved. Set your access password below.",
+            "passwordLabel": "New Password",
+            "confirmPasswordLabel": "Confirm Password",
+            "submitButton": "Save and Continue"
+        },
+        "success": {
+            "title": "Password saved successfully!",
+            "desc": "Your account is now active. You can now log into the platform using your email and the newly created password.",
+            "loginButton": "Go to Platform"
+        },
+        "error": {
+            "invalidLink": "Invalid or Expired Link",
+            "missingToken": "The verification token is required.",
+            "missingTokenDesc": "The setup link you used does not have a valid token or has expired. Check your email or contact support.",
+            "passwordMismatch": "The passwords do not match.",
+            "passwordLength": "The password must be at least 6 characters long.",
+            "generic": "An unexpected error occurred while setting your password."
+        }
+    },
+    "admin": {
+        "dashboard": {
+            "title": "Overview",
+            "welcome": "Welcome to the administrative panel. Select an option from the sidebar to manage platform entities.",
+            "pendingUsers": "Pending Users",
+            "pendingUsersDesc": "Manage logistics and veterinary partners waiting for approval in the Users tab."
+        },
+        "sidebar": {
+            "groupAdmin": "Administration",
+            "groupUsers": "Users & Partners",
+            "groupContent": "Content Management",
+            "groupFinance": "Financial Management",
+            "navOverview": "Overview",
+            "navMembers": "Members & Users",
+            "navVets": "Partner Vets",
+            "navCarriers": "Partner Carriers",
+            "navSponsors": "Sponsors",
+            "navListings": "Listings",
+            "navRaffles": "Raffles",
+            "navAuctions": "Auctions",
+            "navBatches": "Batches",
+            "navCoupons": "Discount Coupons",
+            "navPayouts": "Seller Payouts",
+            "navFees": "Platform Fees"
+        },
+        "users": {
+            "roles": {
+                "admin": "Admin",
+                "member": "Member",
+                "vet": "Partner Vet",
+                "carrier": "Partner Carrier",
+                "unknown": "Unknown"
+            },
+            "status": {
+                "all": "All Statuses",
+                "active": "Active",
+                "pending": "Pending",
+                "suspended": "Suspended",
+                "blocked": "Blocked",
+                "labelActive": "Active",
+                "labelPending": "Pending",
+                "labelSuspended": "Suspended",
+                "labelBlocked": "Blocked"
+            },
+            "searchPlaceholder": "Search by name, email or CPF",
+            "colId": "ID",
+            "colUser": "User",
+            "colRole": "Role & Ref",
+            "colRating": "Reputation",
+            "colStatus": "Status",
+            "colActions": "Actions",
+            "noPhone": "No phone",
+            "loading": "Fetching records...",
+            "emptyTitle": "No results found.",
+            "emptyDesc": "Try adjusting your search filters for this table.",
+            "actionView": "View Details",
+            "actionApprove": "Approve Partner",
+            "actionSuspend": "Suspend Temporarily",
+            "actionBlock": "Block Permanently",
+            "confirmBlock": "Are you sure you want to permanently block this user?",
+            "toastApproveSuccess": "User successfully approved",
+            "toastApproveError": "Error approving user",
+            "toastSuspendSuccess": "User suspended",
+            "toastSuspendError": "Error suspending user",
+            "toastBlockSuccess": "User permanently blocked",
+            "toastBlockError": "Error blocking user"
+        },
+        "pages": {
+            "members": {
+                "eyebrow": "Administration / Members",
+                "title": "Members & Users",
+                "subtitle": "Consumers, breeders, and enthusiasts using the P2P ecosystem"
+            },
+            "vets": {
+                "eyebrow": "Administration / Veterinary Sector",
+                "title": "Partner Vets",
+                "subtitle": "Manage veterinarians responsible for certifying the health of birds"
+            },
+            "carriers": {
+                "eyebrow": "Administration / Logistics Sector",
+                "title": "Partner Carriers",
+                "subtitle": "Monitor and validate the partner carrier network in the system"
+            },
+            "underDevelopment": {
+                "title": "Under Development",
+                "description": "This section will be responsible for the moderation of {entity}.",
+                "entities": {
+                    "listings": "Bird listings and reports",
+                    "raffles": "Active and audited raffles",
+                    "auctions": "Live auctions and suspended bids",
+                    "batches": "Corporate batch analysis",
+                    "coupons": "Issuing of coupons and vouchers",
+                    "payouts": "Approval of bi-weekly payouts",
+                    "fees": "Configuration of Platform and Gateway Fees"
+                }
+            }
+        }
     }
 }

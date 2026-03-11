@@ -9,35 +9,40 @@ export function Footer() {
 
     return (
         <footer className="bg-surface border-t border-border mt-auto w-full pt-12 pb-8">
-            <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+
+                {/* Col 1 — Brand */}
                 <div>
                     <h3 className="font-bold text-primary text-xl mb-4">Canário Marketplace</h3>
-                    <p className="text-foreground/70 text-sm leading-relaxed max-w-xs">
+                    <p className="text-foreground/70 text-sm leading-relaxed">
                         {t("footer.description")}
                     </p>
-                    <div className="flex gap-4 mt-6">
-                        <a href="#" className="p-2 bg-primary/10 text-primary hover:bg-primary/20 hover:text-primary-hover rounded-full transition-colors">
+                    <div className="flex gap-3 mt-6">
+                        <a href="#" className="p-2 bg-primary/10 text-primary hover:bg-primary/20 rounded-full transition-colors">
                             <Facebook className="w-4 h-4" />
                         </a>
-                        <a href="#" className="p-2 bg-primary/10 text-primary hover:bg-primary/20 hover:text-primary-hover rounded-full transition-colors">
+                        <a href="#" className="p-2 bg-primary/10 text-primary hover:bg-primary/20 rounded-full transition-colors">
                             <Instagram className="w-4 h-4" />
                         </a>
-                        <a href="#" className="p-2 bg-primary/10 text-primary hover:bg-primary/20 hover:text-primary-hover rounded-full transition-colors">
+                        <a href="#" className="p-2 bg-primary/10 text-primary hover:bg-primary/20 rounded-full transition-colors">
                             <Twitter className="w-4 h-4" />
                         </a>
                     </div>
                 </div>
 
+                {/* Col 2 — Navigation */}
                 <div>
                     <h4 className="font-bold text-foreground mb-4">{t("footer.navigation")}</h4>
                     <ul className="space-y-3">
                         <li><Link href="/" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.home")}</Link></li>
-                        <li><Link href="/" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.showcase")}</Link></li>
-                        <li><Link href="#" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.sell")}</Link></li>
-                        <li><Link href="#" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.orders")}</Link></li>
+                        <li><Link href="/listings" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.showcase")}</Link></li>
+                        <li><Link href="/raffles" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("nav.raffles")}</Link></li>
+                        <li><Link href="/auctions" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("nav.auctions")}</Link></li>
+                        <li><Link href="/batches" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("nav.batches")}</Link></li>
                     </ul>
                 </div>
 
+                {/* Col 3 — Support */}
                 <div>
                     <h4 className="font-bold text-foreground mb-4">{t("footer.support")}</h4>
                     <ul className="space-y-3">
@@ -48,6 +53,17 @@ export function Footer() {
                     </ul>
                 </div>
 
+                {/* Col 4 — Partners */}
+                <div>
+                    <h4 className="font-bold text-foreground mb-4">{t("footer.partners")}</h4>
+                    <ul className="space-y-3">
+                        <li><Link href="/partner-vet" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.partnerVet")}</Link></li>
+                        <li><Link href="/partner-carrier" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.partnerCarrier")}</Link></li>
+                        <li><Link href="/advertise" className="text-foreground/70 hover:text-primary text-sm transition-colors">{t("footer.partnerAdvertise")}</Link></li>
+                    </ul>
+                </div>
+
+                {/* Col 5 — Seller Badge */}
                 <div>
                     <h4 className="font-bold text-foreground mb-4">{t("footer.sellerBadge")}</h4>
                     <div className="p-4 bg-primary/5 rounded-2xl border border-primary/20 flex flex-col gap-2 relative overflow-hidden group">
@@ -58,6 +74,7 @@ export function Footer() {
                 </div>
             </div>
 
+            {/* Bottom bar */}
             <div className="container mx-auto px-4 mt-12 pt-6 border-t border-border flex flex-col md:flex-row items-center justify-between">
                 <p className="text-xs text-foreground/50 flex items-center gap-1">
                     <Copy className="w-3 h-3" />

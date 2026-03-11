@@ -34,17 +34,31 @@ Foi implementado um fluxo completo de autenticação integrado com a API Go/Pyth
 
 ## 🏃‍♂️ Como Executar
 
-Para rodar o servidor de desenvolvimento:
+O projeto conta com um utilitário **Makefile** na raiz para facilitar a orquestração de Dev, Homologação e Produção via Docker Compose.
 
+### Desenvolvimento Local (Hot Reload + SSR)
 ```bash
-npm run dev
-# ou
-yarn dev
-# ou
-pnpm dev
-# ou
-bun dev
+# Sobe o ambiente Next.js habilitado com live-reload na porta 3000
+make up
+make logs
 ```
 
-Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado prático.
-Qualquer edição nos arquivos sob `src/` acionará o Hot Reload automagicamente.
+Abra [http://localhost:3000](http://localhost:3000) no navegador para ver a aplicação. O Bind Mount (volumes) está ativo, qualquer edição em `src/` acionará o Hot Refresh.
+
+---
+
+## ☁️ Deploy CI/CD (DigitalOcean & GitHub Actions)
+
+Assim como a API, o Frontend possui Pipelines automatizados gerando a versão compilada SSR Standalone como imagem no **GitHub Container Registry (GHCR)** e atualizando instâncias VPS via SSH.
+
+- **Homologação (Staging)**: Atualizado automaticamente a qualquer *push* na branch `develop`.
+- **Produção (Release)**: Atualizado nativamente a qualquer *Release* oficial (tag) gerada a partir da `main`.
+
+### Servidores Web Nginx
+Em produção ou homologação, a porta do NodeJS (3000) nunca é exposta para o mundo exterior. Toda a aplicação fica ancorada atrás de um Proxy Reverso customizado (Nginx) na porta `80`/`443` contendo:
+- _Rate Limiting strict-mode_ (20r/s) mitigando lammers e DDoS volumétrico.
+- Políticas de Compressão extrema via `Gzip` de todos os Assets/JS.
+- Security Headers anti-XSS.
+
+### Configurando suas Droplets Web
+Antes do Actions rodar, a pasta `/opt/canario-marketplace-web` precisa estar criada em seu servidor, contendo o arquivo `docker-compose.prod.yml`, `nginx/nginx.conf` e um `.env` customizado baseado no nosso modelo de referência indicando de onde a API deve ser tragada (`NEXT_PUBLIC_API_URL`).
